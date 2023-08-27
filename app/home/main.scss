@@ -110,3 +110,19 @@
         transform: translateX(0);
     }
 }
+.typewriter {
+    overflow: hidden; /* Hide overflow for the effect */
+    white-space: nowrap; /* Prevent line breaks */
+    letter-spacing: 2px; /* Adjust spacing between letters */
+    animation: typewriter 4s steps(30) 1s 1 normal both; /* Animation properties */
+  }
+  
+  @keyframes typewriter {
+    from {
+      width: 0; /* Start with no width (invisible) */
+    }
+    to {
+      width: 100%; /* Gradually reveal the entire text */
+    }
+  }
+  

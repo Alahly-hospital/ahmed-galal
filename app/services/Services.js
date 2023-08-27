@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import {data} from "./data";
-import { GiStomach } from 'react-icons/gi';;
+import { GiStomach } from 'react-icons/gi';
 // import { FaUserDoctor } from 'react-icons';
 
 const Services = () => {
@@ -21,7 +21,7 @@ const Services = () => {
      
 
   return (
-    <div className="services-section"> 
+    <div className="services-section mb-4"> 
         <Container className='my-5 '>
             <h2 className=' title' >مركز  مناظير الجهاز الهضمي والكبد يقدم  
     الخدمات التالية</h2>

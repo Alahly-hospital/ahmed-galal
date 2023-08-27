@@ -1,10 +1,39 @@
-.ourServices-card{
-    border: 1px solid gray;
-    margin: 10px;
-    border-radius: 6px;
-    min-width: 16rem;
-    padding: 20px;
-}
+// .ourServices-card{
+//     border: 1px solid gray;
+//     margin: 10px;
+//     border-radius: 6px;
+//     min-width: 16rem;
+//     padding: 20px;
+//     direction: rtl;
+//     text-align: right;
+// }
+// h2.title{
+//     width:80%;
+//     margin: auto;
+//     text-align: center;
+//     position: relative;
+//     margin-bottom: 60px;
+//     color: gray;
+//     user-select: none;
+//     &::before{
+//         content: "";
+//         position: absolute;
+//         width: 150px;
+//         height: 4px;
+//         border-radius: 6px;
+//         bottom: -20px;
+//         background-color: var(--primary);
+//         display:block;
+//         margin-left:50%;
+//         transform: translateX(-50%);
+//         transition: .3s;
+//     }
+//     &:hover::before{
+//         width: 200px;
+//         transform:  translateX(-50%);
+//         margin-left:50%;                             
+//     }
+// }
 h2.title{
     width:80%;
     margin: auto;
@@ -31,4 +60,40 @@ h2.title{
         transform:  translateX(-50%);
         margin-left:50%;                             
     }
+}
+
+.ourServices-card {
+margin-bottom: 40px;
+position: relative;
+
+
+
+&:hover {
+    border-radius: 10px;
+  border: 2px solid var(--primary); /* Change the border color as needed */
+  box-shadow: 0px 0px 10px rgba(44, 124, 41, 0.818); /* Optional shadow on hover */
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+}
+
+.ourServices-card-inner {
+position: relative;
+}
+
+.card-title {
+position: absolute;
+bottom: -30px;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgb(255, 255, 255);
+padding: 10px;
+border-radius: 5px;
+width: 90%;
+text-align: center;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+&:hover {
+   border: 2px solid var(--primary); /* Change the border color as needed */
+   transition: border 0.3s ease-in-out;
+}
 }

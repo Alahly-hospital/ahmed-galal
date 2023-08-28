@@ -52,8 +52,8 @@ width: 100%;
   
     &:hover {
         border-radius: 10px;
-      border: 2px solid var(--secondary); /* Change the border color as needed */
-      box-shadow: 0px 0px 10px rgba(41, 41, 124, 0.818); /* Optional shadow on hover */
+      border: 2px solid var(--primary); /* Change the border color as needed */
+      box-shadow: 0px 0px 10px rgba(45, 124, 41, 0.818); /* Optional shadow on hover */
       transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
   }
@@ -75,7 +75,7 @@ width: 100%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   
     &:hover {
-       border: 2px solid var(--secondary); /* Change the border color as needed */
+       border: 2px solid var(--primary); /* Change the border color as needed */
        transition: border 0.3s ease-in-out;
     }
   }

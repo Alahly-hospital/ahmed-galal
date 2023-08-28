@@ -3,7 +3,6 @@ import "./ourService.scss";
 import { Col, Container, Row } from "react-bootstrap";
 import {data} from './servicesData'
 import Link from "next/link";
-
 const OurService = () => {
   return (
     <Container>
@@ -25,22 +24,19 @@ const OurService = () => {
        className="w-100 img-fliud"
        height={300}
      ></img>
-     <h5 className="card-title">
-       <span className="primary-color">{item.title}</span>
+     <h6 className="card-title">
+       <span className="primary-color">{item.title_s}</span>
        {item.text}
-     </h5>
+     </h6>
    </div>
  </Col>
 ))}
- 
-
       </Row>
-      <div className="d-flex align-content-center justify-content-center mb-4">
+      <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4">
         <button className="btn primary-bg rounded-4 fs-5">
-          {" "}
           <Link href="serviceslist" className="text-decoration-none text-white">
             كل الخدمات
-          </Link>{" "}
+          </Link>
         </button>
       </div>
     </Container>

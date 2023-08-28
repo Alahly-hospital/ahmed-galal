@@ -1,39 +1,3 @@
-// .ourServices-card{
-//     border: 1px solid gray;
-//     margin: 10px;
-//     border-radius: 6px;
-//     min-width: 16rem;
-//     padding: 20px;
-//     direction: rtl;
-//     text-align: right;
-// }
-// h2.title{
-//     width:80%;
-//     margin: auto;
-//     text-align: center;
-//     position: relative;
-//     margin-bottom: 60px;
-//     color: gray;
-//     user-select: none;
-//     &::before{
-//         content: "";
-//         position: absolute;
-//         width: 150px;
-//         height: 4px;
-//         border-radius: 6px;
-//         bottom: -20px;
-//         background-color: var(--primary);
-//         display:block;
-//         margin-left:50%;
-//         transform: translateX(-50%);
-//         transition: .3s;
-//     }
-//     &:hover::before{
-//         width: 200px;
-//         transform:  translateX(-50%);
-//         margin-left:50%;                             
-//     }
-// }
 h2.title{
     width:80%;
     margin: auto;

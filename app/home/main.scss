@@ -41,6 +41,7 @@
 .right-main-section{
     text-align: right;
     display: flex;
+    margin-top: 100px;
     flex-direction: column;
     justify-content: center;
     h1{
@@ -78,12 +79,12 @@
  
 }
 .floating-box{
-    position: absolute;
+     position: absolute;
     z-index:12;
     background-color: #fff;
     color : gray;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 50%;
+    width: 60%;
     margin-left: 50%;
     transform: translateX(-50%);
     padding: 20px;
@@ -110,19 +111,22 @@
         transform: translateX(0);
     }
 }
-.typewriter {
-    overflow: hidden; /* Hide overflow for the effect */
-    white-space: nowrap; /* Prevent line breaks */
-    letter-spacing: 2px; /* Adjust spacing between letters */
-    animation: typewriter 4s steps(30) 1s 1 normal both; /* Animation properties */
+/* mainAnimation.css */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn ease-in-out 1s forwards;
   }
   
-  @keyframes typewriter {
-    from {
-      width: 0; /* Start with no width (invisible) */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    to {
-      width: 100%; /* Gradually reveal the entire text */
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   

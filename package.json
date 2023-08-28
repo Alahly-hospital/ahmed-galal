@@ -12,9 +12,11 @@
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@next/font": "^13.4.19",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "bootstrap": "^5.3.1",
+    "formik": "^2.4.3",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-bootstrap": "^2.8.0",
@@ -24,7 +26,8 @@
     "react-slick": "^0.29.0",
     "react-spring": "^9.7.2",
     "sass": "^1.66.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",

@@ -5,7 +5,31 @@ import logo from "../../assets/Logo.png";
 import Link from "next/link";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
+import {useFormik } from "formik";
+import * as Yup from "yup";
+
 export default function login() {
+
+     function handleLogin(values) {
+      
+      }
+      
+
+    let validationSchema = Yup.object({
+        email: Yup.string().required("email is required").email(),
+        password: Yup.string().required("Password is required").matches(/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/, "Password must contain at least one uppercase and one lowercase letter"),
+      });
+    
+      
+      let formik = useFormik({
+        initialValues: {
+          email: "",
+          password: "",
+        },
+        validationSchema,
+        onSubmit: handleLogin
+      });
+    
     return (
         <>
         <div className="login-page">
@@ -17,15 +41,20 @@ export default function login() {
                     <h6 className="   text-secondary mt-4 mb-4">
                     ادخل الي حسابك بادخال البريد الالكتروني و كلمة المرور
                     </h6>
-                    <form action="">
+                    <form action=""
+                    onSubmit={formik.handleSubmit}
+                    >
                     <label htmlFor="name mt-4">البريد الالكتروني</label>
                     <div className="position-relative d-flex align-items-center ">
                         <div className="input-with-icon responsive-input">
                         <input
                             type="text"
-                            id="name"
-                            name="name"
+                            id="email"
+                            name="email"
                             className="form-control"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                         />
                         <FaUserAlt className="icon primary-color" />
                         </div>
@@ -39,6 +68,9 @@ export default function login() {
                             id="password"
                             name="password"
                             className=" form-control  "
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                         />
                         <RiLockPasswordFill className="icon primary-color" />
                         </div>

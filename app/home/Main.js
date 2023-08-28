@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import "./main.scss" 
 import { Button, Container, Row } from 'react-bootstrap'
 import MainImage from "../../assets/main-image.png"
@@ -21,8 +21,20 @@ var settings = {
   autoplaySpeed:3000
 };
 const Main = () => {
+  const mainRef = useRef(null);
+  const listItems = [
+    "استشارى اول أمراض الجهاز الهضمي -الكبدوالمناظير",
+    "زمالة أمراض الجهاز الهضمي -الكبدوالمناظير التشخيصية و العلاجية",
+    "زميل الجمعية الأميركية لمناظير الجهاز الهضمى"
+  ];
+
+  useEffect(() => {
+    if (mainRef.current) {
+      mainRef.current.classList.add('fade-in');
+    }
+  }, []);
   return (
-    <Container style={{position:"relative",marginBottom:"150px"}}>
+    <Container ref={mainRef} className='main-container' style={{position:"relative",marginBottom:"150px"}}>
     <Row>
         <div className='col-12 col-md-6 left-main-section'>    <Slider {...settings}>
 
@@ -35,9 +47,11 @@ const Main = () => {
         <div className='col-12 col-md-6 right-main-section'>
           <h1>دكتور احمد جلال</h1>
           <ul>
-            <li>  استشارى اول أمراض الجهاز الهضمي -الكبدوالمناظير <FaCheckCircle/> </li>
-            <li>زمالة أمراض الجهاز الهضمي -الكبدوالمناظير التشخيصية و العلاجية  <FaCheckCircle/> </li>
-            <li>زميل الجمعية الأميركية لمناظير الجهاز الهضمى <FaCheckCircle/> </li>
+          {listItems.map((item, index) => (
+              <li key={index} className="fade-in">
+                {item} <FaCheckCircle />
+              </li>
+            ))}
           <Button className='w-50 m-auto mt-4 reserve-btn' ><Link className=' text-decoration-none text-white' href={'reservation'}> احجز الان</Link></Button>
           </ul>
         </div>

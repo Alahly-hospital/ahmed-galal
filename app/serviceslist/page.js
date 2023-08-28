@@ -35,7 +35,7 @@ export default function serviceslist() {
             height={300}
           ></img>
           <h5 className="card-title">
-            <span className="primary-color">{item.title}</span>
+            <span className="primary-color">{item.title_s}</span>
             {item.text}
           </h5>
         </div>

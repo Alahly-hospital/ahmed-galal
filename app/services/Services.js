@@ -33,7 +33,7 @@ const Services = () => {
                             <Card.Body>
                                 <Row className="mb-3">
                                     <Col xs={6}>
-                                        <Card.Title className='service-card-title'>{ele.title_ar} </Card.Title>
+                                        <h4 className='service-card-title'>{ele.title_ar} </h4>
                                         <Card.Subtitle className="mb-2 text-muted">{ele.title} </Card.Subtitle>
                                     </Col>
                                     <Col xs={6}>

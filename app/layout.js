@@ -1,10 +1,13 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css';
 import NavbarHeader from '@/components/navbar/Navbar';
 import Footer from './footer/Footer';
 
-const inter = Inter({ subsets: ['latin'] })
+const cairo = Cairo({
+   subsets: ['latin'] ,
+   weight :['400' ,'500' ,'700' ,'900']
+ })
 
 export const metadata = {
   title: 'Dr.Ahmed Galal',
@@ -14,10 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"></link>
-      <body className={inter.className}>
+      <body className={cairo.className}>
         <NavbarHeader/>
         {children}
         <Footer/>

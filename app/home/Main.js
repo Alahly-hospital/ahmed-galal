@@ -12,7 +12,8 @@ import Slider from "react-slick";
 
 import Link from 'next/link'
 var settings = {
-  dots: true,
+  dots: false,
+  arrows: false,
   infinite: true,
   speed: 500,
   slidesToShow: 1,

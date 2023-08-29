@@ -4,6 +4,8 @@ import './reservation.scss'
 import { FaUserAlt } from 'react-icons/fa'
 import { AiFillPhone, AiOutlineMail } from 'react-icons/ai'
 import { BsFillPencilFill } from 'react-icons/bs'
+import Form from 'react-bootstrap/Form';
+
 export default function reservation() {
   return (
     <>
@@ -15,50 +17,35 @@ export default function reservation() {
 
         <div className='row  d-flex align-content-center justify-content-center'>
             <div className='col-md-4'>
-                <label htmlFor="">الاسم</label>
+                <label htmlFor=""className='mb-2'>الاسم</label>
                 <div className="input-with-icon">
       <input className='form-control' type="text" name="" id=""  required />
       <FaUserAlt className='icon primary-color'/>
          </div>               
             </div> <br/><br/>
             <div className='col-md-4'>
-            <label htmlFor="">رقم الهاتف </label>
+            <label htmlFor=""className='mb-2'>رقم الهاتف </label>
 
                 <div className="input-with-icon">
                 <input className='form-control' type="number" name="" id=""  required></input>
       <AiFillPhone className='icon fs-5 primary-color'/>
          </div>    
             </div>
-            {/* <div className='col-md-4 border-2 shadow p-4'>
-                <h5>مواعيد العمل </h5>
-                <div className='d-flex justify-content-between border-bottom'>
-                  <p>الاحد</p>
-                <p>12 ظهرا الي 10 مساء</p>  
-                </div>
-                <div className='d-flex justify-content-between border-bottom'>
-                  <p>الاحد</p>
-                <p>12 ظهرا الي 10 مساء</p>  
-                </div>
-                <div className='d-flex justify-content-between border-bottom'>
-                  <p>الاحد</p>
-                <p>12 ظهرا الي 10 مساء</p>  
-                </div><div className='d-flex justify-content-between  '>
-                  <p>الاحد</p>
-                <p>12 ظهرا الي 10 مساء</p>  
-                </div>
-                
-                
-        </div> */}
         </div>
 
         <div className='row d-flex align-content-center justify-content-center'>
-            <div className='col-md-4 mt-4'>
-            <label htmlFor="">موعد الحجز</label>
+            <div className='col-md-4 mt-4 mb-4'>
+            <label htmlFor="" className='mb-2'>موعد الحجز</label>
+            <Form.Select aria-label="Default select example"  className='form-control'  >
+      <option>اختر موعدك </option>
+      <option value="10pm">10 صباحا </option>
+      <option value="11pm">11 صباحا </option>
+      <option value="12pm">12 ظهرا</option>
+    </Form.Select>
 
-                <input className='form-control' type="date" name="" id="" placeholder="تاريخ الحجز" required></input> 
-            </div>
+             </div>
             <div className='col-md-4 mt-4'>
-            <label htmlFor="">البريد الالكتروني</label>
+            <label htmlFor=""className='mb-2'>البريد الالكتروني</label>
 
                 <div className="input-with-icon">
                 <input className='form-control' type="email" name="" id=""   required></input> 
@@ -70,7 +57,7 @@ export default function reservation() {
 
         <div className='row d-flex align-content-center justify-content-center'>
             <div className='col-8'>
-            <label htmlFor="">اضافة اي تفاصيل </label>
+            <label htmlFor=""className='mb-2'>اضافة اي تفاصيل </label>
 
             <div className="input-with-icon">
             <textarea class="form-control " id=""  rows="4"  ></textarea>

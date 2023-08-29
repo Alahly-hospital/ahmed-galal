@@ -9,7 +9,7 @@ export default function serviceslist() {
     <>
       <div className="bg-img ">
         <div className="bg-layer   text-white  text-center p-4">
-          <h1 className="pt-4 m-4">خدماتنا</h1>
+          <h1 className="pt-4 m-4 mt-4" style={{fontSize:'4rem' }}>خدماتنا</h1>
         </div>
       </div>
       <section className="section-color">

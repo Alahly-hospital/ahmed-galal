@@ -44,7 +44,7 @@ export default function login() {
                     <form action=""
                     onSubmit={formik.handleSubmit}
                     >
-                    <label htmlFor="name mt-4">البريد الالكتروني</label>
+                    <label htmlFor="name mt-4"className='mb-2'>البريد الالكتروني</label>
                     <div className="position-relative d-flex align-items-center ">
                         <div className="input-with-icon responsive-input">
                         <input
@@ -60,7 +60,7 @@ export default function login() {
                         </div>
                     </div>
 
-                    <label htmlFor="password">كلمة المرور </label>
+                    <label htmlFor="password"className='mb-2'>كلمة المرور </label>
                     <div className="position-relative d-flex align-items-center">
                         <div className="input-with-icon  responsive-input ">
                         <input
@@ -80,7 +80,7 @@ export default function login() {
                         تسجيل الدخول
                     </button>
                     <p className="mt-4 ">
-                        لا يوجد لديك حساب ؟
+                    لا يوجد لديك حساب ؟
                         <Link
                         href={"/register"}
                         className="span-color text-decoration-none"

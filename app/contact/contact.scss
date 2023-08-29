@@ -42,4 +42,24 @@ width: 100%;
         transform: scale(1.05);
         transition: transform 0.3s ease-in-out;
       }
-      
+      .facebook{
+        transition: all .5s;
+        cursor: pointer;
+       &:hover{
+        color:#2d79ff !important;
+               } 
+
+      }
+      .youtube{
+        transition: all .5s;
+        cursor: pointer;
+       &:hover{
+        color: red !important;
+
+      } 
+
+      }
+      .black-color{
+        color: black;
+
+      }      

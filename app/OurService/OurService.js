@@ -15,7 +15,7 @@ const OurService = () => {
    sm={6}
    xs={12}
    key={index}
-   className="ourServices-card"
+   className="ourServices-card mb-4"
  >
    <div className="ourServices-card-inner">
      <img

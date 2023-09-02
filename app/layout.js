@@ -18,9 +18,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={cairo.className}>
-        <NavbarHeader/>
+        {/* <NavbarHeader/> */}
         {children}
-        <Footer/>
+        {/* <Footer/> */}
 
         </body>
     </html>

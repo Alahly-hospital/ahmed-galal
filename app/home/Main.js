@@ -19,7 +19,7 @@ var settings = {
   slidesToShow: 1,
   slidesToScroll: 1 ,
   autoplay:true,
-  autoplaySpeed:5000
+  autoplaySpeed:3000
 };
 const Main = () => {
   const mainRef = useRef(null);
@@ -53,7 +53,7 @@ const Main = () => {
                 {item} <FaCheckCircle />
               </li>
             ))}
-          <Button className='w-50 m-auto mt-4 reserve-btn' ><Link className=' text-decoration-none text-white' href={'reservation'}> احجز الان</Link></Button>
+           <Button className=' w-50   m-auto mt-4 reserve-btn' ><Link className=' text-decoration-none text-white' href={'reservation'}> احجز الان</Link></Button>
           </ul>
         </div>
     </Row>

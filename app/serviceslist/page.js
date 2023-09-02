@@ -4,9 +4,12 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./services.scss";
 import { data } from "../OurService/servicesData";
 import Link from "next/link";
+import NavbarHeader from "@/components/navbar/Navbar";
+import Footer from "../footer/Footer";
 export default function serviceslist() {
   return (
     <>
+                <NavbarHeader/>
       <div className="bg-img ">
         <div className="bg-layer   text-white  text-center p-4">
           <h1 className="pt-4 m-4 mt-4" style={{fontSize:'4rem' }}>خدماتنا</h1>
@@ -52,7 +55,7 @@ export default function serviceslist() {
   </div>
 </Container>
 </section>
-
+<Footer/>
     </>
   );
 }

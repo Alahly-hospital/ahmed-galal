@@ -13,6 +13,8 @@ import {
     import Link from "next/link";
     import {useFormik } from "formik";
 import * as Yup from "yup";
+import NavbarHeader from "@/components/navbar/Navbar";
+import Footer from "../footer/Footer";
 
     export default function register() {
 
@@ -45,6 +47,8 @@ import * as Yup from "yup";
           });
     return (
         <>
+            <NavbarHeader/>
+
         <div className="register-page">
             <div className="container">
             <h1>أنشء حسابك الان :</h1>
@@ -220,8 +224,9 @@ import * as Yup from "yup";
                 </div>
                 </div>
             </form>
-            </div>
+            </div> 
         </div>
+        <Footer/>
         </>
     );
 }

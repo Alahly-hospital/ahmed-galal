@@ -11,6 +11,7 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use("/api",routes);
+app.use("/api/blogs",express.static("./uploads"))
 
 const url = process.env.DB_URL;
 mongoose

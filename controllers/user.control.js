@@ -11,7 +11,7 @@ const authController ={
             res.status(200).send(user);
         } catch (error) {
             logger.error(error.message)
-            res.status(500).send(error.message)
+            res.status(500).send({message:error.message})   
         }
     }
 }

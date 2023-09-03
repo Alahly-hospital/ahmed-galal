@@ -61,6 +61,7 @@ import Footer from "../footer/Footer";
                 <div className="row">
                 <div className="col-md-4">
                     <div className="input-with-icon">
+                        
                     <input
                         className="form-control"
                         type="text"
@@ -201,19 +202,32 @@ import Footer from "../footer/Footer";
                     </div>
                 </div>
                 </div>
-
+   <div className="mt-3">
+   <div className=" mb-1 ">
+    <input className="form-check-input m-1" type="radio" name="exampleRadios" id="exampleRadios1" defaultValue="option1" defaultChecked />
+    <label className="form-check-label " htmlFor="exampleRadios1">
+      أثني
+    </label>
+  </div>
+  <div className="">
+    <input className="form-check-input m-1" type="radio" name="exampleRadios" id="exampleRadios2" defaultValue="option2" />
+    <label className="form-check-label" htmlFor="exampleRadios2">
+      ذكر
+    </label>
+  </div>
+  </div>
+  
+ 
                 <div className="row" style={{ paddingBottom: "100px" }}>
-                <div className="col-8">
+                <div className="col-md-8">
                     <button
                     type="submit"
                     className="btn form-control primary-bg text-white mt-4"
                     >
-                    {" "}
-                    أنشء حسابك الان{" "}
+                     أنشء حسابك الان 
                     </button>
                     <p className=" mt-4">
-                    {" "}
-                    يوجد لديك حساب بالفعل{" "}
+                     يوجد لديك حساب بالفعل{" "}
                     <Link
                         href={"login"}
                         className="text-decoration-none span-color"

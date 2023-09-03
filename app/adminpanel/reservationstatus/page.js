@@ -1,7 +1,7 @@
 import React from "react";
 import f from "../../../assets/ff.jpg";
 import m from "../../../assets/mm.jpg";
-
+import './reservationstatus.scss'
 export default function reservationstatus() {
   return (
     <>
@@ -30,10 +30,10 @@ export default function reservationstatus() {
             </div>
 
             <div className="  d-flex justify-content-center mb-4 ">
-              <button className="btn primary-sidebar-bg ms-2  text-white">
+              <button className="btn   ms-2 confirm-btn">
                 متاح
               </button>
-              <button className="btn bg-danger ms-2  text-white ">
+              <button className="btn  ms-2  reject-btn ">
                 غير متاح
               </button>
             </div>

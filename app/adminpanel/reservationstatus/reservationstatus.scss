@@ -1,0 +1,20 @@
+.confirm-btn{
+    border: 1px solid #2f89fc ;
+    padding: 5px 30px;
+    color: #2f89fc ;
+    transition: all .5s;
+    &:hover{
+        background:#2f89fc !important;
+        color: white;
+    }
+}
+.reject-btn{
+    border: 1px solid red;
+    padding: 5px 20px;
+    color: red;
+    transition: all .5s;
+    &:hover{
+        background:red!important;
+        color: white;
+    }
+}

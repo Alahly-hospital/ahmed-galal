@@ -65,6 +65,20 @@ export default function reservation() {
                 <option value="11pm">11 صباحا </option>
                 <option value="12pm">12 ظهرا</option>
               </Form.Select>
+              <div className="mt-3">
+   <div className=" mb-1 ">
+    <input className="form-check-input m-1" type="radio" name="exampleRadios" id="exampleRadios1" defaultValue="option1" defaultChecked />
+    <label className="form-check-label " htmlFor="exampleRadios1">
+      أثني
+    </label>
+  </div>
+  <div className="">
+    <input className="form-check-input m-1" type="radio" name="exampleRadios" id="exampleRadios2" defaultValue="option2" />
+    <label className="form-check-label" htmlFor="exampleRadios2">
+      ذكر
+    </label>
+  </div>
+  </div>
             </div>
             <div className="col-md-4 mt-4">
               <label htmlFor="" className="mb-2">
@@ -81,8 +95,11 @@ export default function reservation() {
                 ></input>
                 <AiOutlineMail className="icon fs-5 primary-color " />
               </div>
+              
             </div>
+            
           </div>
+          
           <div className="row d-flex align-content-center justify-content-center">
             <div className="col-8">
               <label htmlFor="" className="mb-2">

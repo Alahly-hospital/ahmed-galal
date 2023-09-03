@@ -7,15 +7,17 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 import { BsFacebook, BsYoutube } from "react-icons/bs";
 import NavbarHeader from "/components/navbar/Navbar";
 import Footer from "../footer/Footer";
+import Scrolltop from "/components/Scrolltop/Scrolltop";
 
 export default function contac() {
   return (
     <>
-                <NavbarHeader/>
+      <NavbarHeader />
+      <Scrolltop />
 
       <div className="bg-img ">
         <div className="bg-layer   text-white text-center   p-4">
-           <h1 className="pt-4 m-4">للحجز أو الاستفسار تواصل معنا الان </h1>
+          <h1 className="pt-4 m-4">للحجز أو الاستفسار تواصل معنا الان </h1>
           <div>
             <h1>01022077474</h1>
             <h1>01121139030</h1>
@@ -88,7 +90,7 @@ export default function contac() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

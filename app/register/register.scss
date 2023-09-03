@@ -55,4 +55,7 @@
   
   
   
-      
+      .form-check-input:checked{
+        background-color: var(--primary) !important;
+        border-color:var(--primary) !important ;
+      }

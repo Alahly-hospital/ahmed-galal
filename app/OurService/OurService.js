@@ -35,7 +35,7 @@ const OurService = () => {
       <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4 "> 
                <Link href="serviceslist" className="text-decoration-none text-white" prefetch>
 
-        <button className="btn primary-bg rounded-4 fs-5 text-white">
+        <button className="btn primary-bg fs-5 text-white" style={{padding:'7px 70px'}}>
             كل الخدمات
         </button>          </Link>
 

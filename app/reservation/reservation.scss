@@ -55,7 +55,11 @@
   .form-select {
     background-position:   0.75rem  ;
    }
-  
+   .form-check-input:checked{
+    background-color: var(--primary) !important;
+    border-color:var(--primary) !important ;
+   }
+
   
   
   

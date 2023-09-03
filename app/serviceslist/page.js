@@ -4,15 +4,15 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./services.scss";
 import { data } from "../OurService/servicesData";
 import Link from "next/link";
-import NavbarHeader from "@/components/navbar/Navbar";
+import NavbarHeader from "/components/navbar/Navbar";
 import Footer from "../footer/Footer";
 export default function serviceslist() {
   return (
     <>
                 <NavbarHeader/>
-      <div className="bg-img ">
-        <div className="bg-layer   text-white  text-center p-4">
-          <h1 className="pt-4 m-4 mt-4" style={{fontSize:'4rem' }}>خدماتنا</h1>
+      <div className="bg-img">
+        <div className="bg-layer    text-white  text-center p-4">
+          <h1 className="pt-4 m-4 mt-4"  >خدماتنا</h1>
         </div>
       </div>
       <section className="section-color">
@@ -20,7 +20,7 @@ export default function serviceslist() {
    
       <Container>
   <h2 className="title pt-4">خدماتنا</h2>
-  <Row className="justify-content-center">
+  <Row className="justify-content-center m-4">
     {data.map((item, index) => (
       <Col
         lg={3}
@@ -28,9 +28,9 @@ export default function serviceslist() {
         sm={6}
         xs={12}
         key={index}
-        className="ourServices-card"
+        className="ourServices-card "
       >
-        <div className="ourServices-card-inner">
+        <div className="ourServices-card-inner ">
           <img
             src={item.img}
             alt="colon"
@@ -45,13 +45,15 @@ export default function serviceslist() {
       </Col>
     ))}
   </Row>
-  <div className="d-flex align-content-center justify-content-center mb-4">
-    <button className="btn primary-bg rounded-4 fs-5">
+  <div className="d-flex align-content-center justify-content-center mb-4 ">    
+    <Link href="/" className="text-decoration-none text-white" prefetch>
+
+    <button className="btn primary-bg rounded-4 fs-5 text-white">
       {" "}
-      <Link href="/" className="text-decoration-none text-white">
         العودة للصفحة الرئيسية
-      </Link>{" "}
-    </button>
+    </button>      
+    </Link>{" "}
+
   </div>
 </Container>
 </section>

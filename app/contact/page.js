@@ -5,7 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { BsFacebook, BsYoutube } from "react-icons/bs";
-import NavbarHeader from "@/components/navbar/Navbar";
+import NavbarHeader from "/components/navbar/Navbar";
 import Footer from "../footer/Footer";
 
 export default function contac() {
@@ -15,7 +15,7 @@ export default function contac() {
 
       <div className="bg-img ">
         <div className="bg-layer   text-white text-center   p-4">
-          <h1 className="pt-4 m-4">للحجز أو الاستفسار تواصل معنا الان </h1>
+           <h1 className="pt-4 m-4">للحجز أو الاستفسار تواصل معنا الان </h1>
           <div>
             <h1>01022077474</h1>
             <h1>01121139030</h1>
@@ -26,7 +26,7 @@ export default function contac() {
 
       <div className="container">
         <h1 className="text-center pt-4 secondary-color">تواصل معنا</h1>
-        <div className="row d-flex align-content-center justify-content-around ">
+        <div className="row d-flex align-content-center justify-content-around  m-4">
           <div className="col-md-3 text-center contact-bg rounded p-3 m-2 shadow">
             <BiMessageRoundedDetail className="fs-1 mb-3 secondary-color" />
             <h4 className="secondary-color">تواصل معنا</h4>

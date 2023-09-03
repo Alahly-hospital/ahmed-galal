@@ -5,15 +5,23 @@
     height: 100%;
 width: 100%;
     background-repeat: no-repeat;
-    // background-attachment: fixed;
+
     }
  
     .bg-layer {
 height: 450px;
 width: 100%;
+h1{
+font-size: 3rem;
+}
     background-color: var(--secondary) ;
     opacity: .4;
-    
+    @media (max-width:767px) {
+      height: 300px;
+       
+
+      
+    }
     
     }
     h2.title{
@@ -63,7 +71,7 @@ width: 100%;
   }
   
   .card-title {
-    position: absolute;
+     position: absolute;
     bottom: -30px;
     left: 50%;
     transform: translateX(-50%);

@@ -13,7 +13,7 @@ import {
     import Link from "next/link";
     import {useFormik } from "formik";
 import * as Yup from "yup";
-import NavbarHeader from "@/components/navbar/Navbar";
+import NavbarHeader from "/components/navbar/Navbar";
 import Footer from "../footer/Footer";
 
     export default function register() {
@@ -226,7 +226,6 @@ import Footer from "../footer/Footer";
             </form>
             </div> 
         </div>
-        <Footer/>
-        </>
+         </>
     );
 }

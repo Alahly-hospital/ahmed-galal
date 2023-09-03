@@ -2,7 +2,10 @@
     --primary-sidebar:#2f89fc;
 }
 .primary-sidebar{
-    color: #2f89fc;
+    color: var(--primary-sidebar) !important;
+}
+.primary-sidebar-bg{
+    background-color: var(--primary-sidebar) !important;
 }
 @mixin gradient-background(){
 	background: rgba(47,137,252,1);
@@ -100,32 +103,32 @@ h1, h2, h3, h4, h5,
   }
   ul{
     li{
-    	font-size: 16px;
-    	>ul{
-    		margin-left: 10px;
-    		li{
-    			font-size: 14px;
-    		}
-    	}
-    	a{
-    		padding: 15px 30px;
-		    display: block;
-		    color: rgba(255,255,255,.9);
-		    border-bottom: 1px solid rgba(255,255,255,.1);
-		    &:hover{
-		    	background:var(--primary-sidebar);
-		    	border-bottom: 1px solidvar(--primary-sidebar);
-		    }
-    	}
-    	&.active{
-    		> a{
-    			background: transparent;
-    			&:hover{
-    				background:var(--primary-sidebar);
-			    	border-bottom: 1px solidvar(--primary-sidebar);
-    			}
-    		}
-    	}
+			font-size: 16px;
+			>ul{
+				margin-left: 10px;
+				li{
+					font-size: 14px;
+				}
+			}
+			a{
+				padding: 15px 30px;
+				display: block;
+				color: rgba(255,255,255,.9);
+				border-bottom: 1px solid rgba(255,255,255,.1);
+				&:hover{
+					background:var(--primary-sidebar);
+					border-bottom: 1px solidvar(--primary-sidebar);
+				}
+			}
+			&.active{
+				> a{
+					background: transparent;
+					&:hover{
+						background:var(--primary-sidebar);
+						border-bottom: 1px solidvar(--primary-sidebar);
+					}
+				}
+			}
     }
   }
   .custom-menu{
@@ -175,21 +178,19 @@ a[data-toggle="collapse"] {
     text-align: right;
     
 }
-.form-border{
-  border: 2px var(--primary) dashed;
-  margin:10px;    
+.form-shap{
+   margin:10px;    
   padding: 10px;
   border-radius: 20px;
 
 
 
 }
-.form-border {
+.form-shap {
  }
   @media (min-width: 992px) {
-  .form-border {
-    border: 2px var(--primary) dashed;
-    border-radius: 20px;
+  .form-shap {
+     border-radius: 20px;
     margin:50px 200px;    
   }
  
@@ -198,7 +199,7 @@ a[data-toggle="collapse"] {
     position: relative;
   }
   
-  .input-with-icon input ,  .input-with-icon textarea , .input-with-icon select{
+  .input-with-icon input ,  .input-with-icon textarea  {
     padding-right: 40px; /* Adjust this value based on the icon size */
   }
   
@@ -221,8 +222,8 @@ a[data-toggle="collapse"] {
    }
   
   .form-control:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 5px var(--primary);
+    border-color: var(--primary-sidebar);
+    box-shadow: 0 0 5px var(--primary-sidebar);
   }
   .form-select {
     background-position:   0.75rem  ;

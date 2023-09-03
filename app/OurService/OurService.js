@@ -7,7 +7,7 @@ const OurService = () => {
   return (
     <Container>
       <h2 className="title">خدماتنا </h2>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center m-4">
      {data.slice(0, 8).map((item, index) => (
    <Col
    lg={3}
@@ -15,7 +15,7 @@ const OurService = () => {
    sm={6}
    xs={12}
    key={index}
-   className="ourServices-card mb-4"
+   className="ourServices-card m-4"
  >
    <div className="ourServices-card-inner">
      <img
@@ -32,12 +32,13 @@ const OurService = () => {
  </Col>
 ))}
       </Row>
-      <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4">
-        <button className="btn primary-bg rounded-4 fs-5">
-          <Link href="serviceslist" className="text-decoration-none text-white">
+      <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4 "> 
+               <Link href="serviceslist" className="text-decoration-none text-white" prefetch>
+
+        <button className="btn primary-bg rounded-4 fs-5 text-white">
             كل الخدمات
-          </Link>
-        </button>
+        </button>          </Link>
+
       </div>
     </Container>
   );

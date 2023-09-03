@@ -6,11 +6,11 @@ import img1 from '../../assets/Aboutdoctor.jpg'
 export default function About() {
   return (
     <>
-      <div className="about-container container  pt-4 mb-4">
+      <div className="about-container container  pt-4 mb-4 ">
         <div className="row d-flex align-content-center justify-content-center" >
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <h3 className="secondary-color"> دكتور احمد جلال محمد </h3>
-            <ul>
+            <ul className="circle-list m-4">
               <li>دكتوراة امراض باطنة</li>
               <li>استشارى اول أمراض الجهاز الهضمي -الكبدوالمناظير</li>
               <li>
@@ -23,7 +23,7 @@ export default function About() {
           </div>
 
           <div className="col-lg-4">
-            <img src={img1.src} className="w-100 " alt="دكتور أحمد جلال" />
+            <img src={img1.src} className="w-100  " alt="دكتور أحمد جلال" />
 
           </div>
         </div>

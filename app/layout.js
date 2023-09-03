@@ -1,7 +1,7 @@
 import './globals.css'
 import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css';
-import NavbarHeader from '@/components/navbar/Navbar';
+// import NavbarHeader from '@/components/navbar/Navbar';
 import Footer from './footer/Footer';
 
 const cairo = Cairo({

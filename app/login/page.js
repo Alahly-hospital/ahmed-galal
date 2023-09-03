@@ -7,7 +7,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import {useFormik } from "formik";
 import * as Yup from "yup";
-import NavbarHeader from "@/components/navbar/Navbar";
+import NavbarHeader from "/components/navbar/Navbar";
 
 export default function login() {
 

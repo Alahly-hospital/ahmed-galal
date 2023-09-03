@@ -5,7 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { AiFillPhone, AiOutlineMail } from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
-import NavbarHeader from "@/components/navbar/Navbar";
+import NavbarHeader from "/components/navbar/Navbar";
 import Footer from "../footer/Footer";
 
 export default function reservation() {

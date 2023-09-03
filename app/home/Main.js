@@ -53,7 +53,7 @@ const Main = () => {
                 {item} <FaCheckCircle />
               </li>
             ))}
-           <Button className=' w-50   m-auto mt-4 reserve-btn' ><Link className=' text-decoration-none text-white' href={'reservation'}> احجز الان</Link></Button>
+     <Link className=' text-decoration-none text-white' href='reservation' prefetch>       <Button className='   m-auto mt-4 reserve-btn' >احجز الان</Button></Link>
           </ul>
         </div>
     </Row>

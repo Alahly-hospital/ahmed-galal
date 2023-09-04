@@ -5,8 +5,8 @@ import './reservationstatus.scss'
 export default function reservationstatus() {
   return (
     <>
-       <div className="row  rounded-5">
-        <div className="col-lg-5 shadow rounded-5 ">
+       <div className="row   ">
+        <div className="col-lg-4 shadow rounded-5 ">
           <div className=" text-center">
             <img src={m.src} className="w-50 rounded-circle" />
           </div>
@@ -14,19 +14,20 @@ export default function reservationstatus() {
           <div className="">
             <div className="d-flex  justify-content-around">
               <h5>
-                 موعد الحجز &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;   20/10/2023 
               </h5>
 
-              <h5> الهاتف &nbsp;&nbsp;</h5>
+              <h5> 0125****** </h5>
             </div>
             <div className="d-flex justify-content-around">
-              <h5> البريد الالكتروني</h5> <h5> الاسم &nbsp;&nbsp;&nbsp;</h5>
+              <h5> rwan@gmail.con </h5> 
+              <h5> روان  </h5>
             </div>
 
             <div className="d-flex justify-content-around">
-              <h5> تفاصيل عن الحجز</h5>
+              <h5>  لا يوجد تفاصيل </h5>
 
-              <h5> النوع &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+              <h5> أنثي  </h5>
             </div>
 
             <div className="  d-flex justify-content-center mb-4 ">

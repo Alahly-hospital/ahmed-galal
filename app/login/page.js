@@ -48,7 +48,7 @@ export default function login() {
                   <label htmlFor="name mt-4" className="mb-2">
                     البريد الالكتروني
                   </label>
-                  <div className="col-md-6 ">
+                  <div className="col-lg-6 ">
                     {" "}
                     {formik.touched.email && formik.errors.email ? (
                       <div className="alert alert-danger">
@@ -76,7 +76,7 @@ export default function login() {
                   <label htmlFor="password" className="mb-2">
                     كلمة المرور{" "}
                   </label>
-                  <div className="col-md-6 ">
+                  <div className="col-lg-6 ">
                     {formik.touched.password && formik.errors.password ? (
                       <div className="alert alert-danger">
                         {formik.errors.password}

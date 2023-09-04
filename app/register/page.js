@@ -82,7 +82,7 @@ export default function register() {
           </h6>
           <form onSubmit={formik.handleSubmit}>
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 {formik.touched.fname && formik.errors.fname ? (
                   <div className="alert alert-danger">
                     {formik.errors.fname}
@@ -106,7 +106,7 @@ export default function register() {
               </div>{" "}
               <br />
               <br />
-              <div className="col-md-4">
+              <div className="col-md-4 mt-3">
                 {formik.touched.lname && formik.errors.lname ? (
                   <div className="alert alert-danger">
                     {formik.errors.lname}
@@ -176,8 +176,8 @@ export default function register() {
               </div>
             </div>
 
-            <div className="row mt-4">
-              <div className="col-md-4">
+            <div className="row ">
+              <div className="col-md-4 mt-4">
                 {formik.touched.country && formik.errors.country ? (
                   <div className="alert alert-danger">
                     {formik.errors.country}
@@ -201,7 +201,7 @@ export default function register() {
               </div>
               <br />
               <br />
-              <div className="col-md-4">
+              <div className="col-md-4 mt-4">
                 {formik.touched.phone && formik.errors.phone ? (
                   <div className="alert alert-danger">
                     {formik.errors.phone}

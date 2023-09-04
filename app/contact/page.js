@@ -20,8 +20,7 @@ export default function contac() {
           <h1 className="pt-4 m-4">للحجز أو الاستفسار تواصل معنا الان </h1>
           <div>
             <h1>01022077474</h1>
-            <h1>01121139030</h1>
-            <h1> 035554716</h1>
+             <h1> 035554716</h1>
           </div>
         </div>
       </div>
@@ -55,8 +54,7 @@ export default function contac() {
             <BsFillTelephoneFill className="fs-2 mb-3 secondary-color text-center" />
             <h4 className="secondary-color">أرقام الهاتف</h4>
             <h5>01022077474</h5>
-            <h5>01121139030</h5>
-            <h5> 035554716</h5>
+             <h5> 035554716</h5>
           </div>
           <div className="col-md-3 text-center contact-bg rounded p-3 m-2 shadow">
             <i className="fas fa-location-dot"></i>

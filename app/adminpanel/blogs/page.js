@@ -51,6 +51,7 @@ export default function blogs() {
             <MdContentPaste className="icon-text-area fs-5 primary-sidebar " />
           </div>
         </div>
+        {/* <input type='url' /> */}
 
         <label>
           <div className="col-12">

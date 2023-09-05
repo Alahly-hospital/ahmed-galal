@@ -8,7 +8,7 @@ const OurService = () => {
     <Container>
       <h2 className="title">خدماتنا </h2>
       <Row className="justify-content-center m-4">
-     {data.slice(0, 8).map((item, index) => (
+     {data.slice(0, 3).map((item, index) => (
    <Col
    lg={3}
    md={4}
@@ -33,7 +33,7 @@ const OurService = () => {
 ))}
       </Row>
       <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4 "> 
-               <Link href="serviceslist" className="text-decoration-none text-white" prefetch>
+               <Link href="/serviceslist" className="text-decoration-none text-white" prefetch>
 
         <button className="btn primary-bg fs-5 text-white" style={{padding:'7px 70px'}}>
             كل الخدمات

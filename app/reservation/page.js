@@ -6,7 +6,7 @@ import { AiFillPhone, AiOutlineMail, AiTwotoneCalendar } from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
 import Form from "react-bootstrap/Form";
 import NavbarHeader from "/components/navbar/Navbar";
-import Footer from "../footer/Footer";
+import Footer from "../../components/Footer/Footer";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -17,7 +17,7 @@ export default function reservation() {
       .required("name is required")
       .min(3, "name minlength 3")
       .max(20, "name maxlength"),
-      phone: Yup.string()
+    phone: Yup.string()
       .required("Phone number is required")
       .matches(
         /^01[0125][0-9]{8}$/,
@@ -29,19 +29,19 @@ export default function reservation() {
       .max(100, "Age can't be more than 100"),
     email: Yup.string().required("email is required").email(),
     reservationDate: Yup.string().required("Reservation date is required"),
-    gender: Yup.string().required("Gender is required"), 
-    details:Yup.string()
+    gender: Yup.string().required("Gender is required"),
+    details: Yup.string(),
   });
 
   let formik = useFormik({
     initialValues: {
-      name: "",      
+      name: "",
       phone: "",
-      reservationDate:'',      
+      reservationDate: "",
       email: "",
       age: "",
       gender: "",
-      details:''
+      details: "",
     },
     validationSchema,
     onSubmit: handleReservation,
@@ -54,7 +54,7 @@ export default function reservation() {
           <h1 className="text-center mt-4 primary-color "> احجز موعدك الان </h1>
           <div className="row  d-flex align-content-center justify-content-center">
             <div className="col-md-4">
-            {formik.touched.name && formik.errors.name ? (
+              {formik.touched.name && formik.errors.name ? (
                 <div className="alert alert-danger">{formik.errors.name}</div>
               ) : null}
 
@@ -78,7 +78,7 @@ export default function reservation() {
             <br />
             <br />
             <div className="col-md-4">
-            {formik.touched.phone && formik.errors.phone ? (
+              {formik.touched.phone && formik.errors.phone ? (
                 <div className="alert alert-danger">{formik.errors.phone}</div>
               ) : null}
 
@@ -103,8 +103,11 @@ export default function reservation() {
           </div>
           <div className="row d-flex align-content-center justify-content-center">
             <div className="col-md-4 mt-4 mb-4">
-            {formik.touched.reservationDate && formik.errors.reservationDate ? (
-                <div className="alert alert-danger">{formik.errors.reservationDate}</div>
+              {formik.touched.reservationDate &&
+              formik.errors.reservationDate ? (
+                <div className="alert alert-danger">
+                  {formik.errors.reservationDate}
+                </div>
               ) : null}
               <label htmlFor="" className="mb-2">
                 موعد الحجز
@@ -115,7 +118,7 @@ export default function reservation() {
                 value={formik.values.reservationDate}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-               >
+              >
                 <option>اختر موعدك </option>
                 <option value="10pm">10 صباحا </option>
                 <option value="11pm">11 صباحا </option>
@@ -144,7 +147,7 @@ export default function reservation() {
               </div>
             </div>
             <div className="col-md-4 mt-4">
-            {formik.touched.email && formik.errors.email ? (
+              {formik.touched.email && formik.errors.email ? (
                 <div className="alert alert-danger">{formik.errors.email}</div>
               ) : null}
               <label htmlFor="" className="mb-2">
@@ -165,9 +168,11 @@ export default function reservation() {
                 <AiOutlineMail className="icon fs-5 primary-color " />
               </div>
               <div className="mt-4 pt-3">
-              {formik.touched.gender && formik.errors.gender ? (
-                <div className="alert alert-danger">{formik.errors.gender}</div>
-              ) : null}
+                {formik.touched.gender && formik.errors.gender ? (
+                  <div className="alert alert-danger">
+                    {formik.errors.gender}
+                  </div>
+                ) : null}
                 <div className=" mb-1 ">
                   <input
                     className="form-check-input m-1"
@@ -176,7 +181,7 @@ export default function reservation() {
                     id="exampleRadios1"
                     defaultValue="option1"
                     defaultChecked
-                    value={formik.values.gender=='female'}
+                    value={formik.values.gender == "female"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -191,7 +196,7 @@ export default function reservation() {
                     name="exampleRadios"
                     id="exampleRadios2"
                     defaultValue="option2"
-                    value={formik.values.gender=='male'}
+                    value={formik.values.gender == "male"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />

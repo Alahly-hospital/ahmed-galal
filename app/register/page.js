@@ -324,7 +324,7 @@ export default function register() {
                 <p className=" mt-4">
                   يوجد لديك حساب بالفعل{" "}
                   <Link
-                    href={"login"}
+                    href={"/login"}
                     className="text-decoration-none span-color"
                     prefetch
                   >

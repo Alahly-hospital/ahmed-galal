@@ -16,10 +16,7 @@ export default function login() {
     email: Yup.string().required("email is required").email(),
     password: Yup.string()
       .required("Password is required")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
-        "Password must contain at least one uppercase and one lowercase letter"
-      ),
+      
   });
 
   let formik = useFormik({
@@ -115,7 +112,7 @@ export default function login() {
                   </p>
                 </form>
               </div>
-              <div className="col-md-6 text-center">
+              <div className="col-lg-6 text-center">
                 <img src={logo.src} className="w-75 img" alt="" />
               </div>
             </div>

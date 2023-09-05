@@ -322,7 +322,7 @@ export default function register() {
                   أنشء حسابك الان
                 </button>
                 <p className=" mt-4">
-                  يوجد لديك حساب بالفعل{" "}
+                  يوجد لديك حساب بالفعل
                   <Link
                     href={"/login"}
                     className="text-decoration-none span-color"

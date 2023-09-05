@@ -18,9 +18,10 @@ export default function Home() {
       <NavbarHeader />
       <Main />
       <About />
-      <Services />
+      <Services />     
+       <Blogs/>
+
       <OurService />      
-      <Blogs/>
 
       <Strongpoint />
       <Footer />

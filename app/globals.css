@@ -71,7 +71,10 @@ h2.title {
     margin-left: 50%;
   }
 }
-
+.page-direction{
+  direction: rtl;
+  text-align: right;
+}
  ::-webkit-scrollbar {
   width: 12px;  
 }

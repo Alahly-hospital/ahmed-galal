@@ -17,23 +17,17 @@ function NavbarHeader() {
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-start'>
           <Nav className='text-right' style={{direction:"rtl"}}>
             <Nav> <Link href="/" prefetch className="nav-link">الرئيسية</Link></Nav>
-
-            <Nav> <Link href="/" prefetch className="nav-link">الاعدادات</Link></Nav>
-
+            <Nav> <Link href="/settings" prefetch className="nav-link">الاعدادات</Link></Nav>
             <Nav><Link href="/contact"prefetch className="nav-link">تواصل بنا</Link></Nav>
             <Nav><Link href="/serviceslist"prefetch className="nav-link">الخدمات  </Link></Nav>
             <Nav><Link href="/blogs"prefetch className="nav-link"> المدونات</Link></Nav>
             <Nav><Link href="/reservation"prefetch className="nav-link">احجز الان </Link></Nav>
-
             <Nav><Link href="/reservation/userreservation"prefetch className="nav-link">الحجزات</Link></Nav>
-
             <Nav><Link href="/login" prefetch className="nav-link">تسجيل الدخول</Link></Nav>
             <Nav><Link href="register" prefetch className="nav-link"> أنشئ حسابك</Link></Nav>  
-
             <Nav><Link href="/ " prefetch className="nav-link"> تسجيل الخروج </Link></Nav>  
 
             <Nav> <Link href="/adminpanel/reservationstatus" prefetch className="nav-link">صفحة الادمن</Link></Nav>
-
           </Nav>
         </Navbar.Collapse>
       </Container>

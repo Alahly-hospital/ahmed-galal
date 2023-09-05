@@ -230,7 +230,7 @@ export default function reservation() {
           </div>
           <div
             className="row d-flex align-content-center justify-content-center"
-            style={{ paddingBottom: "100px" }}
+            style={{ paddingBottom: "40px" }}
           >
             <div className="col-8">
               <button

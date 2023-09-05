@@ -5,7 +5,7 @@ import'./blogs.scss'
 export default function Blogs() {
   return (
     <div>
-    <section className="section-color mb-4 pb-4">
+    <section className=" mb-4 pb-4">
       <Container>
         <h2 className="title pt-4">المدونات</h2>
         <Row className="blogs-section ">

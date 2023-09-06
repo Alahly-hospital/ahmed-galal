@@ -4,6 +4,7 @@ import { BiCloudUpload } from 'react-icons/bi';
 import { BsPencilFill } from 'react-icons/bs';
 import { MdContentPaste } from 'react-icons/md';
 import './blogs.scss'
+import { AiTwotoneVideoCamera } from 'react-icons/ai';
 export default function blogs() {
     const [selectImage, setSelectImage] = useState("");
     const [selectedFile, setSelectedFile] = useState();
@@ -24,19 +25,32 @@ export default function blogs() {
   return (
     <> <div className="container plog   ">
     <form className="form-shap shadow">
-      <h1 className="text-center mt-4 primary-sidebar ">أنشاء مدونة</h1>
+      <h1 className="text-center mt-3 primary-sidebar ">أنشاء مدونة</h1>
       <div className="row  d-flex align-content-center justify-content-center m-4 ">
         <div className="col-12">
           <div className="input-with-icon">
             <input
               className="form-control"
               type="text"
-              name=""
-              id=""
+              name="title"
+              id="title"
               placeholder="العنوان"
               required
             />
             <BsPencilFill className="icon primary-sidebar" />
+          </div>
+        </div>   
+        <div className="col-12 mt-4">
+          <div className="input-with-icon">
+            <input
+              className="form-control"
+              type="url"
+              name="video"
+              id="video"
+              placeholder="اضف رابط الفديو "
+               
+            />
+            <AiTwotoneVideoCamera className="icon primary-sidebar" />
           </div>
         </div>
         <div className="col-12">
@@ -51,7 +65,7 @@ export default function blogs() {
             <MdContentPaste className="icon-text-area fs-5 primary-sidebar " />
           </div>
         </div>
-        {/* <input type='url' /> */}
+     
 
         <label>
           <div className="col-12">
@@ -64,15 +78,15 @@ export default function blogs() {
               }
             }}
             />
-            <div className="col-12  fs-1 primary-sidebar cursor-pointer text-center form-control mt-4">
-              {selectImage ? <img src={selectImage} className="w-100"/> :<> <h2 className="text-secondary"> اختر صورة </h2>
+            <div className="col-12  fs-1 primary-sidebar cursor-pointer text-center form-control mt-4 cursor-pointer">
+              {selectImage ? <img src={selectImage} className="w-100" height={400}/> :<> <h2 className="text-secondary"> اختر صورة </h2>
               <BiCloudUpload /></>}
              
             </div>
           </div>
         </label>
 
-        <div className="col-6" style={{ marginBottom: "50px" }}>
+        <div className="col-6" style={{ marginBottom: "30px" }}>
           <button
           disabled={!selectedFile}
           onClick={handleUpload}

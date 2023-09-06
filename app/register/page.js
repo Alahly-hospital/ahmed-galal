@@ -82,7 +82,7 @@ export default function register() {
           </h6>
           <form onSubmit={formik.handleSubmit}>
             <div className="row">
-              <div className="col-md-4 mt-3">
+              <div className="col-md-4 mt-4">
                 {formik.touched.fname && formik.errors.fname ? (
                   <div className="alert alert-danger">
                     {formik.errors.fname}
@@ -100,13 +100,14 @@ export default function register() {
                     value={formik.values.fname}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
+                    
                   />
                   <FaUserAlt className="icon primary-color" />
                 </div>
-              </div>{" "}
+              </div>
               <br />
               <br />
-              <div className="col-md-4 mt-3">
+              <div className="col-md-4 mt-4">
                 {formik.touched.lname && formik.errors.lname ? (
                   <div className="alert alert-danger">
                     {formik.errors.lname}
@@ -211,7 +212,7 @@ export default function register() {
                 <div className="input-with-icon">
                   <input
                     className="form-control"
-                    type="string"
+                    type="text"
                     name="phone"
                     id="phone"
                     placeholder=" رقم الهاتف"

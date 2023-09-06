@@ -3,6 +3,8 @@ import React, { use, useEffect, useState } from "react";
 import "./sidebar.scss";
 import doctor from "../../assets/doctor.jpg";
 import Link from "next/link";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function AdminPanel({children}) {
   // const [upload, setUpload] = useState(false);
@@ -41,16 +43,18 @@ export default function AdminPanel({children}) {
         <nav
           id="sidebar"
           className={`order-last ${isSidebarActive ? "active" : ""}`}
-          style={{ backgroundImage: "url(images/bg_1.jpg)" }}
+           
         >
-          {/* <div className="custom-menu">
+          <div className="custom-menu">
             <button
               type="button"
               id="sidebarCollapse"
               className="btn btn-primary"
               onClick={toggleSidebar}
-            ></button>
-          </div> */}
+            >{ isSidebarActive?              <FaArrowLeft className="fs-5 fw-bold mb-4 " />
+:< FaArrowRight className="fs-5 fw-bold mb-4 "/>}
+            </button>
+          </div>
           <div className="sidebar mt-4">
             <h1 className="">
               <a className="logo primary-sidebar">
@@ -88,6 +92,7 @@ export default function AdminPanel({children}) {
                   <span className="fa fa-user mr-3" /> أنشئ مدونة
                 </Link>
               </li>
+            
             </ul>
           </div>
         </nav>

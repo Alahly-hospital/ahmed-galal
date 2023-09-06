@@ -24,7 +24,20 @@ export default function blogs() {
           <Row className="blogs-section d-flex justify-content-center">
             <div class="col">
               <div>
-                <img class="img w-100 img-thumbnail" src={photo.src} alt="" />
+                <iframe
+                  className="w-100"
+                  height="315"
+                  src="https://www.youtube.com/embed/rJyTfqdCvlk"
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>
+
+                <img
+                  class="img w-100 img-thumbnail"
+                  src={photo.src}
+                  height={315}
+                  alt=""
+                />
               </div>
             </div>
             <div class="col">

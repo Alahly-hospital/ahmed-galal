@@ -28,14 +28,14 @@
 		box-shadow: none;
 	}
 }
-// button {
-// 	transition: .3s all ease;
-// 	&:hover, &:focus {
-// 		text-decoration: none !important;
-// 		outline: none !important;
-// 		box-shadow: none !important;
-// 	}
-// }
+button {
+	transition: .3s all ease;
+	&:hover, &:focus {
+		text-decoration: none !important;
+		outline: none !important;
+		box-shadow: none !important;
+	}
+}
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
 	line-height: 1.5;
@@ -123,30 +123,30 @@ h1, h2, h3, h4, h5,
 			}
     }
   }
-//   .custom-menu{
-// 		display: inline-block;
-// 		position: absolute;
-// 		top: 20px;
-// 		left: 0;
-// 		margin-left: -35px;
-// 		.btn{
-// 			&.btn-primary{
-// 				background:var(--primary-sidebar);
-// 				border-color: transparent;
-// 				position: relative;
-// 				width: 30px;
-// 				height: 30px;
-// 				&:after,&:before{
-// 					position: absolute;
-// 					top: 2px;
-// 					left: 0;
-// 					right: 0;
-// 					bottom: 0;
-// 				}
+  .custom-menu{
+		display: inline-block;
+		position: absolute;
+		top: 20px;
+		left: 0;
+		margin-left: -50px;
+		.btn{
+ 			&.btn-primary{
+				background:var(--primary-sidebar);
+				border-color: transparent;
+				position: relative;
+ 				width: 38px;
+				height: 33px;
+				&:after,&:before{
+					position: absolute;
+					top: 2px;
+					left: 0;
+					right: 0;
+					bottom: 0;
+				}
 			
-// 			}
-// 		}
-//   }
+			}
+		}
+  }
 }
 a[data-toggle="collapse"] {
     position: relative;

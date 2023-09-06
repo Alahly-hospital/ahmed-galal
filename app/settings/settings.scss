@@ -14,3 +14,17 @@
     top: 50%;
     transform: translateY(-50%);
   }
+  .border-bottom{
+    border-bottom: 2px solid black;
+  }
+
+  .settings-btn{
+    border: 1px solid var(--primary);
+    padding: 5px 20px;
+    color: var(--primary);
+    transition: all .5s;
+    &:hover{
+        background:var(--primary)!important;
+        color: white;
+    }
+}

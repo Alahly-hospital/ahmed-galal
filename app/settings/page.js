@@ -14,6 +14,7 @@ import {
   AiTwotoneCalendar,
   AiTwotoneHome,
 } from "react-icons/ai";
+import { BiCloudUpload } from "react-icons/bi";
 
 export default function Settings() {
   const [passwordchange, setPasswordchange] = useState(false);
@@ -85,6 +86,9 @@ export default function Settings() {
     validationSchema,
     onSubmit: updateInfo,
   });
+  const [selectImage, setSelectImage] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+
   return (
     <>
       <NavbarHeader />
@@ -92,46 +96,80 @@ export default function Settings() {
         <h1>الاعدادات </h1>
         <form onSubmit={formik.updateInfo}>
           <div className="row">
-            <div className="  d-flex justify-content-center   ">
-              <img src={profile.src} className="w-25" />
-            </div>
+            <label>
+              <div className="  d-flex justify-content-center  cursor-pointer">
+                <input
+                  type="file"
+                  hidden
+                  onChange={({ target }) => {
+                    if (target.files) {
+                      const file = target?.files[0];
+                      setSelectImage(URL.createObjectURL(file));
+                      setSelectedFile(file);
+                    }
+                  }}
+                />
+
+                {selectImage ? (
+                  <img
+                    src={selectImage}
+                    className=" rounded-circle"
+                    width={200}
+                    height={200}
+                  />
+                ) : (
+                  <>
+                    {" "}
+                    <div className="profile-container">
+                      <img
+                        src={profile.src}
+                        width={200}
+                        height={200}
+                        alt="User Profile Photo"
+                        className="profile-photo"
+                      />
+                      <div className="text-layer">Change Your Photo</div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </label>
+
             {userData.map((user) => {
               return (
                 <>
-                {!changeInput ? 
-              <>
-              <div className="col-md-6 mt-4  ">
+                  {!changeInput ? (
+                    <>
+                      <div className="col-md-6 mt-4  ">
                         <h6 className=" p-3 border-bottom">{user.fname}</h6>
-                      
                       </div>
                       <div className="col-md-6 mt-4   ">
                         <h6 className=" p-3 border-bottom ">{user.lname}</h6>
-                       
                       </div>
                       <div className="col-md-6 mt-4  ">
                         <h6 className=" p-3 border-bottom ">{user.age}</h6>
-                       
                       </div>
                       <div className="col-md-6 mt-4 ">
                         <h6 className=" p-3  border-bottom ">{user.country}</h6>
-                       
                       </div>
                       <div className="col-md-6 mt-4  ">
                         <h6 className=" p-3 border-bottom ">{user.email}</h6>
-                       
                       </div>
                       <div className="col-md-6 mt-4 ">
-                        <h6 className=" p-3 border-bottom ">{user.phone}</h6> 
-                       
+                        <h6 className=" p-3 border-bottom ">{user.phone}</h6>
                       </div>
-               <div className="col-md-12">
-               <button className="btn w-25 mx-auto d-block mt-4 settings-btn" onClick={changeInInput}>
-               انقر لتعديل البيانات 
-               </button>
-             </div>
-             </>: (
-              <>
-                <div className="col-md-6 mt-4">
+                      <div className="col-md-12">
+                        <button
+                          className="btn w-25 mx-auto d-block mt-4 settings-btn"
+                          onClick={changeInInput}
+                        >
+                          انقر لتعديل البيانات
+                        </button>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="col-md-6 mt-4">
                         {formik.touched.fname && formik.errors.fname ? (
                           <div className="alert alert-danger">
                             {formik.errors.fname}
@@ -144,7 +182,7 @@ export default function Settings() {
                             name="fname"
                             id="fname"
                             onBlur={formik.handleBlur}
-                            value={ formik.values.fname|| user?.fname}
+                            value={formik.values.fname || user?.fname}
                             onChange={formik.handleChange}
                           />
 
@@ -165,7 +203,7 @@ export default function Settings() {
                             name="lname"
                             id="lname"
                             onBlur={formik.handleBlur}
-                            value={ formik.values.lname|| user?.lname}
+                            value={formik.values.lname || user?.lname}
                             onChange={formik.handleChange}
                           />
 
@@ -186,7 +224,7 @@ export default function Settings() {
                             name="age"
                             id="age"
                             onBlur={formik.handleBlur}
-                            value={ formik.values.age||user?.age }
+                            value={formik.values.age || user?.age}
                             onChange={formik.handleChange}
                           />
 
@@ -207,7 +245,7 @@ export default function Settings() {
                             id="email"
                             style={{ direction: "ltr", textAlign: "left" }}
                             onBlur={formik.handleBlur}
-                            value={ formik.values.email||user?.email }
+                            value={formik.values.email || user?.email}
                             onChange={formik.handleChange}
                           />
 
@@ -227,7 +265,7 @@ export default function Settings() {
                             name="country"
                             id="country"
                             onBlur={formik.handleBlur}
-                            value={ formik.values.country||user?.country}
+                            value={formik.values.country || user?.country}
                             onChange={formik.handleChange}
                           />
 
@@ -247,7 +285,7 @@ export default function Settings() {
                             name="phone"
                             id="phone"
                             onBlur={formik.handleBlur}
-                            value={ formik.values.phone||user?.phone }
+                            value={formik.values.phone || user?.phone}
                             onChange={formik.handleChange}
                           />
 
@@ -255,24 +293,23 @@ export default function Settings() {
                         </div>
                       </div>
                       <br></br>
-                <div className="col-md-12">
-                  <button className="btn w-25 mx-auto d-block mt-4 settings-btn" >
-                    ارسال التعديلات
-                  </button>
-                </div>
-              </>
-            )}
+                      <div className="col-md-12">
+                        <button className="btn w-25 mx-auto d-block mt-4 settings-btn">
+                          ارسال التعديلات
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </>
               );
             })}
 
             <h3 className="mt-4 mb-4">تغير كلمة السر</h3>
             {!passwordchange ? (
-
-<div onClick={changePasseord} className="col-md-12">
-<button className="btn w-25 mx-auto d-block mt-4 settings-btn">
-                انقر لتغير الباسورد
-              </button>
+              <div onClick={changePasseord} className="col-md-12">
+                <button className="btn w-25 mx-auto d-block mt-4 settings-btn">
+                  انقر لتغير الباسورد
+                </button>
               </div>
             ) : (
               <>
@@ -321,9 +358,7 @@ export default function Settings() {
                   </div>
                 </div>
                 <div className="col-md-12">
-                  <button 
-                    className="btn w-25 mx-auto d-block mt-4 settings-btn"
-                  >
+                  <button className="btn w-25 mx-auto d-block mt-4 settings-btn">
                     تغير كلمة السر
                   </button>
                 </div>

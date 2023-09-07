@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React  from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from './home/Main';
@@ -9,7 +10,8 @@ import About from '/components/About/About';
 import NavbarHeader from '/components/navbar/Navbar';
 import Scrolltop from '/components/Scrolltop/Scrolltop';
 import Footer from './footer/Footer';
- 
+import { Providers } from './../redux/Provider';
+
 export default function Home() {
 
   return (

@@ -8,7 +8,6 @@ import Logo from "../../assets/Logo.png"
 import Link from 'next/link';
 
 function NavbarHeader() {
-    console.log(Logo);
   return (
     <Navbar expand="lg" id='navbar-header' >
       <Container style={{flexDirection:"row-reverse"}}>

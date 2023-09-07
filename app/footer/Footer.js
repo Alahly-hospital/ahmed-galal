@@ -35,7 +35,7 @@ const Footer = () => {
         </Row>
        
     </div> <Row className='text-center footter-copyright'>
-         <p className='mt-2'> Copyright | DR : Ahemd Gala &copy;</p>
+         <p className='mt-2'> Copyright | DR : Ahemd Galal &copy;</p>
         </Row>
         </>
   )

@@ -1,8 +1,11 @@
+"use client";
+
 import './globals.css'
 import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css';
 // import NavbarHeader from '@/components/navbar/Navbar';
 import Footer from './footer/Footer';
+import { Providers } from './../redux/Provider';
 
 const cairo = Cairo({
    subsets: ['latin'] ,
@@ -19,9 +22,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={cairo.className}>
         {/* <NavbarHeader/> */}
-        {children}
+        <Providers>
+            {children}
+        </Providers>
         {/* <Footer/> */}
-
         </body>
     </html>
   )

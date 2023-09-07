@@ -8,9 +8,16 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import NavbarHeader from "/components/navbar/Navbar";
+import Api from './../../config/api';
 
 export default function login() {
-  function handleLogin(values) {}
+  
+  function handleLogin(values) {
+    Api.post("/auth/login",values)
+    .then(()=>{
+      
+    })
+  }
 
   let validationSchema = Yup.object({
     email: Yup.string().required("email is required").email(),
@@ -100,7 +107,7 @@ export default function login() {
                     </div>
                   </div>
 
-                  <button className="btn responsive-input form-control text-center text-white mt-4 primary-bg p-2   ">
+                  <button type="submit" className="btn responsive-input form-control text-center text-white mt-4 primary-bg p-2   ">
                     تسجيل الدخول
                   </button>
                   <p className="mt-4 ">

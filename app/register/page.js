@@ -16,7 +16,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 export default function register() {
-  function handleRegister(values) {}
+  function handleRegister(values) {
+    console.log(values);
+    // formik.resetForm();
+  }
   let validationSchema = Yup.object({
     fname: Yup.string()
       .required("fname is required")
@@ -285,11 +288,11 @@ export default function register() {
                 <input
                   className="form-check-input m-1"
                   type="radio"
-                  name="exampleRadios"
+                  name="gender"
                   id="exampleRadios1"
-                  defaultValue="option1"
-                  defaultChecked
-                  value={formik.values.gender == "female"}
+                  value="female"
+                  
+                  checked={formik.values.gender == "female"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -301,10 +304,10 @@ export default function register() {
                 <input
                   className="form-check-input m-1"
                   type="radio"
-                  name="exampleRadios"
+                  name="gender"
                   id="exampleRadios2"
-                  defaultValue="option2"
-                  value={formik.values.gender == "male"}
+                  value="male"
+                  checked={formik.values.gender == "male"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -323,7 +326,7 @@ export default function register() {
                   أنشء حسابك الان
                 </button>
                 <p className=" mt-4">
-                  يوجد لديك حساب بالفعل
+         يوجد لديك حساب بالفعل           &nbsp;  
                   <Link
                     href={"/login"}
                     className="text-decoration-none span-color"

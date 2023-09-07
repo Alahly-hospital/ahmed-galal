@@ -10,7 +10,10 @@ import * as Yup from "yup";
 import NavbarHeader from "/components/navbar/Navbar";
 
 export default function login() {
-  function handleLogin(values) {}
+  function handleLogin(values) {
+    console.log(values);
+    formik.resetForm()
+  }
 
   let validationSchema = Yup.object({
     email: Yup.string().required("email is required").email(),
@@ -101,13 +104,13 @@ export default function login() {
                     تسجيل الدخول
                   </button>
                   <p className="mt-4 ">
-                    لا يوجد لديك حساب ؟
+                    لا يوجد لديك حساب ؟  &nbsp;  
                     <Link
                       href={"/register"}
                       className="span-color text-decoration-none"
                       prefetch
                     >
-                      انشئ حسابك الان !
+                      انشئ حسابك الان !         
                     </Link>
                   </p>
                 </form>

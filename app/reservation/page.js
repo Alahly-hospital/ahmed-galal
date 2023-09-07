@@ -11,7 +11,10 @@ import Footer from "../../components/Footer/Footer";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 export default function reservation() {
-  function handleReservation(values) {}
+  function handleReservation(values) {
+    console.log(values);
+    formik.resetForm()
+  }
   let validationSchema = Yup.object({
     name: Yup.string()
       .required("name is required")
@@ -50,7 +53,7 @@ export default function reservation() {
     <>
       <NavbarHeader />
       <div className="container reservation">
-        <form className="form-border" onSubmit={handleReservation}>
+        <form className="form-border" onSubmit={formik.handleSubmit}>
           <h1 className="text-center mt-4 primary-color "> احجز موعدك الان </h1>
           <div className="row  d-flex align-content-center justify-content-center">
             <div className="col-md-4">
@@ -118,8 +121,9 @@ export default function reservation() {
                 value={formik.values.reservationDate}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
+                name="reservationDate"
               >
-                <option>اختر موعدك </option>
+                <option value=''>اختر موعدك </option>
                 <option value="10pm">10 صباحا </option>
                 <option value="11pm">11 صباحا </option>
                 <option value="12pm">12 ظهرا</option>
@@ -177,11 +181,11 @@ export default function reservation() {
                   <input
                     className="form-check-input m-1"
                     type="radio"
-                    name="exampleRadios"
+                    name="gender"
                     id="exampleRadios1"
-                    defaultValue="option1"
-                    defaultChecked
-                    value={formik.values.gender == "female"}
+                    value="female"
+                    
+                    checked={formik.values.gender == "female"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -193,10 +197,10 @@ export default function reservation() {
                   <input
                     className="form-check-input m-1"
                     type="radio"
-                    name="exampleRadios"
+                    name="gender"
                     id="exampleRadios2"
-                    defaultValue="option2"
-                    value={formik.values.gender == "male"}
+                    value="male"
+                    checked={formik.values.gender == "male"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                   />
@@ -222,7 +226,7 @@ export default function reservation() {
                   rows="4"
                   value={formik.values.details}
                   onChange={formik.handleChange}
-                  // onBlur={formik.handleBlur}
+                  onBlur={formik.handleBlur}
                 ></textarea>
                 <BsFillPencilFill className="icon-text-area fs-5 primary-color " />
               </div>

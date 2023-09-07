@@ -14,7 +14,6 @@ import {
   AiTwotoneCalendar,
   AiTwotoneHome,
 } from "react-icons/ai";
-import { BiCloudUpload } from "react-icons/bi";
 
 export default function Settings() {
   const [passwordchange, setPasswordchange] = useState(false);

@@ -2,51 +2,21 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./services.scss";
-import { data } from "../OurService/servicesData";
+import { data } from "../../components/OurService/servicesData";
 import Link from "next/link";
 import NavbarHeader from "/components/navbar/Navbar";
-import Footer from "../footer/Footer";
-import photo from "../../assets/bg2.jpg";
+import Footer from "../../components/Footer/Footer";
 import Scrolltop from "/components/Scrolltop/Scrolltop";
 export default function serviceslist() {
   return (
     <>
       <NavbarHeader />
-      <Scrolltop/>
+      <Scrolltop />
       <div className="bg-img">
         <div className="bg-layer text-white  text-center p-4">
           <h1 className="pt-4 m-4 mt-4">خدماتنا</h1>
         </div>
       </div>
-      <section className="section-color mb-4 pb-4">
-  <Container>
-    <h2 className="title pt-4">المدونة</h2>
-    <Row className="blogs-section d-flex justify-content-center">
-           <div class="col">
-            <div>
-              <img
-                class="img w-100 img-thumbnail"
-                src={photo.src}
-                alt=""
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="about-info">
-              <h2>العنوان</h2>
-               <div class="  text-secondary mt-3">
-                <p class="">
-                المدونةالمدونةالمدةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونة
-                </p>
-                
-               
-              </div>
-             
-            </div>
-          </div>
-     </Row>
-  </Container>
-</section>
 
       <section className="section-color mt-4">
         <Container>
@@ -61,7 +31,6 @@ export default function serviceslist() {
                 key={index}
                 className="ourServices-card "
               >
-                
                 <div className="ourServices-card-inner ">
                   <img
                     src={item.img}
@@ -83,7 +52,10 @@ export default function serviceslist() {
               className="text-decoration-none text-white mb-4 mt-4"
               prefetch
             >
-              <button className="btn primary-bg  fs-5 text-white" style={{padding:'7px 70px'}}>
+              <button
+                className="btn primary-bg  fs-5 text-white"
+                style={{ padding: "7px 70px" }}
+              >
                 العودة للصفحة الرئيسية
               </button>
             </Link>

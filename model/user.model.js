@@ -3,15 +3,51 @@ var Schema = mongoose.Schema;
 const bcrybt = require("bcryptjs")
 
 const userSchema = new Schema({
-    firstName: {type:String,required:true,trim:true},
-    lastName:{ type : String , required : true ,trim:true},
-    age :{type:Number,required:true},
-    address:{type:String,required:true,trim:true},
-    phone :{type:Number,required:true},
-    email :{type:String,required:true,unique:true},
-    isAdmin:{type:Boolean,default:false},
-    password:{type:String,required:true,trim:true},
-    tokens:[{type:String,trim:true,expires:"2d"}]
+    firstName: {
+      type:String,
+      required:true,
+      trim:true
+    },
+    lastName:{
+       type : String ,
+        required : true ,
+        trim:true
+      },
+    age :{
+      type:Number,
+      required:true
+    },
+    address:{
+      type:String,
+      required:true,
+      trim:true
+    },
+    phone :{
+      type:Number,
+      required:true
+    },
+    email :{
+      type:String,
+      required:true,
+      unique:true
+    },
+    gender :{
+      type:String,
+      required:true,
+      enum:["male","female"]
+    },
+    isAdmin:{
+      type:Boolean,
+      default:false
+    },
+    password:{
+      type:String,
+      required:true,
+      trim:true
+    },
+    tokens:[
+      {type:String,trim:true,expires:"2d"}
+    ]
 })
 
 userSchema.pre("save", async function (next) {

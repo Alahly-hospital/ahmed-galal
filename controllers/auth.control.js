@@ -1,5 +1,5 @@
 const loggerEvent = require("../services/logger")
-const {userValidation,userSignin} = require("../services/validation")
+const {userValidation,userSignin} = require("../services/user.validation")
 const logger = loggerEvent("auth")
 const User = require("../model/user.model")
 const bcrybt = require("bcryptjs")
@@ -21,7 +21,7 @@ const authControler= {
             if(!userData){
                 return  res.status(404).send({message:"User not found"})
             }
-
+            
             let validPass = await bcrybt.compare(req.body.password,userData.password)
             if(!validPass){
                 return  res.status(403).send({message:"Password is incorrect"})
@@ -33,7 +33,7 @@ const authControler= {
             })
             userData.tokens.push(token)
             userData.save()
-
+            
             const cookies = cookie.serialize('access_token', `Barear ${token}`, {
                 httpOnly: true, 
                 maxAge: 2 * 24 * 60 * 60,
@@ -41,7 +41,11 @@ const authControler= {
             });
             
             // Set the cookies in the response headers
-            res.setHeader('Set-Cookie', cookies);
+            // res.setHeader('Set-Cookie', cookies);
+            res.cookie("access_token",`Barear ${token}`,{
+                httpOnly:true,
+                maxAge:2 * 24 * 60 * 60
+            })
             
             res.send({
                 message:"Login successfully !!!"

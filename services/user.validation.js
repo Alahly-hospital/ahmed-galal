@@ -17,6 +17,8 @@ function userValidation(data) {
             .required(),
         address: Joi.string()
             .required(),
+        gender: Joi.string()
+            .required(),
         isAdmin:Joi.boolean()
     });
 
@@ -46,5 +48,4 @@ function userSignin(data) {
 
     return null; // No validation error
 }
-
 module.exports = {userValidation,userSignin}

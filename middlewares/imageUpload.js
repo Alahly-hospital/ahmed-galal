@@ -18,8 +18,18 @@ const blogPhotoStorage = multer.diskStorage({
     }
   },
 });
-
-
+let blogPhotoUpload = multer({
+  storage: blogPhotoStorage,
+  fileFilter: function (req, file, cb) {
+    if (file.mimetype.startsWith("image")) {
+      cb(null, true);
+    } else {
+        logger.error("Unsupported file format")
+      cb({ message: "Unsupported file format" }, false);
+    }
+  },
+  limits: { fileSize: 1024 * 1024 * 5 }, 
+});
 
 const userPhotoStorage = multer.diskStorage({
   destination: function (req, file, cb) {

@@ -23,6 +23,28 @@ const blogsController = {
             logger.error(error.message)
             res.status(500).send({message:error.message})   
         }
+    },
+    getBlogs: async(req,res)=>{
+        try {
+            let blogs =await Blogs.find()
+            res.send(blogs)
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message}) 
+        }
+    },
+    updateBlog: async(req,res)=>{
+        try {
+            let image = req.body.image
+            if(req.file){
+                image = `/api/blogs/${req.file.fileName}`
+            }
+            await Blogs.findByIdAndUpdate(req.body._id , {...req.body,image})
+            res.send()
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message}) 
+        }
     }
 }
 

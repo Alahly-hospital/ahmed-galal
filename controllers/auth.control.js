@@ -34,14 +34,7 @@ const authControler= {
             userData.tokens.push(token)
             userData.save()
             
-            const cookies = cookie.serialize('access_token', `Barear ${token}`, {
-                httpOnly: true, 
-                maxAge: 2 * 24 * 60 * 60,
-                sameSite: 'strict', 
-            });
             
-            // Set the cookies in the response headers
-            // res.setHeader('Set-Cookie', cookies);
             res.cookie("access_token",`Barear ${token}`,{
                 httpOnly:true,
                 maxAge:8 * 24 * 60 * 60
@@ -77,6 +70,15 @@ const authControler= {
             res.status(201).send({
                 message:"User created"
             }) 
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message})
+        }
+    },
+    logout : async(req,res)=>{
+        try {
+            res.cookie("access_token",'',{ expires: new Date(0) })
+            res.send()
         } catch (error) {
             logger.error(error.message)
             res.status(500).send({message:error.message})

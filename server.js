@@ -8,10 +8,15 @@ const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 
 app.use(cookieParser());
-app.use(cors());
+
+app.use(cors({
+  origin:"http://localhost:3000",
+  credentials:true
+}));
+
 app.use(express.json());
 app.use("/api",routes);
-app.use("/api/blogs",express.static("./uploads"))
+app.use("/api",express.static("./uploads"))
 
 const url = process.env.DB_URL;
 mongoose

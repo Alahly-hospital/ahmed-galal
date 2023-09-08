@@ -33,7 +33,7 @@ const userSchema = new Schema({
     },
     gender :{
       type:String,
-      required:true,
+      // required:true,
       enum:["male","female"]
     },
     isAdmin:{
@@ -47,7 +47,11 @@ const userSchema = new Schema({
     },
     tokens:[
       {type:String,trim:true,expires:"2d"}
-    ]
+    ],
+    image:{
+      type:String,
+      trim:true
+    }
 })
 
 userSchema.pre("save", async function (next) {

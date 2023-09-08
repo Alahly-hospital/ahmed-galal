@@ -13,6 +13,23 @@ const authController ={
             logger.error(error.message)
             res.status(500).send({message:error.message})   
         }
+    },
+    updateUser: async(req,res)=>{
+        try {
+            logger.info(`update name : ${req.user.firstName} ${req.user.lastName} , user id : ${req.user._id}`)
+            
+            let image = req.body.image
+
+            if(req.file){
+                image =``
+            }
+
+            await User.findByIdAndUpdate(req.user._id,{...req.body,image})
+            res.send()
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message})   
+        }
     }
 }
 

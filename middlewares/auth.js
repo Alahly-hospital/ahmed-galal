@@ -5,7 +5,9 @@ let User = require("../model/user.model")
 
 const authentication = async (req,res,next)=>{
     try {
+        console.log(req.cookies);
         let token= req?.cookies?.access_token?.split(" ")[1]
+
         if(!token) return res.status(401).send({message:"not allowed user"})
 
         let secretKey = process.env.ACCESS_TOKEN

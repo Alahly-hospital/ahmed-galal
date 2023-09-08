@@ -1,10 +1,11 @@
 const router = require("express").Router()
 const blogsController = require("../controllers/blogs.control")
 const auth = require("../middlewares/auth")
-const upload = require("../middlewares/imageUpload")
+const {blogPhotoUpload} = require("../middlewares/imageUpload")
+
 router.route("/")
-    .post(auth.adminAuthorization,upload.single("image"),blogsController.createBlog)
-    .get()
-    .patch()
+    .post(auth.adminAuthorization,blogPhotoUpload.single("image"),blogsController.createBlog)
+    .get(blogsController.getBlogs)
+    .patch(auth.adminAuthorization,blogsController.updateBlog)
 
 module.exports = router               

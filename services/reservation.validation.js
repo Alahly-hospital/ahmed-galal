@@ -2,6 +2,18 @@ const Joi = require('joi');
 
 function reservationValidation(data) {
     const userSchema = Joi.object({
+        name: Joi
+            .string()
+            .required(),
+        age: Joi
+            .number()
+            .required(),
+        gender: Joi
+            .string()
+            .required(),
+        phone: Joi
+            .number()
+            .required(),
         notes: Joi.string(),
         date: Joi.string(),
         status: Joi.string().valid('waiting', 'confirmed')

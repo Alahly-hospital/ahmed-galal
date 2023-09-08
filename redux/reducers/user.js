@@ -1,32 +1,42 @@
-"use client";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { createSlice } from '@reduxjs/toolkit'
+import Api from "../../config/api"
 
-const initialState = {
-  value: 0,
+export const fetchUserData= createAsyncThunk(
+  'user/fetchUserData',
+  async (_, thunkAPI) => {
+    try {  
+      const response = await Api.get('/users/data')
+      return response.data;
+    } catch (error) {
+  return thunkAPI.rejectWithValue(error.message);
+    }
 }
+);
 
-export const counterSlice = createSlice({
-  name: 'counter',
-  initialState,
-  reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1
+  const user = createSlice({
+    name: "user",
+    initialState: {
+      value: { 
+      data: {} ,
+      logedin:false,
+     },
     },
-    decrement: (state) => {
-      state.value -= 1
+    reducers: {
+      login:(state,action)=>{
+        state.value.logedin=true
+      },
+      logout:(state,action)=>{
+        state.value.logedin=false
+      }
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+    extraReducers: (builder) => {
+      builder.addCase(fetchUserData.fulfilled, (state, action) => {
+        state.value.logedin=true
+        state.value.data=action.payload
+      });
     },
-  },
-})
+  });
+export const {login,logout} = user.actions
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
-
-export default counterSlice.reducer
+export default user.reducer

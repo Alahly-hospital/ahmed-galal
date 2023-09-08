@@ -23,7 +23,7 @@ function NavbarHeader() {
             <Nav><Link href="/reservation"prefetch className="nav-link">احجز الان </Link></Nav>
             <Nav><Link href="/reservation/userreservation"prefetch className="nav-link">الحجزات</Link></Nav>
             <Nav><Link href="/login" prefetch className="nav-link">تسجيل الدخول</Link></Nav>
-            <Nav><Link href="register" prefetch className="nav-link"> أنشئ حسابك</Link></Nav>  
+            <Nav><Link href="/register" prefetch className="nav-link"> أنشئ حسابك</Link></Nav>  
             <Nav><Link href="/ " prefetch className="nav-link"> تسجيل الخروج </Link></Nav>  
 
             <Nav> <Link href="/adminpanel/reservationstatus" prefetch className="nav-link">صفحة الادمن</Link></Nav>

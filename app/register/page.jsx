@@ -14,15 +14,25 @@ import NavbarHeader from "/components/navbar/Navbar";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Api from "../../config/api"
+
 
 export default function register() {
-  function handleRegister(values) {}
+  function handleRegister(values) {
+    Api.post("/auth/register")
+    .then(()=>{
+        console.log("registereddddddd")
+    })
+  .catch((error)=>{
+    console.log("errorrrrrrrrrrrrrrrrrrrrrrr")
+  })    
+  }
   let validationSchema = Yup.object({
-    fname: Yup.string()
+    firstName: Yup.string()
       .required("fname is required")
       .min(3, "fname minlength 3")
       .max(10, "fname maxlength"),
-    lname: Yup.string()
+      lastName: Yup.string()
       .required("lname is required")
       .min(3, "lname minlength 3")
       .max(10, "lname maxlength"),
@@ -36,14 +46,14 @@ export default function register() {
       .min(3, "country minlength 3")
       .max(10, "country maxlength"),
     password: Yup.string()
-      .required("Password is required")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
-        "Password must contain at least one uppercase and one lowercase letter"
-      ),
+      .required("Password is required"),
+      // .matches(
+      //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
+      //   "Password must contain at least one uppercase and one lowercase letter"
+      // ),
     rePassword: Yup.string()
-      .required("rePassword is required")
-      .oneOf([Yup.ref("password")], "password dosnot  match"),
+      .required("rePassword is required"),
+      // .oneOf([Yup.ref("password")], "password dosnot  match"),
     phone: Yup.string()
       .required("Phone number is required")
       .matches(
@@ -56,8 +66,8 @@ export default function register() {
 
   let formik = useFormik({
     initialValues: {
-      fname: "",
-      lname: "",
+      firstName: "",
+      lastName: "",
       age: "",
       country: "",
       email: "",
@@ -93,11 +103,11 @@ export default function register() {
                   <input
                     className="form-control"
                     type="text"
-                    name="fname"
-                    id="fname"
+                    name="firstName"
+                    id="firstName"
                     placeholder="الاسم الاول"
                     required
-                    value={formik.values.fname}
+                    value={formik.values.firstName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     
@@ -108,9 +118,9 @@ export default function register() {
               <br />
               <br />
               <div className="col-md-4 mt-4">
-                {formik.touched.lname && formik.errors.lname ? (
+                {formik.touched.lastName && formik.errors.lastName ? (
                   <div className="alert alert-danger">
-                    {formik.errors.lname}
+                    {formik.errors.lastName}
                   </div>
                 ) : null}
 
@@ -118,10 +128,10 @@ export default function register() {
                   <input
                     className="form-control"
                     type="text"
-                    name="lname"
-                    id="lname"
+                    name="lastName"
+                    id="lastName"
                     placeholder="الاسم الاخير"
-                    value={formik.values.lname}
+                    value={formik.values.lastName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     required
@@ -285,15 +295,15 @@ export default function register() {
                 <input
                   className="form-check-input m-1"
                   type="radio"
-                  name="exampleRadios"
-                  id="exampleRadios1"
-                  defaultValue="option1"
+                  name="gender"
+                  id="gender1"
+                  defaultValue="female"
                   defaultChecked
                   value={formik.values.gender == "female"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                <label className="form-check-label " htmlFor="exampleRadios1">
+                <label className="form-check-label " htmlFor="gender1">
                   أثني
                 </label>
               </div>
@@ -301,9 +311,9 @@ export default function register() {
                 <input
                   className="form-check-input m-1"
                   type="radio"
-                  name="exampleRadios"
-                  id="exampleRadios2"
-                  defaultValue="option2"
+                  name="gender"
+                  id="gender2"
+                  defaultValue="female"
                   value={formik.values.gender == "male"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}

@@ -4,8 +4,8 @@ import './globals.css'
 import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css';
 // import NavbarHeader from '@/components/navbar/Navbar';
-import Footer from './footer/Footer';
 import { Providers } from './../redux/Provider';
+import Footer from '@/components/Footer/Footer';
 
 const cairo = Cairo({
   subsets: ["latin"],

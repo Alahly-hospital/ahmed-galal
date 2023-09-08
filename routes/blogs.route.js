@@ -7,7 +7,4 @@ router.route("/")
     .get()
     .patch()
 
-
-
-
-module.exports = router
+module.exports = router               

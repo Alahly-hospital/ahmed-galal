@@ -11,6 +11,8 @@ import Footer from '@/components/Footer/Footer';
 import Main from '@/components/Home/Main';
 import Services from './../components/Services/Services';
 import Blogs from '@/components/Blogs/Blogs';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
 

@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import NavbarHeader from '@/components/navbar/Navbar';
 import { Providers } from './../redux/Provider';
 import Footer from '@/components/Footer/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const cairo = Cairo({
   subsets: ["latin"],
@@ -22,7 +24,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={cairo.className}>
         {/* <NavbarHeader/> */}
+
         <Providers>
+            <ToastContainer/>
             {children}
         </Providers>
         {/* <Footer/> */}

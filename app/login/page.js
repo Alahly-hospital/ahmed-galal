@@ -9,16 +9,25 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import NavbarHeader from "/components/navbar/Navbar";
 import Api from './../../config/api';
+import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
+import { useRouter } from "next/navigation";
 
 export default function login() {
+  const router = useRouter();
   
   function handleLogin(values) {
+
     Api.post("/auth/login",values)
     .then(()=>{
-      
+      router.push('/');
+      formik.resetForm();
+    })
+    .catch((error)=>{
+      let errorMsg = error?.response?.data?.message || error?.response?.data?.error
+      console.log(errorMsg)
+      notifyError(errorMsg)
     })
   }
-
   let validationSchema = Yup.object({
     email: Yup.string().required("email is required").email(),
     password: Yup.string()
@@ -108,13 +117,13 @@ export default function login() {
                     تسجيل الدخول
                   </button>
                   <p className="mt-4 ">
-                    لا يوجد لديك حساب ؟
+                    لا يوجد لديك حساب ؟  &nbsp;  
                     <Link
                       href={"/register"}
                       className="span-color text-decoration-none"
                       prefetch
                     >
-                      انشئ حسابك الان !
+                      انشئ حسابك الان !         
                     </Link>
                   </p>
                 </form>

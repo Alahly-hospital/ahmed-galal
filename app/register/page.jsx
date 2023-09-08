@@ -11,22 +11,34 @@ import {
 } from "react-icons/ai";
 import Link from "next/link";
 import NavbarHeader from "/components/navbar/Navbar";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Api from "../../config/api"
+import { useRouter } from "next/navigation";
+import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
+
+ function Register() {
+  const router = useRouter();
 
 
-export default function register() {
   function handleRegister(values) {
-    Api.post("/auth/register")
+    delete values.country
+    delete values.rePassword
+
+    Api.post("/auth/register",values)
     .then(()=>{
-        console.log("registereddddddd")
+      router.push('/login');
+      formik.resetForm();
+      notifySuccess("Account created !!")
     })
-  .catch((error)=>{
-    console.log("errorrrrrrrrrrrrrrrrrrrrrrr")
-  })    
+    .catch((error)=>{
+      let errorMsg = error?.response?.data?.message || error?.response?.data?.error
+      console.log(errorMsg)
+      notifyError(errorMsg)
+    })
   }
+
+
   let validationSchema = Yup.object({
     firstName: Yup.string()
       .required("fname is required")
@@ -41,7 +53,7 @@ export default function register() {
       .min(10, "Age must be at least 10")
       .max(100, "Age can't be more than 100"),
     email: Yup.string().required("email is required").email(),
-    country: Yup.string()
+    address: Yup.string()
       .required("country is required")
       .min(3, "country minlength 3")
       .max(10, "country maxlength"),
@@ -69,7 +81,7 @@ export default function register() {
       firstName: "",
       lastName: "",
       age: "",
-      country: "",
+      address: "",
       email: "",
       password: "",
       rePassword: "",
@@ -189,9 +201,9 @@ export default function register() {
 
             <div className="row ">
               <div className="col-md-4 mt-4">
-                {formik.touched.country && formik.errors.country ? (
+                {formik.touched.address && formik.errors.address ? (
                   <div className="alert alert-danger">
-                    {formik.errors.country}
+                    {formik.errors.address}
                   </div>
                 ) : null}
 
@@ -199,10 +211,10 @@ export default function register() {
                   <input
                     className="form-control"
                     type="text"
-                    name="country"
-                    id="country"
+                    name="address"
+                    id="address"
                     placeholder="مقر السكن"
-                    value={formik.values.country}
+                    value={formik.values.address}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     required
@@ -296,10 +308,10 @@ export default function register() {
                   className="form-check-input m-1"
                   type="radio"
                   name="gender"
-                  id="gender1"
-                  defaultValue="female"
-                  defaultChecked
-                  value={formik.values.gender == "female"}
+                  id="exampleRadios1"
+                  value="female"
+                  
+                  checked={formik.values.gender == "female"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -312,9 +324,9 @@ export default function register() {
                   className="form-check-input m-1"
                   type="radio"
                   name="gender"
-                  id="gender2"
-                  defaultValue="female"
-                  value={formik.values.gender == "male"}
+                  id="exampleRadios2"
+                  value="male"
+                  checked={formik.values.gender == "male"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -333,7 +345,7 @@ export default function register() {
                   أنشء حسابك الان
                 </button>
                 <p className=" mt-4">
-                  يوجد لديك حساب بالفعل
+         يوجد لديك حساب بالفعل           &nbsp;  
                   <Link
                     href={"/login"}
                     className="text-decoration-none span-color"
@@ -350,3 +362,5 @@ export default function register() {
     </>
   );
 }
+
+export default Register

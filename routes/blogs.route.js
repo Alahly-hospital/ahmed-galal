@@ -5,8 +5,8 @@ const {blogPhotoUpload} = require("../middlewares/imageUpload")
 
 router.route("/")
     .post(auth.adminAuthorization,blogPhotoUpload.single("image"),blogsController.createBlog)
-    .get()
-    .patch()
+    .get(blogsController.getBlogs)
+    .patch(auth.adminAuthorization,blogsController.updateBlog)
 
 
 

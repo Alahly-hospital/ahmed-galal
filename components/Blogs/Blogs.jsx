@@ -26,10 +26,10 @@ export default function Blogs() {
     <div>
       <section className=" mb-4 pb-4">
         <Container>
-          <h2 className="title pt-4">المدونات</h2>
+          <h2 className="title pt-4">المدونات</h2>            <Row className="blogs-section " >
+
           {blogs.slice(0,2).map((blog, id) => (
-            // <Col className="blogs-section " key={id}>
-              <div class="col-lg-6">
+              <div class="col-lg-6"key={id}>
                 <iframe
                   className="w-100"
                   height="315"
@@ -47,8 +47,8 @@ export default function Blogs() {
                   <p className="">{blog.content}</p>
                 </div>
               </div>
-            // </Col>
           ))}
+            </Row>
 
           <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4 ">
             <Link

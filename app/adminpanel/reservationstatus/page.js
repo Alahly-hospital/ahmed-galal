@@ -5,7 +5,6 @@ import m from "../../../assets/mm.jpg";
 import "./reservationstatus.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { FaUserAlt } from "react-icons/fa";
 import Api from "@/config/api";
 export default function reservationstatus() {
   const [changeTime, setChangeTime] = useState(false);
@@ -21,6 +20,7 @@ export default function reservationstatus() {
         console.log(`error ${error}`);
         
       }
+  
   
     }
     useEffect(() => {
@@ -49,36 +49,45 @@ export default function reservationstatus() {
 
   return (
     <>
-    
-{
-userData.map((user,id)=>(  <div className="row mt-4  ">
-        <div className="col-lg-4 col-md-6 shadow rounded-5 ">
-          <div className=" text-center">
+      <div className="row mt-4  ">
+       
+{userData.map((user,id)=>( 
+<div className="col-md-4   " key={id}>
+  <div className="shadow rounded-5">
+          <div className=" text-center ">
             <img src={m.src} className="w-50 rounded-circle" />
           </div>
-    <div className="" ket={id}>
+    <div className="">
             <div className="d-flex  justify-content-around">
-              <p className="fs-5">&nbsp; {user.date}</p>
+              <p className="fs-5">  {user.date}</p>
 
               <p className="fs-5"> {user.phone}</p>
             </div>
             <div className="d-flex justify-content-around">
               <p className="fs-5">{user.email} </p>
-              <p> روان </p>
+              
             </div>
+            <div className="d-flex justify-content-around">
+            <p className="fs-5">{user.name} </p>              
+            </div>
+            
+
 
             <div className="d-flex justify-content-around">
-              <p className="fs-5">{user.details}</p>
-
+ 
               <p className="fs-5">{user.gender}</p>
             </div>
+            <div className="d-flex justify-content-around">
+              <p className="fs-5">{user.notes}</p>
+
+             </div>
 
             <div className="  text-center mb-4  ">
-              <button className="btn   ms-2 confirm-btn  ">الموعد متاح</button>
+              <button className="btn   ms-2 confirm-btn  mb-4  ">الموعد متاح</button>
               {changeTime ? (
                 <div className="text-center">
                   <form action="" onSubmit={formik.handleSubmit}>
-                    <div className="input-with-icon responsive-input mt-4">
+                    <div className="input-with-icon responsive-input m-4">
                       <input
                         type="date"
                         id="time"
@@ -92,7 +101,7 @@ userData.map((user,id)=>(  <div className="row mt-4  ">
 
                     <button
                       type="submit"
-                      className="btn   form-control text-center text-white mt-4 primary-bg p-2   "
+                      className="btn text-center text-white mt-2 primary-bg p-2   mb-3 form-control w-50"
                     >
                       ارسال الموعد
                     </button>
@@ -100,7 +109,7 @@ userData.map((user,id)=>(  <div className="row mt-4  ">
                 </div>
               ) : (
                 <button
-                  className="btn  ms-2  time-btn "
+                  className="btn  ms-2  time-btn  mb-4"
                   onClick={reservationTime}
                 >
                   تحديد موعد
@@ -108,10 +117,11 @@ userData.map((user,id)=>(  <div className="row mt-4  ">
               )}
             </div>
           </div>
-    </div>
-      </div>))}
+   </div>
+   </div>))}
         
-    
+     
+      </div>
     </>
   );
 }

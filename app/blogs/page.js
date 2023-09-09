@@ -46,20 +46,24 @@ console.log(blogs);
              <Row className="blogs-section d-flex justify-content-center" key={id}>
             <div class="col">
               <div>
-                <iframe
-                  className="w-100"
-                  height="315"
-                  src={blog.video}       
-                  frameborder="0"
-                  allowfullscreen
-                ></iframe>
+              {/* <iframe
+  className="w-100"
+  height="315"
+  src={blog.video}
+  frameBorder="0"
+  allowFullScreen
+></iframe> */}
+<iframe width="640" height="360"   src='https://www.youtube.com/watch?v=rJyTfqdCvlk'
+ frameborder="0" allowfullscreen></iframe>
 
-                {/* <Image
+
+                <img
                   class="img w-100 img-thumbnail"
-                  src={blog.image}
+                  src={blog.image.src}
                   height={315}
+                  width={315}
                   alt=""
-                /> */}
+                />
               </div>
             </div>
             <div class="col">

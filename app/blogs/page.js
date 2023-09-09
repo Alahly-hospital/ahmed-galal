@@ -44,29 +44,25 @@ console.log(blogs);
           {blogs.map((blog,id)=>(
 
              <Row className="blogs-section d-flex justify-content-center" key={id}>
-            <div class="col">
+            <div class="col-lg-6">
               <div>
-              {/* <iframe
-  className="w-100"
-  height="315"
-  src={blog.video}
-  frameBorder="0"
-  allowFullScreen
-></iframe> */}
-<iframe width="640" height="360"   src='https://www.youtube.com/watch?v=rJyTfqdCvlk'
- frameborder="0" allowfullscreen></iframe>
-
-
-                <img
-                  class="img w-100 img-thumbnail"
-                  src={blog.image.src}
+              {blog.video?  <iframe
+                  className="w-100"
+                  height="315"
+                  src={blog.video}
+                  frameborder="0"
+                  allowfullscreen
+                ></iframe>:''}
+                {blog.image? <img
+                  className="img w-100 rounded  mb-3"
                   height={315}
                   width={315}
+                  src={blog.image.src}
                   alt=""
-                />
+                />:''}
               </div>
             </div>
-            <div class="col">
+            <div class="col-lg-6">
               <div class="about-info">
                 <h2>{blog.title}</h2>
                 <div class="  text-secondary mt-3">

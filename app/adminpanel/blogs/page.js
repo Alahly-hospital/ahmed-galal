@@ -85,7 +85,7 @@ export default function blogs() {
   return (
     <> <div className="container plog   ">
     <form className="form-shap shadow" onSubmit={formik.handleSubmit}>
-      <h1 className="text-center mt-3 primary-sidebar ">أنشاء مدونة</h1>
+      <h1 className="text-center mt-1 primary-sidebar ">أنشاء مدونة</h1>
       <div className="row  d-flex align-content-center justify-content-center m-4 ">
         <div className="col-12">
         {formik.touched.title && formik.errors.title ? (
@@ -161,7 +161,7 @@ export default function blogs() {
             onChange={handleImageChange}
             onBlur={formik.handleBlur}
           />
-          <div className="col-12 fs-1 primary-sidebar cursor-pointer text-center form-control mt-4 cursor-pointer">
+          <div className="col-12 fs-1 primary-sidebar cursor-pointer text-center form-control mt-2 cursor-pointer">
             {selectImage ? (
               <img src={selectImage} alt="Uploaded" className="w-100" height={400} />
             ) : (
@@ -174,7 +174,7 @@ export default function blogs() {
         </div>
       </label>
 
-        <div className="col-6" style={{ marginBottom: "30px" }}>
+        <div className="col-6" >
           <button 
           onClick={handleUpload}
           type="submit"

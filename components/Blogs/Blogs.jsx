@@ -30,18 +30,22 @@ export default function Blogs() {
 
           {blogs.slice(0,2).map((blog, id) => (
               <div class="col-lg-6"key={id}>
-                <iframe
+                 {blog.video?  <iframe
                   className="w-100"
                   height="315"
                   src={blog.video}
                   frameborder="0"
                   allowfullscreen
-                ></iframe>
-                <img
-                  className="img w-100 img-thumbnail"
-                  src={blog.image}
+                ></iframe>:''}
+                {blog.image? <img
+                  className="img w-100 rounded  mb-3"
+                  height={315}
+                  width={315}
+                  src={blog.image.src}
                   alt=""
-                />
+                />:''}
+              
+               
                 <h2>{blog.title}</h2>
                 <div className="  text-secondary mt-3">
                   <p className="">{blog.content}</p>

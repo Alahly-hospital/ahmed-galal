@@ -5,6 +5,7 @@ const {reservationValidation} = require("../services/reservation.validation")
 
 const reservationController={
     addReservation : async(req,res)=>{
+        console.log(req.body);
         try {
             let valid = reservationValidation(req.body)
             if(valid){

@@ -1,13 +1,31 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./blogs.scss";
 import { Container, Row } from "react-bootstrap";
 import NavbarHeader from "@/components/Navbar/Navbar";
 import Scrolltop from "@/components/Scrolltop/Scrolltop";
 import Footer from "../../components/Footer/Footer";
 import photo from "../../assets/bg2.jpg";
+import Api from "@/config/api";
 
 export default function blogs() {
+  const [blogs, setBlogs] = useState([]);
+  async function getBlogs() {
+    try {
+      let res = await Api.get("/blogs");
+      let data = data.json(res);
+      setBlogs(data);
+      console.log(data);
+    } catch (e) {
+      let error = e?.response?.data?.message || e?.response?.data?.error;
+      console.log(`error ${error}`);
+      
+    }
+  }
+  useEffect(() => {
+    getBlogs();
+  }, []);
+
   return (
     <>
       <NavbarHeader />
@@ -21,20 +39,21 @@ export default function blogs() {
       <section className="section-color mb-4 pb-4">
         <Container>
           <h2 className="title pt-4">المدونات</h2>
-          <Row className="blogs-section d-flex justify-content-center">
+          {blogs.map((blog,id)=>{
+             <Row className="blogs-section d-flex justify-content-center" key={id}>
             <div class="col">
               <div>
                 <iframe
                   className="w-100"
                   height="315"
-                  src="https://www.youtube.com/embed/rJyTfqdCvlk"
+                  src={blog.video}
                   frameborder="0"
                   allowfullscreen
                 ></iframe>
 
                 <img
                   class="img w-100 img-thumbnail"
-                  src={photo.src}
+                  src={blog.img.src}
                   height={315}
                   alt=""
                 />
@@ -42,17 +61,18 @@ export default function blogs() {
             </div>
             <div class="col">
               <div class="about-info">
-                <h2>العنوان</h2>
+                <h2>{blog.title}</h2>
                 <div class="  text-secondary mt-3">
                   <p class="">
-                    المدونةالمدونةالمدةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونة
-                    المدونةالمدونةالمدةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونة
-                    المدونةالمدونةالمدةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونةالمدونة
+                    {blog.content}
                   </p>
                 </div>
               </div>
             </div>
           </Row>
+          })}
+         
+          
         </Container>
       </section>
       <Footer />

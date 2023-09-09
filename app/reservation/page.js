@@ -10,10 +10,31 @@ import Footer from "../../components/Footer/Footer";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Api from "@/config/api";
+import { useRouter } from "next/navigation";
+import { notifyError, notifySuccess } from "@/components/toastify/toastify";
 export default function reservation() {
-  function handleReservation(values) {
-    console.log(values);
-    formik.resetForm()
+  const router= useRouter()
+ async function handleReservation(values) {
+  try {
+      await Api.post('/reservation')
+      if(Response.status==200){
+          formik.resetForm()
+          notifySuccess('You reserved Successfully !! 😊 ')
+          router('/userreservation')
+
+          console.log(values);
+    
+      }else{
+        notifyError("Something went wrong", Response.statsuText)
+      }
+  
+  } catch (e) {
+    
+    let error=e?.response?.data?.message || e?.response?.data?.error
+    notifyError(`Faild to Create Blog ${error} 😞`)
+  }
+ 
   }
   let validationSchema = Yup.object({
     name: Yup.string()
@@ -56,9 +77,9 @@ export default function reservation() {
         <form className="form-border" onSubmit={formik.handleSubmit}>
           <h1 className="text-center mt-4 primary-color "> احجز موعدك الان </h1>
           <div className="row  d-flex align-content-center justify-content-center">
-            <div className="col-md-4">
+            <div className="col-md-4  mt-2 mb-2">
               {formik.touched.name && formik.errors.name ? (
-                <div className="alert alert-danger">{formik.errors.name}</div>
+                <div className="alert alert-danger">{formik.errors.name}</div>  
               ) : null}
 
               <label htmlFor="" className="mb-2">
@@ -80,7 +101,7 @@ export default function reservation() {
             </div>{" "}
             <br />
             <br />
-            <div className="col-md-4">
+            <div className="col-md-4  mt-2 mb-2">
               {formik.touched.phone && formik.errors.phone ? (
                 <div className="alert alert-danger">{formik.errors.phone}</div>
               ) : null}
@@ -105,7 +126,7 @@ export default function reservation() {
             </div>
           </div>
           <div className="row d-flex align-content-center justify-content-center">
-            <div className="col-md-4 mt-4 mb-4">
+            <div className="col-md-4 mt-2 mb-2">
               {formik.touched.reservationDate &&
               formik.errors.reservationDate ? (
                 <div className="alert alert-danger">
@@ -150,7 +171,7 @@ export default function reservation() {
                 <AiTwotoneCalendar className="icon fs-5 primary-color " />
               </div>
             </div>
-            <div className="col-md-4 mt-4">
+            <div className="col-md-4  mt-2">
               {formik.touched.email && formik.errors.email ? (
                 <div className="alert alert-danger">{formik.errors.email}</div>
               ) : null}

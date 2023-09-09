@@ -1,28 +1,32 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./userreservation.scss";
 import NavbarHeader from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import { MdDeleteSweep } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
+import Api from "@/config/api";
 
 export default function userreservation() {
-  const [reservations, setReservations] = useState([
-    {
-      id: 1,
-      name: "روان",
-      age: 20,
-      phoneNumber: "0122**********",
-      dateTime: "Monday, June 5th, 12:30pm",
-    },
-    {
-      id: 2,
-      name: "روان",
-      age: 20,
-      phoneNumber: "0122**********",
-      dateTime: "Monday, June 5th, 12:30pm",
-    },
-  ]);
+  const [reservations, setReservations] = useState([]);
+  async function getUserReservation(){
+    try {
+    const res = await Api(`/reservation${_id}`) 
+    const data = data.json(res)
+    setReservations(data)
+    console.log(data);      
+    } catch (e) {
+      let error = e?.response?.data?.message || e?.response?.data?.error;
+      console.log(`error ${error}`);
+      
+    }
+
+
+  }
+  useEffect(() => {
+    getUserReservation();
+  }, [])
+  
 
   const [editedReservation, setEditedReservation] = useState(null);
 
@@ -58,6 +62,7 @@ export default function userreservation() {
                 <div className="col-lg">العمر</div>
                 <div className="col-lg">رقم الهاتف</div>
                 <div className="col-lg">ميعاد الحجز</div>
+                <div className="col-lg">النوع  </div>
                 <div className="col-lg" />
               </div>
             </div>
@@ -70,7 +75,7 @@ export default function userreservation() {
                     الاسم
                   </div>
                   <div className="col-lg col-6 text-end d-block d-lg-none">
-                    {reservation.phoneNumber}
+                    {reservation.phone}
                   </div>
                   <div className="col-lg col-md-12 mb-4">
                     {reservation.name}
@@ -83,9 +88,9 @@ export default function userreservation() {
                   </div>
                   <div className="col-lg col-6 ">{reservation.age}</div>
                   <div className="col-lg d-none d-lg-block ">
-                    {reservation.phoneNumber}
+                    {reservation.phone}
                   </div>
-                  <div className="col-lg col-6">{reservation.dateTime}</div>
+                  <div className="col-lg col-6">{reservation.date}</div>
                   <div className="col-lg col-md-12 text-end">
                     <MdDeleteSweep
                       className="fs-2 ms-4 delete-icon"
@@ -140,12 +145,12 @@ export default function userreservation() {
                 <input
                   className="form-control mt-3 mb-3"
                   type="text"
-                  name="phoneNumber"
-                  value={editedReservation.phoneNumber}
+                  name="phone"
+                  value={editedReservation.phone}
                   onChange={(e) =>
                     setEditedReservation({
                       ...editedReservation,
-                      phoneNumber: e.target.value,
+                      phone: e.target.value,
                     })
                   }
                 />
@@ -155,12 +160,12 @@ export default function userreservation() {
                 <input
                   className="form-control mt-3 mb-3"
                   type="text"
-                  name="dateTime"
-                  value={editedReservation.dateTime}
+                  name="date"
+                  value={editedReservation.date}
                   onChange={(e) =>
                     setEditedReservation({
                       ...editedReservation,
-                      dateTime: e.target.value,
+                      date: e.target.value,
                     })
                   }
                 />

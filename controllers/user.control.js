@@ -19,7 +19,7 @@ const authController ={
             logger.info(`update name : ${req.user.firstName} ${req.user.lastName} , user id : ${req.user._id}`)
             
             let image = req.body.image
-
+            console.log(req.body);
             if(req.file){
                 image =``
             }

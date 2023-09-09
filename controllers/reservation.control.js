@@ -12,7 +12,6 @@ const reservationController={
                     message:valid
                 })
             }
-
             logger.info(req.body)
             let newReservation = new Reservation({
                 ...req.body,

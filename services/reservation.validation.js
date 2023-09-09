@@ -5,6 +5,9 @@ function reservationValidation(data) {
         name: Joi
             .string()
             .required(),
+        email: Joi
+            .string()
+            .required(),
         age: Joi
             .number()
             .required(),

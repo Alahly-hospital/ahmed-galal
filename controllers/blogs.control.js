@@ -10,9 +10,9 @@ const blogsController = {
             logger.info(req.body)
             
             let newBlog = new Blogs({...req.body})
-            let file = req.file.filename
+            let file = req.file
             if(file){
-                let fileName = `/api/blogs/${file}`
+                let fileName = `/api/blogs/${file.fileName}`
                 newBlog.image = fileName
             }
 

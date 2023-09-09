@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./settings.scss";
 import NavbarHeader from "/components/Navbar/Navbar";
 import Footer from "/components/Footer/Footer";
@@ -14,33 +14,37 @@ import {
   AiTwotoneCalendar,
   AiTwotoneHome,
 } from "react-icons/ai";
+import { useDispatch , useSelector } from 'react-redux';
+import Api from "@/config/api";
+import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
+import {updateUserData} from "../../ApiHelper/user.api"
 
 export default function Settings() {
+
+  const dispatch = useDispatch()
   const [passwordchange, setPasswordchange] = useState(false);
   const [changeInput, setChangeInput] = useState(false);
+  let user = useSelector((state)=>state.user.value.data)
   function changeInInput() {
     setChangeInput(!changeInput);
   }
   function changePasseord() {
     setPasswordchange(!passwordchange);
   }
-  const [userData, setUserData] = useState([
-    {
-      id: 1,
-      fname: "روان",
-      lname: "عبدالفتاح",
-      age: "20",
-      email: "rwanabdelfattah301@gmail.com",
-      country: "اسكندرية",
-      phone: "01226524775",
-      gender: "انثي",
-    },
-  ]);
+  const [userData, setUserData] = useState();
+  useEffect(()=>{
+    setUserData(user)
+  },[user])
 
-  function updateInfo(values) {}
+  function updateInfo(values) {
+    console.log(values)
+    updateUserData(values,formik.resetForm)
+  }
+
+
   let validationSchema = Yup.object({
-    fname: Yup.string().min(3, "fname minlength 3").max(10, "fname maxlength"),
-    lname: Yup.string()
+    firstName: Yup.string().min(3, "fname minlength 3").max(10, "fname maxlength"),
+    lastName: Yup.string()
 
       .min(3, "lname minlength 3")
       .max(10, "lname maxlength"),
@@ -49,10 +53,10 @@ export default function Settings() {
       .min(10, "Age must be at least 10")
       .max(100, "Age can't be more than 100"),
     email: Yup.string().email(),
-    country: Yup.string()
+    address: Yup.string()
 
-      .min(3, "country minlength 3")
-      .max(10, "country maxlength"),
+      .min(3, "address minlength 3")
+      .max(10, "address maxlength"),
 
     phone: Yup.string().matches(
       /^01[0125][0-9]{8}$/,
@@ -71,13 +75,11 @@ export default function Settings() {
 
   let formik = useFormik({
     initialValues: {
-      fname: "",
-      lname: "",
+      firstName: "",
+      lastName: "",
       age: "",
       country: "",
       email: "",
-      password: "",
-      rePassword: "",
       phone: "",
       password: "",
       rePassword: "",
@@ -93,7 +95,7 @@ export default function Settings() {
       <NavbarHeader />
       <div className="container settings-page mt-4 pt-4 mb-4 pb-4">
         <h1>الاعدادات </h1>
-        <form onSubmit={formik.updateInfo}>
+        <form onSubmit={formik.handleSubmit}>
           <div className="row">
             <label>
               <div className="  d-flex justify-content-center  cursor-pointer">
@@ -134,54 +136,52 @@ export default function Settings() {
               </div>
             </label>
 
-            {userData.map((user) => {
-              return (
                 <>
                   {!changeInput ? (
                     <>
                       <div className="col-md-6 mt-4  ">
-                        <h6 className=" p-3 border-bottom">{user.fname}</h6>
+                        <h6 className=" p-3 border-bottom">{userData?.firstName}</h6>
                       </div>
                       <div className="col-md-6 mt-4   ">
-                        <h6 className=" p-3 border-bottom ">{user.lname}</h6>
+                        <h6 className=" p-3 border-bottom ">{userData?.lastName}</h6>
                       </div>
                       <div className="col-md-6 mt-4  ">
-                        <h6 className=" p-3 border-bottom ">{user.age}</h6>
+                        <h6 className=" p-3 border-bottom ">{userData?.age}</h6>
                       </div>
                       <div className="col-md-6 mt-4 ">
-                        <h6 className=" p-3  border-bottom ">{user.country}</h6>
+                        <h6 className=" p-3  border-bottom ">{userData?.address}</h6>
                       </div>
                       <div className="col-md-6 mt-4  ">
-                        <h6 className=" p-3 border-bottom ">{user.email}</h6>
+                        <h6 className=" p-3 border-bottom ">{userData?.email}</h6>
                       </div>
                       <div className="col-md-6 mt-4 ">
-                        <h6 className=" p-3 border-bottom ">{user.phone}</h6>
+                        <h6 className=" p-3 border-bottom ">{userData?.phone}</h6>
                       </div>
                       <div className="col-md-12">
                         <button
                           className="btn w-25 mx-auto d-block mt-4 settings-btn"
                           onClick={changeInInput}
                         >
-                          انقر لتعديل البيانات
+                           تعديل البيانات
                         </button>
                       </div>
                     </>
                   ) : (
                     <>
                       <div className="col-md-6 mt-4">
-                        {formik.touched.fname && formik.errors.fname ? (
+                        {formik.touched.firstName && formik.errors.firstName ? (
                           <div className="alert alert-danger">
-                            {formik.errors.fname}
+                            {formik.errors.firstName}
                           </div>
                         ) : null}
                         <div className="input-with-icon">
                           <input
                             className="form-control"
                             type="text"
-                            name="fname"
-                            id="fname"
+                            name="firstName"
+                            id="firstName"
                             onBlur={formik.handleBlur}
-                            value={formik.values.fname || user?.fname}
+                            value={formik.values.firstName || user?.firstName}
                             onChange={formik.handleChange}
                           />
 
@@ -190,19 +190,19 @@ export default function Settings() {
                       </div>
 
                       <div className="col-md-6 mt-4">
-                        {formik.touched.lname && formik.errors.lname ? (
+                        {formik.touched.lastName && formik.errors.lastName ? (
                           <div className="alert alert-danger">
-                            {formik.errors.lname}
+                            {formik.errors.lastName}
                           </div>
                         ) : null}
                         <div className="input-with-icon">
                           <input
                             className="form-control"
                             type="text"
-                            name="lname"
-                            id="lname"
+                            name="lastName"
+                            id="lastName"
                             onBlur={formik.handleBlur}
-                            value={formik.values.lname || user?.lname}
+                            value={formik.values.lastName || user?.lastName}
                             onChange={formik.handleChange}
                           />
 
@@ -252,19 +252,19 @@ export default function Settings() {
                         </div>
                       </div>
                       <div className="col-md-6 mt-4">
-                        {formik.touched.country && formik.errors.country ? (
+                        {formik.touched.address && formik.errors.address ? (
                           <div className="alert alert-danger">
-                            {formik.errors.country}
+                            {formik.errors.address}
                           </div>
                         ) : null}
                         <div className="input-with-icon">
                           <input
                             className="form-control"
                             type="text"
-                            name="country"
-                            id="country"
+                            name="address"
+                            id="address"
                             onBlur={formik.handleBlur}
-                            value={formik.values.country || user?.country}
+                            value={formik.values.address || user?.address}
                             onChange={formik.handleChange}
                           />
 
@@ -293,21 +293,19 @@ export default function Settings() {
                       </div>
                       <br></br>
                       <div className="col-md-12">
-                        <button className="btn w-25 mx-auto d-block mt-4 settings-btn">
+                        <button type="submit" className="btn w-25 mx-auto d-block mt-4 settings-btn">
                           ارسال التعديلات
                         </button>
                       </div>
                     </>
-                  )}
+                  )} 
                 </>
-              );
-            })}
 
             <h3 className="mt-4 mb-4">تغير كلمة السر</h3>
             {!passwordchange ? (
               <div onClick={changePasseord} className="col-md-12">
                 <button className="btn w-25 mx-auto d-block mt-4 settings-btn">
-                  انقر لتغير الباسورد
+                 لتغير الباسورد
                 </button>
               </div>
             ) : (
@@ -357,7 +355,7 @@ export default function Settings() {
                   </div>
                 </div>
                 <div className="col-md-12">
-                  <button className="btn w-25 mx-auto d-block mt-4 settings-btn">
+                  <button type="submit" className="btn w-25 mx-auto d-block mt-4 settings-btn">
                     تغير كلمة السر
                   </button>
                 </div>

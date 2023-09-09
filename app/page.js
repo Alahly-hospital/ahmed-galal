@@ -13,6 +13,7 @@ import Services from './../components/Services/Services';
 import Blogs from '@/components/Blogs/Blogs';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
 
 export default function Home() {
 

@@ -6,7 +6,18 @@ export const fetchUserData= createAsyncThunk(
   'user/fetchUserData',
   async (_, thunkAPI) => {
     try {  
-      const response = await Api.get('/users/data')
+      const response = await Api.get('/user/data')
+      return response.data;
+    } catch (error) {
+  return thunkAPI.rejectWithValue(error.message);
+    }
+}
+);
+export const userLogut= createAsyncThunk(
+  'user/userLogut',
+  async (_, thunkAPI) => {
+    try {  
+      const response = await Api.post('/auth/logout')
       return response.data;
     } catch (error) {
   return thunkAPI.rejectWithValue(error.message);
@@ -34,6 +45,12 @@ export const fetchUserData= createAsyncThunk(
       builder.addCase(fetchUserData.fulfilled, (state, action) => {
         state.value.logedin=true
         state.value.data=action.payload
+      });
+      builder.addCase(fetchUserData.rejected, (state, action) => {
+        state.value.logedin=false
+      });
+      builder.addCase(userLogut.fulfilled, (state, action) => {
+        state.value.logedin=false
       });
     },
   });

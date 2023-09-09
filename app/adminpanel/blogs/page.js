@@ -12,8 +12,11 @@ import Api from '@/config/api';
 export default function blogs() {
 
   function handleBlog(values){
-   Api.post('/blogs', values)
-   .then(()=>{
+   Api.post('/blogs', values,{
+    headers:{
+      'Content-Type': 'multipart/form-data',
+    }
+  }).then(()=>{
     notifySuccess('You Created a New Blog !! 😊 ')
     formik.resetForm()
     setSelectImage('');

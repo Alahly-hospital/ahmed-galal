@@ -11,10 +11,10 @@ export default function userreservation() {
   const [reservations, setReservations] = useState([]);
   async function getUserReservation(){
     try {
-    const res = await Api(`/reservation${_id}`) 
-    const data = data.json(res)
-    setReservations(data)
-    console.log(data);      
+    const res = await Api.get(`/reservation`) 
+    // const data = data.json(res)
+    setReservations(res.data)
+    console.log(res.data);      
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
@@ -62,13 +62,12 @@ export default function userreservation() {
                 <div className="col-lg">العمر</div>
                 <div className="col-lg">رقم الهاتف</div>
                 <div className="col-lg">ميعاد الحجز</div>
-                <div className="col-lg">النوع  </div>
                 <div className="col-lg" />
               </div>
             </div>
           </div>
-          {reservations.map((reservation) => (
-            <div key={reservation.id} className="my-2 p-2">
+          {reservations.map((reservation ,id) => (
+            <div key={id} className="my-2 p-2">
               <div className="w-100">
                 <div className="row user-reservation-bg p-3 mb-4">
                   <div className="col-6 d-md-block d-lg-none fw-bold">

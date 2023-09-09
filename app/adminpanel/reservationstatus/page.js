@@ -12,16 +12,15 @@ export default function reservationstatus() {
   const [userData, setUserData] = useState([])
   async function ReservationData(){
     try {
-      const res = await Api(`/reservation${_id}`) 
-      const data = data.json(res)
-      setReservations(data)
-      console.log(data);      
+      const res = await Api.get(`/reservation`) 
+      // const data = data.json(res)
+      setUserData(res.data)
+      console.log(res.data);      
       } catch (e) {
         let error = e?.response?.data?.message || e?.response?.data?.error;
         console.log(`error ${error}`);
         
       }
-  
   
     }
     useEffect(() => {
@@ -50,12 +49,13 @@ export default function reservationstatus() {
 
   return (
     <>
-      <div className="row mt-4  ">
+    
+{
+userData.map((user,id)=>(  <div className="row mt-4  ">
         <div className="col-lg-4 col-md-6 shadow rounded-5 ">
           <div className=" text-center">
             <img src={m.src} className="w-50 rounded-circle" />
           </div>
-{userData.map((user,id)=>{
     <div className="" ket={id}>
             <div className="d-flex  justify-content-around">
               <p className="fs-5">&nbsp; {user.date}</p>
@@ -108,10 +108,10 @@ export default function reservationstatus() {
               )}
             </div>
           </div>
-})}
+    </div>
+      </div>))}
         
-        </div>
-      </div>
+    
     </>
   );
 }

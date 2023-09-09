@@ -9,26 +9,26 @@ export default function Blogs() {
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
-      let data = data.json(res);
-      setBlogs(data);
-      console.log(data);
+      setBlogs(res.data);
+      console.log(res.data);
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
       
     }
-  }
-  useEffect(() => {
+  }    
+  useEffect(() => {     
     getBlogs();
   }, []);
+  console.log(blogs);
 
-  return (
+  return (   
     <div>
       <section className=" mb-4 pb-4">
         <Container>
           <h2 className="title pt-4">المدونات</h2>
-          {blogs.slice(0, 2).map((blog, id) => {
-            <Row className="blogs-section " key={id}>
+          {blogs.slice(0,2).map((blog, id) => (
+            // <Col className="blogs-section " key={id}>
               <div class="col-lg-6">
                 <iframe
                   className="w-100"
@@ -39,7 +39,7 @@ export default function Blogs() {
                 ></iframe>
                 <img
                   className="img w-100 img-thumbnail"
-                  src={blog.image.src}
+                  src={blog.image}
                   alt=""
                 />
                 <h2>{blog.title}</h2>
@@ -47,8 +47,8 @@ export default function Blogs() {
                   <p className="">{blog.content}</p>
                 </div>
               </div>
-            </Row>;
-          })}
+            // </Col>
+          ))}
 
           <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4 ">
             <Link

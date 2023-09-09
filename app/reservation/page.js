@@ -17,17 +17,17 @@ export default function reservation() {
   const router= useRouter()
  async function handleReservation(values) {
   try {
-      await Api.post('/reservation')
-      if(Response.status==200){
+      await Api.post('/reservation',values)
+      // if(Response.status==200){
           formik.resetForm()
           notifySuccess('You reserved Successfully !! 😊 ')
           router('/userreservation')
 
           console.log(values);
     
-      }else{
-        notifyError("Something went wrong", Response.statsuText)
-      }
+      // }else{
+        // notifyError("Something went wrong", Response.statsuText)
+      // }
   
   } catch (e) {
     
@@ -52,20 +52,20 @@ export default function reservation() {
       .min(10, "Age must be at least 10")
       .max(100, "Age can't be more than 100"),
     email: Yup.string().required("email is required").email(),
-    reservationDate: Yup.string().required("Reservation date is required"),
+    date: Yup.string().required("Reservation date is required"),
     gender: Yup.string().required("Gender is required"),
-    details: Yup.string(),
+    notes: Yup.string(),
   });
 
   let formik = useFormik({
     initialValues: {
       name: "",
       phone: "",
-      reservationDate: "",
+      date: "",
       email: "",
       age: "",
       gender: "",
-      details: "",
+      notes: "",
     },
     validationSchema,
     onSubmit: handleReservation,
@@ -127,10 +127,10 @@ export default function reservation() {
           </div>
           <div className="row d-flex align-content-center justify-content-center">
             <div className="col-md-4 mt-2 mb-2">
-              {formik.touched.reservationDate &&
-              formik.errors.reservationDate ? (
+              {formik.touched.date &&
+              formik.errors.date ? (
                 <div className="alert alert-danger">
-                  {formik.errors.reservationDate}
+                  {formik.errors.date}
                 </div>
               ) : null}
               <label htmlFor="" className="mb-2">
@@ -139,10 +139,10 @@ export default function reservation() {
               <Form.Select
                 aria-label="Default select example"
                 className="form-control"
-                value={formik.values.reservationDate}
+                value={formik.values.date}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                name="reservationDate"
+                name="date"
               >
                 <option value=''>اختر موعدك </option>
                 <option value="10pm">10 صباحا </option>
@@ -242,10 +242,10 @@ export default function reservation() {
               <div className="input-with-icon">
                 <textarea
                   class="form-control "
-                  id="details"
-                  name="details"
+                  id="notes"
+                  name="notes"
                   rows="4"
-                  value={formik.values.details}
+                  value={formik.values.notes}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 ></textarea>

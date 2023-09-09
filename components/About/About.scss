@@ -1,0 +1,14 @@
+.about-container{
+    direction: rtl;
+    text-align: right;
+}
+ul.circle-list {
+    list-style-type: circle; /* Use circle as the bullet marker */
+    padding-left: 20px; /* Add some padding for spacing */
+}
+
+/* Apply styles to list items */
+ul.circle-list li {
+    margin-bottom: 10px; /* Add spacing between list items */
+    
+}

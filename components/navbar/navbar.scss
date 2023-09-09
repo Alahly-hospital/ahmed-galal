@@ -1,0 +1,14 @@
+.header-text{
+    color: var(--secondary);
+    font-weight: 600;
+}
+#navbar-header{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-link{
+    text-decoration: none;
+    color : gray;
+}
+.active{
+    color:red !important ;   
+}

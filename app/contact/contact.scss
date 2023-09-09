@@ -1,0 +1,76 @@
+.bg-img {
+    background: url(../../assets/Doctor.png); 
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    direction: rtl;
+    text-align: right;
+    }
+ 
+    .bg-layer {
+      h1{
+        font-size: 2.3rem;
+        }
+      height: 450px;
+      width: 100%;
+          background-color: var(--secondary) ;
+          opacity: .4;
+          @media (max-width:767px) {
+            height: 300px;
+            font-size: 10px;
+            h1{
+              font-size: 17px;
+
+            }
+      
+            
+          }
+          
+          }
+
+    .contact-bg{
+        background-color: #eee;
+    }
+    @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .bg-img,
+      .container {
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+      }
+      .contact-bg:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+      }
+      .facebook{
+        transition: all .5s;
+        cursor: pointer;
+       &:hover{
+        color:#2d79ff !important;
+               } 
+
+      }
+      .youtube{
+        transition: all .5s;
+        cursor: pointer;
+       &:hover{
+        color: red !important;
+
+      } 
+
+      }
+      .black-color{
+        color: black;
+
+      }      

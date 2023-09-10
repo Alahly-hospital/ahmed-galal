@@ -69,8 +69,30 @@ const reservationController={
     },
     getAllReservations : async (req,res)=>{
         try {
-            let reservations = await Reservation.find()
+            let reservations = await Reservation.find({status:"waiting"})
             res.send(reservations)
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({
+                message:error.message
+            })
+        }
+    },
+    getAllConfirmedReservations : async (req,res)=>{
+        try {
+            let reservations = await Reservation.find({status:"confirmed"})
+            res.send(reservations)
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({
+                message:error.message
+            })
+        }
+    },
+    acceptUserReservation:async(req,res)=>{
+        try {
+            await Reservation.findByIdAndUpdate(req.body.id,{status:"confirmed"})
+            res.send({message:"Updated !!"})
         } catch (error) {
             logger.error(error.message)
             res.status(500).send({

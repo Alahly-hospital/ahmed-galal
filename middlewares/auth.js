@@ -9,7 +9,6 @@ const authentication = async (req,res,next)=>{
         let token= req?.cookies?.access_token?.split(" ")[1]
 
         if(!token) return res.status(401).send({message:"not allowed user"})
-        console.log(token);
         let secretKey = process.env.ACCESS_TOKEN
         let decrypt = await jwt.verify(token,secretKey)
 

@@ -37,7 +37,7 @@ const authControler= {
             
             res.cookie("access_token",`Barear ${token}`,{
                 httpOnly:true,
-                maxAge:8 * 24 * 60 * 60
+                maxAge:10 * 60 * 60 * 60 * 60
             })
             
             res.send({

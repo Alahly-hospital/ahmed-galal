@@ -8,11 +8,11 @@ const blogsController = {
     createBlog : async (req,res)=>{
         try {
             logger.info(req.body)
-            
+            console.log(req.file);
             let newBlog = new Blogs({...req.body})
             let file = req.file
             if(file){
-                let fileName = `/api/blogs/${file.fileName}`
+                let fileName = `/api/blogs/${file.filename}`
                 newBlog.image = fileName
             }
 

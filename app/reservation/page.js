@@ -10,10 +10,22 @@ import Footer from "../../components/Footer/Footer";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Api from "@/config/api";
+import { useRouter } from "next/navigation";
+import { notifyError, notifySuccess } from "@/components/toastify/toastify";
 export default function reservation() {
-  function handleReservation(values) {
-    console.log(values);
-    formik.resetForm()
+  const router= useRouter()
+ async function handleReservation(values) {
+      await Api.post('/reservation',values)
+      .then(()=>{
+        notifySuccess('You reserved Successfully !! 😊 ')
+        formik.resetForm()
+      })
+      .catch((e)=>{
+        let error=e?.response?.data?.message || e?.response?.data?.error
+        notifyError(`Faild to Create Blog ${error} 😞`)
+
+      })
   }
   let validationSchema = Yup.object({
     name: Yup.string()
@@ -31,20 +43,20 @@ export default function reservation() {
       .min(10, "Age must be at least 10")
       .max(100, "Age can't be more than 100"),
     email: Yup.string().required("email is required").email(),
-    reservationDate: Yup.string().required("Reservation date is required"),
+    date: Yup.string().required("Reservation date is required"),
     gender: Yup.string().required("Gender is required"),
-    details: Yup.string(),
+    notes: Yup.string(),
   });
 
   let formik = useFormik({
     initialValues: {
       name: "",
       phone: "",
-      reservationDate: "",
+      date: "",
       email: "",
       age: "",
       gender: "",
-      details: "",
+      notes: "",
     },
     validationSchema,
     onSubmit: handleReservation,
@@ -56,9 +68,9 @@ export default function reservation() {
         <form className="form-border" onSubmit={formik.handleSubmit}>
           <h1 className="text-center mt-4 primary-color "> احجز موعدك الان </h1>
           <div className="row  d-flex align-content-center justify-content-center">
-            <div className="col-md-4">
+            <div className="col-md-4  mt-2 mb-2">
               {formik.touched.name && formik.errors.name ? (
-                <div className="alert alert-danger">{formik.errors.name}</div>
+                <div className="alert alert-danger">{formik.errors.name}</div>  
               ) : null}
 
               <label htmlFor="" className="mb-2">
@@ -80,7 +92,7 @@ export default function reservation() {
             </div>{" "}
             <br />
             <br />
-            <div className="col-md-4">
+            <div className="col-md-4  mt-2 mb-2">
               {formik.touched.phone && formik.errors.phone ? (
                 <div className="alert alert-danger">{formik.errors.phone}</div>
               ) : null}
@@ -105,29 +117,26 @@ export default function reservation() {
             </div>
           </div>
           <div className="row d-flex align-content-center justify-content-center">
-            <div className="col-md-4 mt-4 mb-4">
-              {formik.touched.reservationDate &&
-              formik.errors.reservationDate ? (
+            <div className="col-md-4 mt-2 mb-2">
+              {formik.touched.date &&
+              formik.errors.date ? (
                 <div className="alert alert-danger">
-                  {formik.errors.reservationDate}
+                  {formik.errors.date}
                 </div>
               ) : null}
               <label htmlFor="" className="mb-2">
                 موعد الحجز
               </label>
-              <Form.Select
+              <input
                 aria-label="Default select example"
                 className="form-control"
-                value={formik.values.reservationDate}
+                value={formik.values.date}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                name="reservationDate"
-              >
-                <option value=''>اختر موعدك </option>
-                <option value="10pm">10 صباحا </option>
-                <option value="11pm">11 صباحا </option>
-                <option value="12pm">12 ظهرا</option>
-              </Form.Select>
+                type="datetime-local"
+                name="date"
+              />
+                
 
               <label htmlFor="" className="mb-2 mt-3">
                 العمر
@@ -150,7 +159,7 @@ export default function reservation() {
                 <AiTwotoneCalendar className="icon fs-5 primary-color " />
               </div>
             </div>
-            <div className="col-md-4 mt-4">
+            <div className="col-md-4  mt-2">
               {formik.touched.email && formik.errors.email ? (
                 <div className="alert alert-danger">{formik.errors.email}</div>
               ) : null}
@@ -221,10 +230,10 @@ export default function reservation() {
               <div className="input-with-icon">
                 <textarea
                   class="form-control "
-                  id="details"
-                  name="details"
+                  id="notes"
+                  name="notes"
                   rows="4"
-                  value={formik.values.details}
+                  value={formik.values.notes}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 ></textarea>

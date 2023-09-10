@@ -20,12 +20,13 @@ export default function login() {
     Api.post("/auth/login",values)
     .then(()=>{
       router.push('/');
+      notifySuccess('Correct Information !! 😊');
       formik.resetForm();
     })
     .catch((error)=>{
       let errorMsg = error?.response?.data?.message || error?.response?.data?.error
       console.log(errorMsg)
-      notifyError(errorMsg)
+      notifyError(`${errorMsg} 😞`)
     })
   }
   let validationSchema = Yup.object({

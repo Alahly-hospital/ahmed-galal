@@ -2,7 +2,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./navbar.scss"
 import Logo from "../../assets/Logo.png"
 import Link from 'next/link';
@@ -35,7 +34,8 @@ function NavbarHeader() {
            {!logedin&& <Nav><Link href="/login" prefetch className="nav-link">تسجيل الدخول</Link></Nav>}
            {!logedin&& <Nav><Link href="/register" prefetch className="nav-link"> أنشئ حسابك</Link></Nav>  }
             {logedin&&<Nav onClick={()=>dispatch(userLogut())}><Link href="/ " prefetch className="nav-link"> تسجيل الخروج </Link></Nav>}  
-            {logedin&&user.isAdmin &&<Nav> <Link href="/adminpanel/reservationstatus" prefetch   className="nav-link">صفحة الادمن</Link></Nav>}
+            <Nav> <Link href="/adminpanel/reservationstatus" prefetch   className="nav-link">صفحة الادمن</Link></Nav>
+            {!logedin&&user.isAdmin &&<Nav> <Link href="/adminpanel/reservationstatus" prefetch   className="nav-link">صفحة الادمن</Link></Nav>}
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -43,4 +43,4 @@ function NavbarHeader() {
   );
 }
 
-export default NavbarHeader;
+export default NavbarHeader;          

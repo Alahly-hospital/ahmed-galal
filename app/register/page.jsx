@@ -24,17 +24,18 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
   function handleRegister(values) {
     delete values.country
     delete values.rePassword
+    delete values.gender
 
     Api.post("/auth/register",values)
     .then(()=>{
       router.push('/login');
       formik.resetForm();
-      notifySuccess("Account created !!")
+      notifySuccess("Account created !! 😊 ")
     })
     .catch((error)=>{
       let errorMsg = error?.response?.data?.message || error?.response?.data?.error
       console.log(errorMsg)
-      notifyError(errorMsg)
+      notifyError(`${errorMsg} 😞 `)
     })
   }
 

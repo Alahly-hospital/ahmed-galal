@@ -128,13 +128,13 @@ h1, h2, h3, h4, h5,
 		position: absolute;
 		top: 20px;
 		left: 0;
-		margin-left: -50px;
+		margin-left: -55px;
 		.btn{
  			&.btn-primary{
 				background:var(--primary-sidebar);
 				border-color: transparent;
 				position: relative;
- 				width: 38px;
+ 				width: 40px;
 				height: 33px;
 				&:after,&:before{
 					position: absolute;

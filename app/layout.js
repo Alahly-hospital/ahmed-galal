@@ -23,13 +23,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={cairo.className}>
-        {/* <NavbarHeader/> */}
-
         <Providers>
             <ToastContainer/>
             {children}
         </Providers>
-        {/* <Footer/> */}
         </body>
     </html>
   );

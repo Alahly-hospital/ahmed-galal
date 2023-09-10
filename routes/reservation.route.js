@@ -12,4 +12,4 @@ router.delete("/:id" ,auth.adminAuthorization, reservationController.deleteReser
 
 router.get("/all",auth.adminAuthorization,reservationController.getAllReservations)
 
-module.exports = router
+module.exports = router     

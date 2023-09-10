@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./userreservation.scss";
-import NavbarHeader from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import NavbarHeader from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { MdDeleteSweep } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 import Api from "@/config/api";

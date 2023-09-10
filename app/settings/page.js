@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import "./settings.scss";
-import NavbarHeader from "/components/Navbar/Navbar";
-import Footer from "/components/Footer/Footer";
+import NavbarHeader from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { useFormik } from "formik";
 import profile from "../../assets/ff.jpg";
 import * as Yup from "yup";
@@ -23,7 +23,6 @@ import Image from 'next/image'
 import apiUrl from "../../config/domains"
 
 export default function Settings() {
-  console.log(apiUrl)
   const dispatch = useDispatch();
   const [passwordchange, setPasswordchange] = useState(false);
   const [changeInput, setChangeInput] = useState(false);

@@ -13,12 +13,14 @@ import YouTube from 'react-youtube';
 
 export default function blogs() {
   const [blogs, setBlogs] = useState([]);
+  const [search,setSearch] = useState("")
+  const [select,setSelect] = useState("")
+
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
       // let data = data.json(res);
       setBlogs(res.data);
-      console.log(res.data);
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
@@ -34,6 +36,16 @@ export default function blogs() {
     const videoId = urlSearchParams.get("v");
     return videoId
   }
+console.log(blogs)
+let filterdData = blogs
+if(search){
+  filterdData = filterdData.filter((ele)=>
+  ele?.title?.includes(search)  ||
+  ele?.content?.includes(search))
+}
+if(select){
+  filterdData = filterdData.filter((ele)=>ele?.category==select)
+}
 
   return (
     <>
@@ -48,7 +60,20 @@ export default function blogs() {
       <section className="section-color mb-4 pb-4">
         <Container>
           <h2 className="title pt-4">المدونات</h2>
-          {blogs.map((blog,id)=>(
+          <div className="row search-box w-80 m-auto">
+              <div className="col-6">
+                  <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} className="w-100" placeholder="ابحث عن مدونة"/>
+              </div>
+              <div className="col-6">
+                  <select className="w-100" value={select} onChange={(e)=>setSelect(e.target.value)}>
+                      <option>asdas</option>
+                      <option>asdas</option>
+                      <option>asdas</option>
+                      <option>asdas</option>
+                  </select>
+              </div>
+          </div>
+          {filterdData.map((blog,id)=>(
 
              <Row className="blogs-section d-flex justify-content-center" key={id}>
             <div class="col-lg-6">

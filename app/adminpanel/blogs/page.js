@@ -48,6 +48,7 @@ export default function blogs() {
       .required("Title is required")
       .min(3, "Title minlength 3")
       .max(100, "Title maxlength 100"),
+      category:Yup.string().required("Category is required"),
       content:Yup.string() ,
       image: Yup.mixed().test('fileType', 'Image must be a valid image file', (value) => {
          if (!value) return true; // No file is also valid
@@ -65,6 +66,7 @@ export default function blogs() {
         title:"",
         content: "",
         image: "",
+        category: "",
         video: ""
       },
       validationSchema,
@@ -89,10 +91,10 @@ export default function blogs() {
       <div className="row  d-flex align-content-center justify-content-center m-4 ">
         <div className="col-12">
         {formik.touched.title && formik.errors.title ? (
-                      <div className="alert alert-danger">
-                        {formik.errors.title}
-                      </div>
-                    ) : null}
+          <div className="alert alert-danger">
+            {formik.errors.title}
+          </div>
+        ) : null}
           <div className="input-with-icon">
             <input
               className="form-control"
@@ -108,6 +110,30 @@ export default function blogs() {
             <BsPencilFill className="icon primary-sidebar" />
           </div>
         </div>   
+        <div className="col-12 mt-4">
+        {formik.touched.category && formik.errors.category ? (
+          <div className="alert alert-danger">
+            {formik.errors.category}
+          </div>
+        ) : null}
+          <div className="input-with-icon">
+            <select
+              className="form-control pr-4"
+              style={{paddingRight:"40px"}}
+              name="category"
+              id="category"
+              value={formik.values.category}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              required
+            >
+              <option disapled value="">نوع المدونة</option>
+              <option value="asdas">asdas</option>
+              <option value="asdas">asdasdsdasad</option>
+            </select>
+            <BsPencilFill className="icon primary-sidebar ml-4" />
+          </div>
+        </div>
         <div className="col-12 mt-4">
         {formik.touched.video && formik.errors.video ? (
                       <div className="alert alert-danger">
@@ -133,7 +159,7 @@ export default function blogs() {
           <br />
           <div className="input-with-icon">
             <textarea
-              class="form-control "
+              className="form-control "
               name="content"
               value={formik.values.content}
               onChange={formik.handleChange}

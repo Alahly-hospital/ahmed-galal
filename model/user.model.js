@@ -22,6 +22,10 @@ const userSchema = new Schema({
       required:true,
       trim:true
     },
+    position:{
+      type:String,
+      trim:true
+    },
     phone :{
       type:Number,
       required:true

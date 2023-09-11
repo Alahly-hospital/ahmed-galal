@@ -1,0 +1,15 @@
+.delete-icon{
+    transition: all .5s;
+    cursor: pointer;
+    &:hover{
+        color:red!important;
+    }
+}
+.update-icon{
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover{
+        color:#2f89fc !important;
+    }
+}

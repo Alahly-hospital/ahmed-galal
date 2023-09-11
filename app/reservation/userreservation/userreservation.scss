@@ -1,0 +1,43 @@
+.user-reservation{
+direction: rtl;
+text-align: right;
+}
+.user-reservation-bg{
+    background-color: rgba(128, 128, 128, 0.16);
+    // background-color: #91bd45d6;
+}
+.delete-icon{
+    transition: all .5s;
+    cursor: pointer;
+    &:hover{
+        color:red!important;
+    }
+}
+.update-icon{
+    transition: all .5s;
+    cursor: pointer;
+
+    &:hover{
+        color:#2f89fc !important;
+    }
+}
+.update-btn{
+    border: 1px solid #2f89fc ;
+    padding: 5px 20px;
+    color: #2f89fc ;
+    transition: all .5s;
+    &:hover{
+        background:#2f89fc !important;
+        color: white;
+    }
+}
+.cancle-btn{
+    border: 1px solid red;
+    padding: 5px 30px;
+    color: red;
+    transition: all .5s;
+    &:hover{
+        background:red!important;
+        color: white;
+    }
+}

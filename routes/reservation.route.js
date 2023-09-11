@@ -8,8 +8,11 @@ router.route("/")
     .patch(auth.adminAuthorization,reservationController.updateReservation)
     .get(auth.authentication,reservationController.getUserReservations)
 
-router.delete("/:id" ,auth.adminAuthorization, reservationController.deleteReservation)
+router.delete("/:id" ,auth.authentication, reservationController.deleteReservation)
 
-router.get("/all",auth.adminAuthorization,reservationController.getAllReservations)
+router.get("/waiting",auth.adminAuthorization,reservationController.getAllReservations)
+router.get("/confirmed",auth.adminAuthorization,reservationController.getAllReservations)
+
+router.post("/confirm" ,auth.adminAuthorization,reservationController.acceptUserReservation)
 
 module.exports = router     

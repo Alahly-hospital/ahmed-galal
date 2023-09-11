@@ -8,7 +8,6 @@ const blogsController = {
     createBlog : async (req,res)=>{
         try {
             logger.info(req.body)
-            console.log(req.body)
             let newBlog = new Blogs({...req.body})
             let file = req.file
             if(file){

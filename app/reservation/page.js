@@ -20,6 +20,7 @@ export default function reservation() {
       .then(()=>{
         notifySuccess('You reserved Successfully !! 😊 ')
         formik.resetForm()
+        router.push('/reservation/userreservation')
       })
       .catch((e)=>{
         let error=e?.response?.data?.message || e?.response?.data?.error

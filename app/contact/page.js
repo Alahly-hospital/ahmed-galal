@@ -8,6 +8,7 @@ import { BsFacebook, BsYoutube } from "react-icons/bs";
 import NavbarHeader from "/components/navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Scrolltop from "/components/Scrolltop/Scrolltop";
+import { AiFillInstagram } from "react-icons/ai";
 
 export default function contac() {
   return (
@@ -37,7 +38,14 @@ export default function contac() {
                 className=" black-color text-decoration-none p-3"
                 target="_blank"
               >
-                <BsFacebook className="facebook fs-4" />{" "}
+                <BsFacebook className="facebook fs-3" />{" "}
+              </a>
+              <a
+                href="https://instagram.com/drahmed.galal?igshid=MzRlODBiNWFlZA=="
+                className=" black-color text-decoration-none p-3"
+                target="_blank"
+              >
+                <AiFillInstagram className="instagram fs-2" />{" "}
               </a>
               <a
                 href=""
@@ -45,7 +53,7 @@ export default function contac() {
                 target="_blank"
               >
                 {" "}
-                <BsYoutube className="youtube fs-4" />{" "}
+                <BsYoutube className="youtube fs-2" />{" "}
               </a>
             </h5>
           </div>

@@ -61,6 +61,15 @@
                } 
 
       }
+      .instagram{
+        transition: all .5s;
+        cursor: pointer;
+       &:hover{
+        color:   #f09433  !important;               } 
+
+      }
+
+    
       .youtube{
         transition: all .5s;
         cursor: pointer;

@@ -57,7 +57,7 @@ const Main = () => {
           </ul>
         </div>
     </Row>
-    <div className='floating-box'>
+    <div className='floating-box mb-3'>
       <p className="location"> <MdLocationOn/>  
           المركز : ٢٩ شارع جلال حماد ناصية شارع جمال عبد الناصر <br/> اول شارع بعد ميدان جيهان ميامى الاسكندرية 
       </p>

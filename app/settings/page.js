@@ -444,7 +444,7 @@ export default function Settings() {
                         name="oldPassword"
                         requried
                         id="oldPassword"
-                        placeholder=" كلمة السر القديمة   "
+                        placeholder=" الرقم السري القديم   "
                         value={formikPassword.values.oldPassword}
                         onChange={formikPassword.handleChange}
                         onBlur={formikPassword.handleBlur}
@@ -468,7 +468,7 @@ export default function Settings() {
                         name="newPassword"
                         required
                         id="newPassword"
-                        placeholder=" كلمة السري الجديدة   "
+                        placeholder=" الرقم السري الجديد   "
                         value={formikPassword.values.newPassword}
                         onChange={formikPassword.handleChange}
                         onBlur={formikPassword.handleBlur}

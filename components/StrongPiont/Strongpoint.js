@@ -41,8 +41,7 @@ const Strongpoint = () => {
             src={img.src}
             alt="Dr.Ahmed Galal"
             className="img-card"
-            width="100%"
-            height="500px"
+            width="100%" 
           />
         </Col>
       </Row>

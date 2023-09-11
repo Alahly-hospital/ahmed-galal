@@ -22,9 +22,10 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
 
 
   function handleRegister(values) {
-    delete values.country
+
+    // delete values.country
     delete values.rePassword
-    delete values.gender
+    // delete values.gender
 
     Api.post("/auth/register",values)
     .then(()=>{
@@ -312,7 +313,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                   id="exampleRadios1"
                   value="female"
                   
-                  checked={formik.values.gender == "female"}
+                  checked={formik.values.gender === "female"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
@@ -327,7 +328,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                   name="gender"
                   id="exampleRadios2"
                   value="male"
-                  checked={formik.values.gender == "male"}
+                  checked={formik.values.gender === "male"}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />

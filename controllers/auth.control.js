@@ -5,7 +5,6 @@ const User = require("../model/user.model")
 const bcrybt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cookie = require('cookie');
-
 const authControler= {
     signin:async(req,res)=>{
         try {

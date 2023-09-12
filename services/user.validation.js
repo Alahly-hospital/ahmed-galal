@@ -15,7 +15,11 @@ function userValidation(data) {
             .required(),
         password: Joi.string()
             .required(),
+        rePassword: Joi.string(),
+        
         address: Joi.string()
+            .required(),
+        position: Joi.string()
             .required(),
         gender: Joi.string()
             .required(),

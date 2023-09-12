@@ -79,10 +79,7 @@ if(select){
             <div class="col-lg-6">
               <div>
               {blog.video?
-
-                <YouTube className="w-100" videoId={getVideoId(blog.video)} opts={{height: '315',origin: 'https://www.youtube.com'}} />
-
-                :''}
+                <YouTube className="w-100" videoId={getVideoId(blog.video)} opts={{height: '315',origin: 'https://www.youtube.com'}} />:''}
                 {blog.image? 
                 <img
                   className="img w-100 rounded  mb-3"

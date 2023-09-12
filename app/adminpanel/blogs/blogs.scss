@@ -54,6 +54,11 @@
     background-position:   0.75rem  ;
    }
   
-  
+  .delete-icon{
+    cursor:pointer;
+    &:hover{
+      coolor:red;
+    }
+  }
   
   

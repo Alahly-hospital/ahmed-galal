@@ -63,7 +63,7 @@ const authControler= {
                     message:"Email is already taken !!"
                 })
             }
-
+            console.log(req.body);
             let user = new User(req.body)
             await user.save()
             

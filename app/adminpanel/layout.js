@@ -5,9 +5,19 @@ import doctor from "../../assets/doctor.jpg";
 import Link from "next/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
 export default function AdminPanel({children}) {
   // const [upload, setUpload] = useState(false);
+  let logedin = useSelector((state)=>state.user.value.logedin)
+ 
+  let user = useSelector((state)=>state.user.value.data)
+  const router = useRouter()
+  if(!logedin || !user.isAdmin){
+    // return router.push("/")
+  }
+
 
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 

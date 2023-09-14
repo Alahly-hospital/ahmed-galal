@@ -10,6 +10,7 @@ import Api from "@/config/api";
 import Image from "next/image";
 import apiUrl from "../../config/domains"
 import YouTube from 'react-youtube';
+import data from "../../assets/data.json"
 
 export default function blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -44,7 +45,7 @@ if(search){
   ele?.content?.includes(search))
 }
 if(select){
-  filterdData = filterdData.filter((ele)=>ele?.category==select)
+  filterdData = filterdData.filter((ele)=>ele?.category?.includes(select))
 }
 
   return (
@@ -66,10 +67,13 @@ if(select){
               </div>
               <div className="col-6">
                   <select className="w-100" value={select} onChange={(e)=>setSelect(e.target.value)}>
-                      <option>asdas</option>
-                      <option>asdas</option>
-                      <option>asdas</option>
-                      <option>asdas</option>
+                      <option value="">All</option>
+                     {
+                      data.map((ele)=>(
+                        <option value={ele}>{ele}</option>
+                      ))
+                      }
+
                   </select>
               </div>
           </div>

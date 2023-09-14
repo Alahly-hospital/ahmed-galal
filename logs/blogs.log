@@ -28,3 +28,6 @@
 2023-09-11 23:23:21 | INFO | {"title":"sadasd","content":"asdasd","image":"","category":"asdas","video":""}
 2023-09-11 23:27:58 | INFO | {"title":"sadasdsad","content":"","image":"","category":"asdas","video":""}
 2023-09-12 13:24:57 | ERROR | Blog is not defined
+2023-09-14 20:23:53 | INFO | {"title":"asdasd","content":"","image":"","category":["Abdominal pain/cramps general - الام بالبطن"],"video":""}
+2023-09-14 20:24:10 | INFO | {"title":"adsadasdsad","content":"asdasdasd","category":["Abdominal pain/cramps general - الام بالبطن","Perianal itching - حكة في منطقة ما حول الشرج","Diarrhoea - إسهال"],"video":"https://www.youtube.com/watch?v=z24ud5tUhwA&t=1421s"}
+2023-09-14 20:26:18 | INFO | {"title":"asdasd","content":"","image":"","category":["Abdominal pain epigastric - الم في فم المعدة"],"video":""}

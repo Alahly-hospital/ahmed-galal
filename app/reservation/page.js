@@ -275,7 +275,7 @@ export default function reservation() {
               </div>
 
               <div className="row d-flex align-content-center justify-content-center">
-                <div className="col-8">
+                <div className="col-md-8">
                   
                   <label htmlFor="" className="mb-2">
                     اضافة اي تفاصيل{" "}
@@ -299,7 +299,7 @@ export default function reservation() {
                 className="row d-flex align-content-center justify-content-center"
                 style={{ paddingBottom: "10px" }}
               >
-                <div className="col-8">
+                <div className="col-md-8">
                   <button
                     type="submit"
                     className="btn form-control primary-bg text-white mt-4"
@@ -331,7 +331,7 @@ export default function reservation() {
                 احجز موعدك الان{" "}
               </h1>
               <div className="row d-flex align-content-center justify-content-center">
-                <div className="col-md-4 mt-2 mb-2">
+                <div className="col-md-8 mt-2 mb-2">
                   {userFormik.touched.date && userFormik.errors.date ? (
                     <div className="alert alert-danger">
                       {userFormik.errors.date}
@@ -352,7 +352,7 @@ export default function reservation() {
                 </div>
               </div>
               <div className="row d-flex align-content-center justify-content-center">
-                <div className="col-8">
+                <div className="col-md-8">
                 {userFormik.touched.name && userFormik.errors.name ? (
                     <div className="alert alert-danger">
                       {userFormik.errors.name}

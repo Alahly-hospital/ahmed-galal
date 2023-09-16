@@ -1,0 +1,11 @@
+.form-check-input:checked {
+    background-color: var(--primary) !important;
+    border-color:var(--primary) !important;
+}
+.btn-primary {
+    background-color: var(--primary) !important;
+        --bs-btn-border-color:var(--primary) !important;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: var(--primary) !important;
+        --bs-btn-hover-border-color:var(--primary) !important;
+}

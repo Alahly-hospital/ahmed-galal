@@ -1,0 +1,72 @@
+.login-page{
+  direction:rtl;
+  text-align: right;    
+  height: 100vh;
+
+}
+.bg{
+    height: 100vh;
+    background: linear-gradient(
+        to left , 
+        transparent 0% ,
+        transparent 50% , 
+        #F7F9F8 50% ,
+        #F7F9F8 50%
+    );
+
+}
+.responsive-input {
+    width: 100%;
+  }
+    @media (min-width: 992px) {
+    .responsive-input {
+      width: 50%;
+      
+    }
+    .img{
+      margin-left: 10%;
+    }
+}
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  padding-right: 40px; /* Adjust this value based on the icon size */
+}
+
+.input-with-icon .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-page .form-control,
+.login-page .btn,
+.login-page p {
+  opacity: 0; /* Set initial opacity to 0 for animation */
+  animation: fadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Apply the fadeIn animation */
+  animation-delay: 0.2s; /* Delay the animation to create a stagger effect */
+}
+.form-control {
+  transition: border-color 0.3s, box-shadow 0.3s;
+ }
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 5px var(--primary);
+}
+
+
+

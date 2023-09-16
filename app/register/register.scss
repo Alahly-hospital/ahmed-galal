@@ -1,0 +1,61 @@
+.register-page{
+    direction:rtl;
+    text-align: right;    
+    height: 100vh;
+    margin-top:50px;
+    margin-right:50px;
+  }
+      @media (min-width: 992px) {
+      .register-page{
+        margin-top:100px;
+    margin-right:100px;
+      }
+  }
+  .input-with-icon {
+    position: relative;
+  }
+  .input-with-icon input {
+    padding-right: 40px; /* Adjust this value based on the icon size */
+  }
+  .input-with-icon .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .bg{
+    background: #eeeeee4e;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .register-page .form-control,
+  .register-page .btn,
+  .register-page p {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.2s;
+  }
+  .form-control {
+    transition: border-color 0.3s, box-shadow 0.3s;
+   }
+  
+  .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px var(--primary);
+  }
+  
+  
+  
+      .form-check-input:checked{
+        background-color: var(--primary) !important;
+        border-color:var(--primary) !important ;
+      }

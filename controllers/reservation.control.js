@@ -109,7 +109,7 @@ const reservationController={
             if (!date) return res.status(403).send({message:"Date is required !!"})
             
             let newReservation = new Reservation({
-                ...req.user,
+                user:req.user._id,
                 notes,
                 gender ,
                 email ,

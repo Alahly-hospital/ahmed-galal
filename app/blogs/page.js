@@ -16,11 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function blogs() {
   
-  const dispatch = useDispatch()
   let logedin = useSelector ((state)=>state.user.value.logedin)
-  // useEffect(()=>{
-  //   dispatch(fetchUserData())
-  // },[])
 
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState("");
@@ -31,7 +27,6 @@ export default function blogs() {
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
-      // let data = data.json(res);
       setBlogs(res.data);
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;

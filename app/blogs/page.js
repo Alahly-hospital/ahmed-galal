@@ -5,7 +5,6 @@ import { Container, Row } from "react-bootstrap";
 import NavbarHeader from "../../components/Navbar/Navbar";
 import Scrolltop from "../../components/Scrolltop/Scrolltop";
 import Footer from "../../components/Footer/Footer";
-import photo from "../../assets/bg2.jpg";
 import Api from "@/config/api";
 import apiUrl from "../../config/domains"
 

@@ -47,19 +47,5 @@
 2023-09-14 20:35:45 | INFO | name : ahmed sadsadasd , user id : 64feee22b8c4580ea1c9c71e
 2023-09-14 20:35:49 | INFO | name : ahmed sadsadasd , user id : 64feee22b8c4580ea1c9c71e
 2023-09-14 20:37:58 | INFO | name : ahmed sadsadasd , user id : 64feee22b8c4580ea1c9c71e
-2023-09-16 16:02:44 | INFO | name : rwann fathy , user id : 64fe75ab86e5a93af076aef7
-2023-09-16 16:02:51 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:02:56 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:03:01 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:03:59 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:04:14 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:04:19 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:04:19 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:04:19 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:04:19 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:04:59 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:05:01 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:05:56 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:07:13 | ERROR | reservation validation failed: gender: Path `gender` is required., age: Path `age` is required., email: Path `email` is required., phone: Path `phone` is required., user: Path `user` is required.
-2023-09-16 16:09:42 | INFO | name : rwann fathy , user id : 64fe75ab86e5a93af076aef7
-2023-09-16 16:09:48 | INFO | name : rwann fathy , user id : 64fe75ab86e5a93af076aef7
+2023-09-16 14:07:07 | ERROR | invalid signature
+2023-09-16 16:15:31 | ERROR | reservation validation failed: user: Path `user` is required.

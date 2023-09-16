@@ -7,7 +7,7 @@ import Scrolltop from "../../components/Scrolltop/Scrolltop";
 import Footer from "../../components/Footer/Footer";
 import photo from "../../assets/bg2.jpg";
 import Api from "@/config/api";
-import Image from "next/image";
+import apiUrl from "../../config/domains"
 
 export default function blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -57,7 +57,7 @@ console.log(blogs);
                   className="img w-100 rounded  mb-3"
                   height={315}
                   width={315}
-                  src={blog.image.src}
+                  src={apiUrl+blog.image}
                   alt=""
                 />:''}
               </div>

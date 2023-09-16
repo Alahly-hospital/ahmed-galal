@@ -45,6 +45,7 @@ export default function ReservationStatus() {
     await Api.patch("/reservation", editedReservation)
       .then(() => {
         notifySuccess("date updated !!");
+        
         ReservationData();
         
       })

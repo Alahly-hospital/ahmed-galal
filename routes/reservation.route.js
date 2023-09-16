@@ -9,9 +9,9 @@ router.route("/")
     .get(auth.authentication,reservationController.getUserReservations)
 
 router.delete("/:id" ,auth.authentication, reservationController.deleteReservation)
-
+     
 router.get("/waiting",auth.adminAuthorization,reservationController.getAllReservations)
-router.get("/confirmed",auth.adminAuthorization,reservationController.getAllReservations)
+router.get("/confirmed",auth.adminAuthorization,reservationController.getAllConfirmedReservations)
 
 router.post("/confirm" ,auth.adminAuthorization,reservationController.acceptUserReservation)
 

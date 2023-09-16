@@ -3,12 +3,7 @@ import React from "react";
 import "./register.scss";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-import {
-  AiFillPhone,
-  AiOutlineMail,
-  AiTwotoneCalendar,
-  AiTwotoneHome,
-} from "react-icons/ai";
+import { AiFillPhone, AiOutlineMail, AiTwotoneCalendar, AiTwotoneHome,} from "react-icons/ai";
 import Link from "next/link";
 import NavbarHeader from "/components/navbar/Navbar";
 import { useFormik } from "formik";
@@ -16,17 +11,12 @@ import * as Yup from "yup";
 import Api from "../../config/api"
 import { useRouter } from "next/navigation";
 import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
-
  function Register() {
   const router = useRouter();
 
 
   function handleRegister(values) {
-
-    // delete values.country
-    delete values.rePassword
-    // delete values.gender
-
+    if(values.password!= values.rePassword) return notifyError("Password must be the same")
     Api.post("/auth/register",values)
     .then(()=>{
       router.push('/login');
@@ -56,9 +46,13 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
       .max(100, "Age can't be more than 100"),
     email: Yup.string().required("email is required").email(),
     address: Yup.string()
-      .required("country is required")
-      .min(3, "country minlength 3")
-      .max(10, "country maxlength"),
+      .required("address is required")
+      .min(3, "address minlength 3")
+      .max(10, "address maxlength"),
+    position: Yup.string()
+      .required("position is required")
+      .min(3, "position minlength 3")
+      .max(10, "position maxlength"),
     password: Yup.string()
       .required("Password is required"),
       // .matches(
@@ -89,6 +83,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
       rePassword: "",
       phone: "",
       gender: "",
+      position: "",
     },
     validationSchema,
     onSubmit: handleRegister,
@@ -224,6 +219,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                   <AiTwotoneHome className="icon primary-color" />
                 </div>
               </div>
+              
               <br />
               <br />
               <div className="col-md-4 mt-4">
@@ -299,18 +295,40 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
               </div>
             </div>
             <div className="mt-3">
-               <div className="col-md-8">
+
+              <div className="row">
+            <div className="col-md-4">
+                {formik.touched.position && formik.errors.position ? (
+                  <div className="alert alert-danger">
+                    {formik.errors.position}
+                  </div>
+                ) : null}
+
+                <div className="input-with-icon">
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="position"
+                    id="position"
+                    placeholder="الوظيفة"
+                    value={formik.values.position}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    required
+                  />
+                  <BsPersonWorkspace className="icon primary-color" />
+                </div>
+              </div>
               {formik.touched.gender && formik.errors.gender ? (
                 <div className="alert alert-danger">{formik.errors.gender}</div>
               ) : null}
-               </div>
 
               <div className=" mb-1 ">
                 <input
                   className="form-check-input m-1"
                   type="radio"
                   name="gender"
-                  id="exampleRadios1"
+                  id="gender1"
                   value="female"
                   
                   checked={formik.values.gender === "female"}
@@ -336,8 +354,9 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                   ذكر
                 </label>
               </div>
+              
             </div>
-
+            </div>
             <div className="row" style={{ paddingBottom: "100px" }}>
               <div className="col-md-8">
                 <button

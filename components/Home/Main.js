@@ -37,14 +37,13 @@ const Main = () => {
   return (
     <Container ref={mainRef} className='main-container' style={{position:"relative",marginBottom:"150px"}}>
     <Row>
-        <div className='col-12 col-md-6 left-main-section'>    <Slider {...settings}>
-
-<img class="slider-image"   src={MainImage.src} height={75} className='w-100' alt="" />
-<img class="slider-image"  src={MainImage2.src}height={75}className='w-100'  alt="" />
-<img class="slider-image"  src={MainImage3.src}height={75}className='w-100'   alt="" />
-
-
-</Slider></div>
+        <div className='col-12 col-md-6 left-main-section'>
+          <Slider {...settings}>
+            <img class="slider-image" src={MainImage.src} height={75} className='w-100' alt="" />
+            <img class="slider-image"  src={MainImage2.src}height={75}className='w-100'  alt="" />
+            <img class="slider-image"  src={MainImage3.src}height={75}className='w-100'   alt="" />
+          </Slider>
+        </div>
         <div className='col-12 col-md-6 right-main-section'>
           <h1>دكتور احمد جلال</h1>
           <ul>

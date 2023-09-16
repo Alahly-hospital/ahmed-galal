@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState ,useEffect } from 'react'
 import { BiCloudUpload } from 'react-icons/bi';
 import { BsPencilFill } from 'react-icons/bs';
 import { MdContentPaste } from 'react-icons/md';
@@ -9,16 +9,43 @@ import { AiTwotoneVideoCamera } from 'react-icons/ai';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Api from '@/config/api';
+import { MdDeleteSweep } from "react-icons/md";
+import data from "../../../assets/data.json"
+
+
 export default function blogs() {
+  const [blogs, setBlogs] = useState([]);
+  const [category,setCategory] = useState([])
+  const [select,setSelect]= useState("")
+  async function getBlogs() {
+    try {
+      let res = await Api.get("/blogs");
+      // let data = data.json(res);
+      setBlogs(res.data);
+    } catch (e) {
+      let error = e?.response?.data?.message || e?.response?.data?.error;
+      console.log(`error ${error}`);
+      console.log(e);
+      
+    }
+  }
+
+  useEffect(()=>{
+    getBlogs()
+  },[])
+
 
   function handleBlog(values){
-   Api.post('/blogs', values,{
+    if(!category.length) return  notifyError("Category is rqeuired")
+
+   Api.post('/blogs', {...values,category},{
     headers:{
       'Content-Type': 'multipart/form-data',
     }
   }).then(()=>{
     notifySuccess('You Created a New Blog !! 😊 ')
     formik.resetForm()
+    setCategory([])
     setSelectImage('');
     setSelectedFile(null);
    })
@@ -26,8 +53,6 @@ export default function blogs() {
     let error=e?.response?.data?.message || e?.response?.data?.error
     notifyError(`Faild to Create Blog ${error} 😞`)
    })
-    console.log("values", values)
-    
   }
     const [selectImage, setSelectImage] = useState("");
     const [selectedFile, setSelectedFile] = useState();
@@ -65,6 +90,7 @@ export default function blogs() {
         title:"",
         content: "",
         image: "",
+        category: "",
         video: ""
       },
       validationSchema,
@@ -81,18 +107,42 @@ export default function blogs() {
       }
     };
   
-    
+   function handleDeleteBlog(id){
+    Api.delete(`/blogs/${id}`)
+    .then(()=>{
+      notifySuccess('Blog deleted !! 😊 ')
+      getBlogs()
+    })
+    .catch((e)=>{
+      let error=e?.response?.data?.message || e?.response?.data?.error
+      notifyError(`Faild to delete Blog ${error} 😞`)
+     })
+   }
+   function addCategory (ele){
+    setSelect(ele)
+    let data = category.slice()
+    data.push(ele)
+    setCategory(data)
+   }
+   function removeCategory(e){
+    let data = category.slice()
+    data = data.filter((ele)=>ele!= e)
+    setCategory(data)
+   }
+
+console.log(category)
   return (
-    <> <div className="container plog   ">
+    <>
+     <div className="container plog   ">
     <form className="form-shap shadow" onSubmit={formik.handleSubmit}>
       <h1 className="text-center mt-1 primary-sidebar ">أنشاء مدونة</h1>
       <div className="row  d-flex align-content-center justify-content-center m-4 ">
         <div className="col-12">
         {formik.touched.title && formik.errors.title ? (
-                      <div className="alert alert-danger">
-                        {formik.errors.title}
-                      </div>
-                    ) : null}
+          <div className="alert alert-danger">
+            {formik.errors.title}
+          </div>
+        ) : null}
           <div className="input-with-icon">
             <input
               className="form-control"
@@ -109,11 +159,46 @@ export default function blogs() {
           </div>
         </div>   
         <div className="col-12 mt-4">
+        {formik.touched.category && formik.errors.category ? (
+          <div className="alert alert-danger">
+            {formik.errors.category}
+          </div>
+        ) : null}
+          <div className="input-with-icon">
+            <select
+              className="form-control pr-4"
+              style={{paddingRight:"40px"}}
+              id="category"
+              value={select}
+              onChange={(e)=>addCategory(e.target.value)}
+            >
+              <option disabled value="">نوع المدونة</option>
+              {
+                   data.map((ele)=>{
+                    if(! category.includes(ele) ){
+                      return  <option value={ele}>{ele}</option>
+                       }
+                     
+                   })
+              }
+            </select>
+            <BsPencilFill className="icon primary-sidebar ml-4" />
+          </div>
+          {
+            category.map((ele)=>(
+              <p className="d-flex justify-content-between mb-0">
+                {ele}   
+              <MdDeleteSweep className="fs-2 ms-4 delete-icon" onClick={() => removeCategory(ele)} style={{color:"red"}}/>
+            </p>
+            ))
+          }
+        </div>
+        <div className="col-12 mt-4">
         {formik.touched.video && formik.errors.video ? (
-                      <div className="alert alert-danger">
-                        {formik.errors.video}
-                      </div>
-                    ) : null}
+          <div className="alert alert-danger">
+            {formik.errors.video}
+          </div>
+        ) : null}
           <div className="input-with-icon">
             <input
               className="form-control"
@@ -133,7 +218,7 @@ export default function blogs() {
           <br />
           <div className="input-with-icon">
             <textarea
-              class="form-control "
+              className="form-control "
               name="content"
               value={formik.values.content}
               onChange={formik.handleChange}
@@ -186,6 +271,38 @@ export default function blogs() {
       </div>
     </form>
   </div>
+
+   <div>
+      <h1 class="text-center">المدونات</h1>
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th>العنوان</th>
+            <th>نوع المدونة</th>
+            <th>المحتوى</th>
+            <th>حذف</th>
+          {/* <th>تعديل </th> */}
+          </tr>
+        </thead>
+        <tbody>
+          {blogs.map((blog,id)=>(
+             <tr key={id}>
+            <td>{blog.title}</td>
+            <td>{blog.category}</td>
+            <td>{blog.content.substring(0, 20)}</td>
+            <td>
+            <MdDeleteSweep
+              className="fs-2 ms-4 delete-icon"
+              onClick={() => handleDeleteBlog(blog._id)}
+            />
+            </td>
+          </tr>
+          ))}
+         
+        </tbody>
+      </table>
+  </div>
+
 </>
   )
 }

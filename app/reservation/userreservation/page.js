@@ -10,7 +10,6 @@ import { notifyError, notifySuccess } from "@/components/toastify/toastify";
 
 export default function userreservation() {
   const [reservations, setReservations] = useState([]);
-
   async function getUserReservation() {
     try {
       const res = await Api.get(`/reservation`);

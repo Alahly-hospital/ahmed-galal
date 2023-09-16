@@ -5,6 +5,7 @@ import "./blogs.scss";
 import Link from "next/link";
 import Api from "@/config/api";
 import YouTube from "react-youtube";
+import apiUrl from '../../config/domains.js'
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   async function getBlogs() {
@@ -50,7 +51,7 @@ export default function Blogs() {
                   className="img w-100 rounded  mb-3"
                   height={315}
                   width={315}
-                  src={blog.image.src}
+                  src={apiUrl+blog.image}
                   alt=""
                 />:''}
               

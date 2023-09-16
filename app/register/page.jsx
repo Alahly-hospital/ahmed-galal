@@ -11,7 +11,6 @@ import * as Yup from "yup";
 import Api from "../../config/api"
 import { useRouter } from "next/navigation";
 import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
-import {BsPersonWorkspace} from "react-icons/bs"
  function Register() {
   const router = useRouter();
 

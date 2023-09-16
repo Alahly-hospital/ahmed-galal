@@ -6,6 +6,7 @@ const {reservationValidation} = require("../services/reservation.validation")
 const reservationController={
     addReservation : async(req,res)=>{
         console.log(req.body);
+        if(!req.body.notes) delete req.body.notes
         try {
             let valid = reservationValidation(req.body)
             if(valid){
@@ -93,6 +94,31 @@ const reservationController={
         try {
             await Reservation.findByIdAndUpdate(req.body.id,{status:"confirmed"})
             res.send({message:"Updated !!"})
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({
+                message:error.message
+            })
+        }
+    },
+    addUserReservation:async (req,res)=>{
+        try {
+            let {notes , date} = req.body
+            
+            if (!notes) return res.status(403).send({message:"Notes is required !!"})
+            if (!date) return res.status(403).send({message:"Date is required !!"})
+            
+            let newReservation = new Reservation({
+                ...req.user,
+                notes,
+                date,
+                name:`${req.user?.firstName} ${req.user?.lastName}`
+            })
+            console.log(newReservation);
+
+            await newReservation.save()
+            res.status(201).send({message:"Reservation submited !!"})
+
         } catch (error) {
             logger.error(error.message)
             res.status(500).send({

@@ -5,7 +5,6 @@ const User = require("../model/user.model")
 const bcrybt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cookie = require('cookie');
-
 const authControler= {
     signin:async(req,res)=>{
         try {
@@ -63,7 +62,7 @@ const authControler= {
                     message:"Email is already taken !!"
                 })
             }
-
+            console.log(req.body);
             let user = new User(req.body)
             await user.save()
             

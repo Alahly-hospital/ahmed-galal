@@ -29,12 +29,13 @@ function NavbarHeader() {
             <Nav><Link href="/serviceslist"prefetch className="nav-link">الخدمات  </Link></Nav>
             <Nav><Link href="/blogs"prefetch className="nav-link"> المدونات</Link></Nav>
             {logedin&&<Nav><Link href="/reservation"prefetch className="nav-link">احجز الان </Link></Nav>}
-            { logedin&&<Nav><Link href="/reservation/userreservation"prefetch className="nav-link">الحجوزات</Link></Nav>}
+            <Nav><Link href="/reservation/userreservation"prefetch className="nav-link">الحجوزات</Link></Nav>
             {logedin&&<Nav> <Link href="/settings" prefetch className="nav-link">الاعدادات</Link></Nav>}
            {!logedin&& <Nav><Link href="/login" prefetch className="nav-link">تسجيل الدخول</Link></Nav>}
            {!logedin&& <Nav><Link href="/register" prefetch className="nav-link"> أنشئ حسابك</Link></Nav>  }
             {logedin&&<Nav onClick={()=>dispatch(userLogut())}><Link href="/ " prefetch className="nav-link"> تسجيل الخروج </Link></Nav>}  
-            {logedin&&user.isAdmin &&<Nav> <Link href="/adminpanel/reservationstatus" prefetch   className="nav-link">صفحة الادمن</Link></Nav>}
+            <Nav> <Link href="/adminpanel/reservationstatus" prefetch   className="nav-link">صفحة الادمن</Link></Nav>
+            {!logedin&&user.isAdmin &&<Nav> <Link href="/adminpanel/reservationstatus" prefetch   className="nav-link">صفحة الادمن</Link></Nav>}
           </Nav>
         </Navbar.Collapse>
       </Container>

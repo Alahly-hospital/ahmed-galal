@@ -104,13 +104,17 @@ const reservationController={
     addUserReservation:async (req,res)=>{
         try {
             let {notes , date} = req.body
-            
+            let {gender , email , age , phone } = req.user
             if (!notes) return res.status(403).send({message:"Notes is required !!"})
             if (!date) return res.status(403).send({message:"Date is required !!"})
             
             let newReservation = new Reservation({
                 ...req.user,
                 notes,
+                gender ,
+                email ,
+                age ,
+                phone ,
                 date,
                 name:`${req.user?.firstName} ${req.user?.lastName}`
             })

@@ -11,12 +11,15 @@ import Image from "next/image";
 import apiUrl from "../../config/domains"
 import YouTube from 'react-youtube';
 import data from "../../assets/data.json"
+import Subscribe from "@/components/subscribe/Subscribe";
 
 export default function blogs() {
   const [blogs, setBlogs] = useState([]);
   const [search,setSearch] = useState("")
   const [select,setSelect] = useState("")
+  const [open,setOpen] = useState(false)
 
+  const handleClose = ()=>setOpen(false)
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
@@ -37,7 +40,6 @@ export default function blogs() {
     const videoId = urlSearchParams.get("v");
     return videoId
   }
-console.log(blogs)
 let filterdData = blogs
 if(search){
   filterdData = filterdData.filter((ele)=>
@@ -57,7 +59,7 @@ if(select){
           <h1 className="pt-4 m-4 mt-4">المدونات</h1>
         </div>
       </div>
-
+      <button onClick={()=>setOpen(true)}>اشترك الان</button>
       <section className="section-color mb-4 pb-4">
         <Container>
           <h2 className="title pt-4">المدونات</h2>
@@ -111,6 +113,7 @@ if(select){
         </Container>
       </section>
       <Footer />
+      <Subscribe open={open} handleClose={handleClose}/>
     </>
   );
 }

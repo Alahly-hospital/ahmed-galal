@@ -31,8 +31,8 @@ export default function ReservationStatus() {
   }, []);
 
 
-  async function acceptReservation(id) {
-    await Api.post(`/reservation/confirm`, { id })
+  async function acceptReservation(id,email) {
+    await Api.post(`/reservation/confirm`, { id,email })
       .then(() => {
         notifySuccess("Reservation Confirmed !!");
         ReservationData();
@@ -96,7 +96,7 @@ export default function ReservationStatus() {
                   <div className="  text-center mb-4">
                     <button
                       className="btn ms-2 confirm-btn mb-4"
-                      onClick={() => acceptReservation(user._id)}
+                      onClick={() => acceptReservation(user._id,user.email)}
                     >
                       الموعد متاح
                     </button>

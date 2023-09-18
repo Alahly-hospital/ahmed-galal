@@ -27,6 +27,7 @@ export default function blogs() {
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
+      console.log(res.data);
       setBlogs(res.data);
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;

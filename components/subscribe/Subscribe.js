@@ -4,10 +4,27 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./subscribe.scss";
 import { useFormik } from "formik";
+import Api from "@/config/api";
+import { notifyError, notifySuccess } from "../toastify/toastify";
 
 const Subscribe = ({ open, handleClose }) => {
-  const handleCheckBox = (values) => {
-    console.log("Form values:", values);
+
+  const handleCheckBox =async (values) => {
+    let data = []
+    for (const key in values) {
+      if (values.hasOwnProperty(key)) {
+        data.push(values[key]);
+      }
+      data = data.flat()
+     await Api.post("/subscribtion",{category:data})
+      .then(()=>{
+          notifySuccess("Subscribed Successfully")      
+      })
+      .catch((error)=>{
+        let errMsg = error?.response?.data?.message ||  error?.response?.data?.error
+        notifyError(errMsg)
+      })
+    }
     formik.resetForm()
   };
 
@@ -17,7 +34,7 @@ const Subscribe = ({ open, handleClose }) => {
   });
 
   return (
-    <Modal show={open} onHide={handleClose}>
+    <Modal show={open} onHide={handleClose} className="w-80">
       <Modal.Header closeButton>
         <Modal.Title>All</Modal.Title>
       </Modal.Header>
@@ -29,7 +46,7 @@ const Subscribe = ({ open, handleClose }) => {
                 className="form-check-input"
                 type="checkbox"
                 value={ele}
-                name={`checkbox${index}`}
+                name={`ele`}
                 id={`checkbox${index}`}
                 onChange={formik.handleChange}
               />

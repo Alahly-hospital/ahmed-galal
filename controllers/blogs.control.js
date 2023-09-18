@@ -44,7 +44,16 @@ const blogsController = {
             logger.error(error.message)
             res.status(500).send({message:error.message}) 
         }
-    }
+    },
+    deleteBlog:async(req,res)=>{
+        try{
+            let {id} =req.params
+            await Blogs.findByIdAndDelete(id)
+            res.send()
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message}) 
+        }
 }
-
+}
 module.exports = blogsController

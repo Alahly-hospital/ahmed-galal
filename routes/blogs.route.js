@@ -8,4 +8,6 @@ router.route("/")
     .get(blogsController.getBlogs)
     .patch(auth.adminAuthorization,blogsController.updateBlog)
 
+router.delete("/:id" , auth.adminAuthorization , blogsController.deleteBlog)
+
 module.exports = router               

@@ -5,7 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { BsFacebook, BsYoutube } from "react-icons/bs";
-import NavbarHeader from "/components/navbar/Navbar";
+import NavbarHeader from "/components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Scrolltop from "/components/Scrolltop/Scrolltop";
 import { AiFillInstagram } from "react-icons/ai";

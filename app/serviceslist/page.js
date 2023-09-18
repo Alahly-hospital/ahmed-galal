@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./services.scss";
 import { data } from "../../components/OurService/servicesData";
 import Link from "next/link";
-import NavbarHeader from "/components/navbar/Navbar";
+import NavbarHeader from "/components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Scrolltop from "/components/Scrolltop/Scrolltop";
 export default function serviceslist() {

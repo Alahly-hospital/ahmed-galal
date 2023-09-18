@@ -4,7 +4,7 @@ import "./reservation.scss";
 import { FaUserAlt } from "react-icons/fa";
 import {AiFillPhone,AiOutlineArrowLeft,AiOutlineArrowRight,AiOutlineMail,AiTwotoneCalendar,} from "react-icons/ai";
 import { BsFillPencilFill } from "react-icons/bs";
-import NavbarHeader from "/components/navbar/Navbar";
+import NavbarHeader from "/components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 
 import { useFormik } from "formik";

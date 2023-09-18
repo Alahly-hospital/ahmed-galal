@@ -5,7 +5,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { AiFillPhone, AiOutlineMail, AiTwotoneCalendar, AiTwotoneHome,} from "react-icons/ai";
 import Link from "next/link";
-import NavbarHeader from "/components/navbar/Navbar";
+import NavbarHeader from "/components/Navbar/Navbar";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Api from "../../config/api"
@@ -316,7 +316,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                     onBlur={formik.handleBlur}
                     required
                   />
-                  <BsPersonWorkspace className="icon primary-color" />
+                  {/* <BsPersonWorkspace` className="icon primary-color" /> */}
                 </div>
               </div>
               {formik.touched.gender && formik.errors.gender ? (

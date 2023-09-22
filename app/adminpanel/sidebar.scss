@@ -13,7 +13,7 @@
     transition: all 0.5s;
 }
 .sidebar li:hover{
-    background-color: #2f89fc;
+    background-color: #2f89fc !important;
 }
 .sidebar{
     direction: rtl;
@@ -108,16 +108,16 @@ h1, h2, h3, h4, h5,
 				color: rgba(255,255,255,.9);
 				border-bottom: 1px solid rgba(255,255,255,.1);
 				&:hover{
-					background:var(--primary-sidebar);
-					border-bottom: 1px solidvar(--primary-sidebar);
+					background:var(--primary-sidebar) !important;
+					border-bottom: 1px solidvar(--primary-sidebar) !important;
 				}
 			}
 			&.active{
 				> a{
 					background: transparent;
 					&:hover{
-						background:var(--primary-sidebar);
-						border-bottom: 1px solidvar(--primary-sidebar);
+						background:var(--primary-sidebar) !important;
+						border-bottom: 1px solidvar(--primary-sidebar) !important; 
 					}
 				}
 			}
@@ -131,7 +131,7 @@ h1, h2, h3, h4, h5,
 		margin-left: -55px;
 		.btn{
  			&.btn-primary{
-				background:var(--primary-sidebar);
+				background:var(--primary-sidebar) !important;
 				border-color: transparent;
 				position: relative;
  				width: 40px;

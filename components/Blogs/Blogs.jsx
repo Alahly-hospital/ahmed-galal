@@ -34,7 +34,11 @@ export default function Blogs() {
     return <YouTube videoId={videoId} opts={opts} />;
   }
   
-  console.log(blogs);
+  function getVideoId(url) {
+    const urlSearchParams = new URLSearchParams(new URL(url).search);
+    const videoId = urlSearchParams.get("v");
+    return videoId;
+  }
 
   return (   
     <div>
@@ -44,9 +48,16 @@ export default function Blogs() {
 
           {blogs.slice(0,2).map((blog, id) => (
               <div class="col-lg-6"key={id}>
-                 {blog.video?    
-                   <VideoPlayer videoId={blog.video} />
-:''}
+                 {blog.video ? (
+                    <YouTube
+                      className=" w-100"
+                      height={315}
+                      videoId={getVideoId(blog.video)}
+                      opts={{ origin: "https://www.youtube.com" }}
+                    />
+                  ) : (
+                    ""
+                  )}
                 {blog.image? <img
                   className="img w-100 rounded  mb-3"
                   height={315}

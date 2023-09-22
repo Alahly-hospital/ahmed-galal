@@ -67,6 +67,7 @@ export default function blogs() {
         <Container>
           <h2 className="title pt-4">المدونات</h2>
           <div className="row  d-flex align-items-center justify-content-center">
+            
             { logedin&&  <button
               className="w-25 btn  subscribe-btn rounded-5 text-white mb-4"
               onClick={() => setOpen(true)}

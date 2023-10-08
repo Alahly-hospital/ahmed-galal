@@ -1,0 +1,56 @@
+.bg-img {
+  background: url(../../assets/Doctor.png);
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.blogs-section {
+  direction: rtl;
+  text-align: right;
+}
+
+.bg-layer {
+  height: 450px;
+  width: 100%;
+  h1 {
+    font-size: 3rem;
+  }
+  background-color: var(--secondary);
+  opacity: 0.4;
+  @media (max-width: 767px) {
+    height: 300px;
+  }
+}
+.search-box{
+    input , select{
+      padding:5px;
+      direction: rtl;
+      text-align: center;
+      border-radius: 22px;
+      border: 1px solid var(--primary) !important;
+      color: gray;
+      font-weight: 700;
+      height: 40px;
+    }
+    select{
+      height: 40px;
+    }
+}
+.subscribe-btn{
+background:var(--primary) !important;
+  transition: all .5s; 
+      color: white !important;
+  &:hover{
+       border: 1px solid var(--primary) !important;
+   color: var(--primary) !important;
+  background: transparent !important;  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); 
+  left: 35px; /* Adjust the left position as needed */
+}

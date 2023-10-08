@@ -1,0 +1,94 @@
+:root {
+  --primary: #91bd45;
+  --secondary: #1D6AA2;
+  --span: rgb(235, 172, 57);  
+  --section-color:rgb(248,249,250);
+  --primary-sidebar:#2f89fc;
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  
+  overflow-x: hidden;
+}
+
+.primary-bg{
+  background-color: var(--primary) !important;
+}
+.primary-color{
+  color: var(--primary) !important;
+}
+.secondary-color{
+  color: var(--secondary) !important;
+}
+.span-color{
+  color: var(--span) !important;
+
+}
+.section-color{
+  background-color:var(--section-color) !important;
+}
+.primary-sidebar{
+  color: var(--primary-sidebar) !important;
+}
+.primary-sidebar-bg{
+  background-color: var(--primary-sidebar) !important;
+}
+h2.title {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  margin-bottom: 60px;
+  color: gray;
+  user-select: none;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 4px;
+    border-radius: 6px;
+    bottom: -20px;
+    background-color: var(--primary);
+    display: block;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    transition: 0.3s;
+  }
+  &:hover::before {
+    width: 200px;
+    transform: translateX(-50%);
+    margin-left: 50%;
+  }
+}
+.page-direction{
+  direction: rtl;
+  text-align: right;
+}
+.cursor-pointer{
+  cursor: pointer;
+  
+}
+ ::-webkit-scrollbar {
+  width: 12px;  
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:rgba(128, 128, 128, 0.811); /* Color of the thumb (drag handle) */
+  border-radius: 5px;
+  
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(211, 211, 211, 0.673); /* Color of the track (background) */
+}

@@ -1,0 +1,64 @@
+.plog{
+    direction: rtl;
+    text-align: right;
+    
+}
+.form-shap{
+   margin:10px;    
+  padding: 10px;
+  border-radius: 20px;
+
+
+
+}
+.form-shap {
+ }
+  @media (min-width: 1200px) {
+  .form-shap {
+     border-radius: 20px;
+    margin:50px 200px;    
+  }
+ 
+}
+.input-with-icon {
+    position: relative;
+  }
+  
+  .input-with-icon input ,  .input-with-icon textarea  {
+    padding-right: 40px; /* Adjust this value based on the icon size */
+  }
+  
+  .input-with-icon .icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .input-with-icon .icon-text-area {
+    position: absolute;
+    right: 10px;
+    top: 17%;
+    transform: translateY(-50%);
+  }
+  
+  .form-control {
+    transition: border-color 0.3s, box-shadow 0.3s;
+   }
+  
+  .form-control:focus {
+    border-color: var(--primary-sidebar);
+    box-shadow: 0 0 5px var(--primary-sidebar);
+  }
+  .form-select {
+    background-position:   0.75rem  ;
+   }
+  
+  .delete-icon{
+    cursor:pointer;
+    &:hover{
+      coolor:red;
+    }
+  }
+  
+  

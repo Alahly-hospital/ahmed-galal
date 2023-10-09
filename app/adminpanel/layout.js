@@ -102,7 +102,11 @@ export default function AdminPanel({children}) {
                   <span className="fa fa-user mr-3" /> أنشئ مدونة
                 </Link>
               </li>
-            
+              <li>
+                <Link prefetch href="users">
+                  <span className="fa fa-user mr-3" /> المستخدمين
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>

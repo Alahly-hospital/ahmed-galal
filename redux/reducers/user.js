@@ -24,13 +24,25 @@ export const userLogut= createAsyncThunk(
     }
 }
 );
-
+export const fetchAllUsers= createAsyncThunk(
+  'user/fetchAllUsers',
+  async (_, thunkAPI) => {
+    try {  
+      const response = await Api.get('/user/users')
+      return response.data;
+    } catch (error) {
+  return thunkAPI.rejectWithValue(error.message);
+    }
+}
+);
   const user = createSlice({
     name: "user",
     initialState: {
       value: { 
       data: {} ,
       logedin:false,
+      loading:true,
+      users:[]
      },
     },
     reducers: {
@@ -39,6 +51,9 @@ export const userLogut= createAsyncThunk(
       },
       logout:(state,action)=>{
         state.value.logedin=false
+      },
+      loadingOff:(state,action)=>{
+        state.value.loading=false
       }
     },
     extraReducers: (builder) => {
@@ -52,8 +67,11 @@ export const userLogut= createAsyncThunk(
       builder.addCase(userLogut.fulfilled, (state, action) => {
         state.value.logedin=false
       });
+      builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
+        state.value.users=action.payload
+      });
     },
   });
-export const {login,logout} = user.actions
+export const {login,logout , loadingOff} = user.actions
 
 export default user.reducer

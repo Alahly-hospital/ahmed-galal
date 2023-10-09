@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client'
+import React ,{useState} from "react";
 import data from "../../assets/data.json";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -7,7 +7,8 @@ import "./subscribe.scss";
 import { useFormik } from "formik";
 import Api from "@/config/api";
 import { notifyError, notifySuccess } from "../toastify/toastify";
-
+import { useEffect } from "react";
+ 
 const Subscribe = ({ open, handleClose }) => {
   const [subscribed, setSubscribed] = useState([]);
   const [allChecked, setAllChecked] = useState(false);
@@ -109,7 +110,6 @@ const Subscribe = ({ open, handleClose }) => {
               </label>
             </div>
           ))}
-
           <Modal.Footer className="mt-4">
             <Button variant="secondary" onClick={handleClose}>
               الغاء

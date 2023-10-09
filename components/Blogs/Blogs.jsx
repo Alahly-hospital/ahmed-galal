@@ -39,6 +39,7 @@ export default function Blogs() {
     const videoId = urlSearchParams.get("v");
     return videoId;
   }
+  console.log(blogs);
 
   return (   
     <div>
@@ -58,6 +59,9 @@ export default function Blogs() {
                   ) : (
                     ""
                   )}
+                 {blog.video?    
+                   <VideoPlayer videoId={blog.video} />
+:''}
                 {blog.image? <img
                   className="img w-100 rounded  mb-3"
                   height={315}

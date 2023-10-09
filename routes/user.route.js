@@ -11,5 +11,6 @@ router.route("/data")
     .patch(userPhotoUpload.single("image"),userControl.updateUser)
     
 router.patch("/password",userControl.updatePassword)
+router.get("/users" ,auth.adminAuthorization ,userControl.getAllUsers)
 
 module.exports = router;

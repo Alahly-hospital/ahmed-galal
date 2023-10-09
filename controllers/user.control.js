@@ -57,6 +57,15 @@ const authController ={
             logger.error(error.message)
             res.status(500).send({message:error.message})  
         }
+    },
+    getAllUsers:async (req,res)=>{
+        try {
+            let data = await User.find({isAdmin:false})
+            res.send(data)
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message}) 
+        }
     }
 }
 

@@ -7,6 +7,10 @@ const routes= require("./routes")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 
+
+const sendMail =require("./services/mail")
+// sendMail()
+
 app.use(cookieParser());
 
 app.use(cors({

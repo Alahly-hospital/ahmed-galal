@@ -1,5 +1,6 @@
 const Reservation = require("../model/reservation.model")
 const loggerEvent = require("../services/logger")
+const { sendReservationMail } = require("../services/mail")
 const logger = loggerEvent("reservation")
 const {reservationValidation} = require("../services/reservation.validation")
 
@@ -93,6 +94,7 @@ const reservationController={
     acceptUserReservation:async(req,res)=>{
         try {
             await Reservation.findByIdAndUpdate(req.body.id,{status:"confirmed"})
+            await reservationValidation(req.body.email)
             res.send({message:"Updated !!"})
         } catch (error) {
             logger.error(error.message)

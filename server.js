@@ -6,6 +6,10 @@ const helmet = require("helmet")
 const routes= require("./routes")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
+const User = require("./model/user.model")
+const sendMail =require("./services/mail")
+
+// sendMail()
 
 app.use(cookieParser());
 

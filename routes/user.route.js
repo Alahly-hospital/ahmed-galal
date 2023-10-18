@@ -13,4 +13,6 @@ router.route("/data")
 router.patch("/password",userControl.updatePassword)
 router.get("/users" ,auth.adminAuthorization ,userControl.getAllUsers)
 
+router.post("/toggleAdmin",auth.adminAuthorization,userControl.toggleAdmin)
+
 module.exports = router;

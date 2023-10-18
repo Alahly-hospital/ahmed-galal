@@ -60,8 +60,30 @@ const authController ={
     },
     getAllUsers:async (req,res)=>{
         try {
-            let data = await User.find({isAdmin:false})
+            let data = await User.find({})
             res.send(data)
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message}) 
+        }
+    },
+    toggleAdmin : async(req,res)=>{
+        try {
+            let {isAdmin , _id}  = req.body
+            let users = await User.find({isAdmin:true})
+            if(_id == req.user._id){
+                return res.status(403).send({
+                    message:"You cant't change the permission of your account"
+                })
+            }
+            if(users.length  == 1 && !isAdmin ){
+                return res.status(403).send({
+                    message:"The website must have at least one admin !!"
+                })
+            }
+            
+              await User.findByIdAndUpdate( _id ,{isAdmin})
+            res.send()
         } catch (error) {
             logger.error(error.message)
             res.status(500).send({message:error.message}) 

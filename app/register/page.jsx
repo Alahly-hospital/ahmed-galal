@@ -48,7 +48,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
     address: Yup.string()
       .required("address is required")
       .min(3, "address minlength 3")
-      .max(10, "address maxlength"),
+      .max(20, "address maxlength"),
     position: Yup.string()
       .required("position is required")
       .min(3, "position minlength 3")

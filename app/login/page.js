@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import {login} from "../../redux/reducers/user";
 
 
-export default function login() {
+export default function Login() {
   const router = useRouter();
   const dispatch = useDispatch()
   function handleLogin(values) {

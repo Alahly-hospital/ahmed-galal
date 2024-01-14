@@ -120,7 +120,6 @@ const reservationController={
                 date,
                 name:`${req.user?.firstName} ${req.user?.lastName}`
             })
-            console.log(newReservation);
 
             await newReservation.save()
             res.status(201).send({message:"Reservation submited !!"})

@@ -6,6 +6,7 @@ const smtpTransport = require("nodemailer-smtp-transport");
 const { google } = require('googleapis');
 require("dotenv").config()
 const {news,reservation} =require("./templates")
+const Subscriptions = require("../model/subscribtion.model")
 
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
@@ -19,9 +20,10 @@ oauth2Client.setCredentials({
 });
 
 
-async function sendUpdateMail (arrEmails,subject){
+async function sendUpdateMail (category){
   try {
     const accessToken =await oauth2Client.getAccessToken();
+    const Sunscribers = await Subscriptions.find({ category: { $in: [category] } })
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -34,21 +36,21 @@ async function sendUpdateMail (arrEmails,subject){
       }
     });
 
-    // arrEmails.forEach(async (element) => {
-    //   const mailOptions = {
-    //     from: process.env.APP_EMAIL_ADDRESS,
-    //     to: element,
-    //     subject: "Doctor Ahmed Galal center news !!",
-    //     html: news(subject),
-    //   };
+    Sunscribers.forEach(async (user) => {
+      const mailOptions = {
+        from: process.env.APP_EMAIL_ADDRESS,
+        to: user.email,
+        subject: "Doctor Ahmed Galal center news !!",
+        html: news(category),
+      };
 
-    //   try {
-    //     const info = await transporter.sendMail(mailOptions);
-    //     console.log(`${subject} email sent to ${element}:`, info.response);
-    //   } catch (error) {
-    //     console.error(`Failed to send ${subject} email to ${element}:`, error);
-    //   }
-    // });
+      try {
+        const info = await transporter.sendMail(mailOptions);
+        console.log(`${subject} email sent to ${element}:`, info.response);
+      } catch (error) {
+        console.error(`Failed to send ${subject} email to ${element}:`, error);
+      }
+    });
 } catch (error) {
   console.log(error.message);
 }

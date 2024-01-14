@@ -5,6 +5,6 @@ const auth = require("../middlewares/auth")
 
 router.route("/")
     .post(auth.authentication,subscribeController.addSubscribtion)
-    .get(auth.adminAuthorization,subscribeController.geAllSubscribtion)
+    .get(auth.authentication,subscribeController.geAllSubscribtion)
 
 module.exports = router

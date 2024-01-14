@@ -55,6 +55,11 @@ const userSchema = new Schema({
     image:{
       type:String,
       trim:true
+    },
+    date:{
+      type:String,
+      trim:true,
+      required:true
     }
 })
 

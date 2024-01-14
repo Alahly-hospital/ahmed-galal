@@ -5,6 +5,9 @@ const User = require("../model/user.model")
 const bcrybt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cookie = require('cookie');
+const {format} = require("date-fns")
+
+
 const authControler= {
     signin:async(req,res)=>{
         try {
@@ -27,6 +30,7 @@ const authControler= {
             }
 
             const accessToken = process.env.ACCESS_TOKEN
+            console.log(accessToken);
             let token = jwt.sign({_id :userData._id},accessToken,{
                 expiresIn:"2d"
             })
@@ -38,7 +42,6 @@ const authControler= {
                 httpOnly:true,
                 maxAge:10 * 60 * 60 * 60 * 60
             })
-            
             res.send({
                 message:"Login successfully !!!"
             })
@@ -62,8 +65,8 @@ const authControler= {
                     message:"Email is already taken !!"
                 })
             }
-            console.log(req.body);
-            let user = new User(req.body)
+            const date = format(new Date() , "yyyy-MM-dd")
+            let user = new User({...req.body,date})
             await user.save()
             
             res.status(201).send({

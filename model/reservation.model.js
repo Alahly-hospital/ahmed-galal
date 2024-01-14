@@ -18,7 +18,7 @@ const reservatioSchema = new Schema({
         required:true,
     },
     email:{
-        type:String,        
+        type:String,
         trim:true,
         required:true,
     },

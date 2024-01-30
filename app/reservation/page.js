@@ -283,7 +283,7 @@ export default function reservation() {
 
                   <div className="input-with-icon">
                     <textarea
-                      class="form-control "
+                      className="form-control "
                       id="notes"
                       name="notes"
                       rows="4"
@@ -364,7 +364,7 @@ export default function reservation() {
 
                   <div className="input-with-icon">
                     <textarea
-                      class="form-control "
+                      className="form-control "
                       id="notes"
                       name="notes"
                       rows="4"

@@ -16,10 +16,34 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadingOff } from '@/redux/reducers/user';
 import { Loading } from '@/components/Loading/Loading';
+import ReactGA from 'react-ga';
+// import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const loading= useSelector((state)=>state.user.value.loading)
-  console.log(loading);
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   // Initialize Google Analytics
+  //   ReactGA.initialize('G-EV8K58JYWP');
+
+  //   // Track initial pageview
+  //   ReactGA.pageview(window.location.pathname + window.location.search);
+
+  //   // Set up a listener for route changes
+  //   const handleRouteChange = (url) => {
+  //     ReactGA.pageview(url);
+  //   };
+
+  //   router.events.on('routeChangeComplete', handleRouteChange);
+
+  //   // Remove listener when the component is unmounted
+  //   return () => {
+  //     router.events.off('routeChangeComplete', handleRouteChange);
+  //   };
+  // }, []);
+
+
   const dispatch = useDispatch()
   useEffect(()=>{ 
     setTimeout(()=>{

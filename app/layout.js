@@ -1,11 +1,13 @@
 "use client";
 
-import './globals.css'
-import { Cairo } from 'next/font/google'
-import 'bootstrap/dist/css/bootstrap.css';
- import { Providers } from './../redux/Provider';
- import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import "./globals.css";
+import { Cairo } from "next/font/google";
+import "bootstrap/dist/css/bootstrap.css";
+import { Providers } from "./../redux/Provider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Head from "next/head";
+import GoogleAnalytics from "@/components/googleAnlytics/GoogleAnlytics";
 
 const cairo = Cairo({
   subsets: ["latin"],
@@ -20,12 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <GoogleAnalytics />
       <body className={cairo.className}>
         <Providers>
-            <ToastContainer/>
-            {children}
+          <ToastContainer />
+          {children}
         </Providers>
-        </body>
+      </body>
     </html>
   );
 }

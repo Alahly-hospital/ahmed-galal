@@ -32,8 +32,8 @@ const page = () => {
     return (
         <>
         
-        <h1 class="text-center">المستخدمين</h1>
-      <table class="table table-bordered text-center">
+        <h1 className="text-center">المستخدمين</h1>
+      <table className="table table-bordered text-center">
         <thead>
           <tr>
             <th>الاسم</th>

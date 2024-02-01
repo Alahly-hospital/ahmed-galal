@@ -59,7 +59,6 @@ const userSchema = new Schema({
     date:{
       type:String,
       trim:true,
-      required:true
     }
 })
 

@@ -7,33 +7,19 @@ import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import NavbarHeader from "/components/Navbar/Navbar";
-import Api from './../../config/api';
-import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
-import { useRouter } from "next/navigation";
+import NavbarHeader from "/components/navbar/Navbar";
 
 export default function login() {
-  const router = useRouter();
-  
-  function handleLogin(values) {
+  function handleLogin(values) {}
 
-    Api.post("/auth/login",values)
-    .then(()=>{
-      router.push('/');
-      notifySuccess('Correct Information !! 😊');
-      formik.resetForm();
-    })
-    .catch((error)=>{
-      let errorMsg = error?.response?.data?.message || error?.response?.data?.error
-      console.log(errorMsg)
-      notifyError(`${errorMsg} 😞`)
-    })
-  }
   let validationSchema = Yup.object({
     email: Yup.string().required("email is required").email(),
     password: Yup.string()
       .required("Password is required")
-      
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
+        "Password must contain at least one uppercase and one lowercase letter"
+      ),
   });
 
   let formik = useFormik({
@@ -62,7 +48,7 @@ export default function login() {
                   <label htmlFor="name mt-4" className="mb-2">
                     البريد الالكتروني
                   </label>
-                  <div className="col-lg-6 ">
+                  <div className="col-md-6 ">
                     {" "}
                     {formik.touched.email && formik.errors.email ? (
                       <div className="alert alert-danger">
@@ -90,7 +76,7 @@ export default function login() {
                   <label htmlFor="password" className="mb-2">
                     كلمة المرور{" "}
                   </label>
-                  <div className="col-lg-6 ">
+                  <div className="col-md-6 ">
                     {formik.touched.password && formik.errors.password ? (
                       <div className="alert alert-danger">
                         {formik.errors.password}
@@ -114,22 +100,22 @@ export default function login() {
                     </div>
                   </div>
 
-                  <button type="submit" className="btn responsive-input form-control text-center text-white mt-4 primary-bg p-2   ">
+                  <button className="btn responsive-input form-control text-center text-white mt-4 primary-bg p-2   ">
                     تسجيل الدخول
                   </button>
                   <p className="mt-4 ">
-                    لا يوجد لديك حساب ؟  &nbsp;  
+                    لا يوجد لديك حساب ؟
                     <Link
                       href={"/register"}
                       className="span-color text-decoration-none"
                       prefetch
                     >
-                      انشئ حسابك الان !         
+                      انشئ حسابك الان !
                     </Link>
                   </p>
                 </form>
               </div>
-              <div className="col-lg-6 text-center">
+              <div className="col-md-6 text-center">
                 <img src={logo.src} className="w-75 img" alt="" />
               </div>
             </div>

@@ -1,11 +1,11 @@
 "use client";
 
 import './globals.css'
-import { Cairo } from 'next/font/google'
 import 'bootstrap/dist/css/bootstrap.css';
  import { Providers } from './../redux/Provider';
  import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Cairo } from 'next/font/google'
 
 const cairo = Cairo({
   subsets: ["latin"],

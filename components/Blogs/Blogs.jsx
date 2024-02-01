@@ -52,15 +52,17 @@ export default function Blogs() {
               key={id}
             >
               <div className="col-lg-6">
-                <div className="w-100">
+                  
                   {blog.video ? (
-                    <YouTube
-                      className=" w-100"
-                      style={{ maxWidth: "100%", width: "100%" }}
-                      height={315}
-                      videoId={getVideoId(blog.video)}
-                      opts={{ origin: "https://www.youtube.com" }}
-                    />
+                   <YouTube
+                   videoId={getVideoId(blog.video)}
+                   opts={{
+                    width: '100%',  
+height:'400px',  
+                       origin: 'https://www.youtube.com'
+                   }}
+               />
+               
                   ) : (
                     ""
                   )}
@@ -74,7 +76,7 @@ export default function Blogs() {
                   ) : (
                     ""
                   )}
-                </div>
+             
               </div>
               <div className="col-lg-6">
                 <div className="about-info">

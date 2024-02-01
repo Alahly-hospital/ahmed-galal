@@ -56,11 +56,17 @@ const Services = () => {
                                             </Col>
                                             
                                         </Row>
-                                        <Row >
-                                            {ele?.text?.map((ele) => (
-                                                <Col lg={6} className="mt-1 mb-1"><BiLeftArrowAlt className='service-icon  fs-5' /> {ele}</Col>
-                                            ))}
-                                        </Row>
+                                        <div className='scrollbar' >
+    <Row>
+        {ele?.text?.map((ele, index) => (
+            <Col lg={6} key={index} className="mt-1 mb-1">
+                <BiLeftArrowAlt className='service-icon fs-5' /> {ele}
+            </Col>
+        ))}
+    </Row>
+</div>
+
+
                                     </Card.Body>
                                 </Card>
                             </Col>

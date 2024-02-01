@@ -33,5 +33,28 @@
                 color: gray;
             }
     }
+
+    .scrollbar {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: 310px;
+        padding-bottom: 180px;
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        &:hover::-webkit-scrollbar-thumb {
+            background-color: #ddd; /* Change color on hover */
+        }
+    }
+    
 }
 

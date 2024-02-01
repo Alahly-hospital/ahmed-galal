@@ -273,8 +273,8 @@ console.log(category)
   </div>
 
    <div>
-      <h1 class="text-center">المدونات</h1>
-      <table class="table table-bordered text-center">
+      <h1 className="text-center">المدونات</h1>
+      <table className="table table-bordered text-center">
         <thead>
           <tr>
             <th>العنوان</th>

@@ -32,15 +32,20 @@ export default function blogs() {
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
-      console.log(e);
     }
   }
   useEffect(() => {
     getBlogs();
   }, []);
+
   function getVideoId(url) {
-    const urlSearchParams = new URLSearchParams(new URL(url).search);
-    const videoId = urlSearchParams.get("v");
+    // const urlSearchParams = new URLSearchParams(new URL(url).search);
+    // const videoId = urlSearchParams.get("v");
+    // console.log(url);
+    // return videoId;
+
+    const videoId = url.split("/").pop().split("?")[0];
+    console.log(videoId);
     return videoId;
   }
   let filterdData = blogs;
@@ -52,7 +57,7 @@ export default function blogs() {
   if (select) {
     filterdData = filterdData.filter((ele) => ele?.category?.includes(select));
   }
-
+console.log(filterdData);
   return (
     <>
       <NavbarHeader />
@@ -108,14 +113,16 @@ export default function blogs() {
               className="blogs-section d-flex justify-content-center"
               key={id}
             >
-              <div class="col-lg-6">
-                <div>
+              <div className="col-lg-12">
+                <div className="w-100">
                   {blog.video ? (
                     <YouTube
                       className=" w-100"
-                      height={315}
+                      style={{maxWidth:"100%" , width:"100%"}}
+                      // height={400}
                       videoId={getVideoId(blog.video)}
                       opts={{ origin: "https://www.youtube.com" }}
+                      
                     />
                   ) : (
                     ""
@@ -123,7 +130,7 @@ export default function blogs() {
                   {blog.image ? (
                     <img
                       className="img w-100  rounded  mb-3"
-                      width={315}
+                      width={400}
                       src={apiUrl + blog.image}
                       alt=""
                     />
@@ -132,11 +139,11 @@ export default function blogs() {
                   )}
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="about-info">
+              <div className="col-lg-12">
+                <div className="about-info">
                   <h2>{blog.title}</h2>
-                  <div class="  text-secondary mt-3">
-                    <p class="">{blog.content}</p>
+                  <div className="  text-secondary mt-3">
+                    <p className="">{blog.content}</p>
                   </div>
                 </div>
               </div>

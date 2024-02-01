@@ -7,10 +7,32 @@ import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import NavbarHeader from "/components/navbar/Navbar";
+import NavbarHeader from "/components/Navbar/Navbar";
+import Api from './../../config/api';
+import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import {login} from "../../redux/reducers/user";
 
-export default function login() {
-  function handleLogin(values) {}
+
+export default function Login() {
+  const router = useRouter();
+  const dispatch = useDispatch()
+  function handleLogin(values) {
+
+    Api.post("/auth/login",values)
+    .then(()=>{
+      router.push('/');
+      notifySuccess('Correct Information !! 😊');
+      dispatch(login())
+      formik.resetForm();
+    })
+    .catch((error)=>{
+      let errorMsg = error?.response?.data?.message || error?.response?.data?.error
+      console.log(errorMsg)
+      notifyError(`${errorMsg} 😞`)
+    })
+  }
 
   let validationSchema = Yup.object({
     email: Yup.string().required("email is required").email(),

@@ -16,7 +16,7 @@ export const Loading = () => {
             top:"50%",
             transform: "translate(-50% , -50%)"
         }}
-        wrapperClass="loading"
+        wrapperclassName="loading"
         visible={true}
         />
   )

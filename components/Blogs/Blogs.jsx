@@ -5,7 +5,7 @@ import "./blogs.scss";
 import Link from "next/link";
 import Api from "@/config/api";
 import YouTube from "react-youtube";
-import apiUrl from '../../config/domains.js'
+import apiUrl from "../../config/domains.js";
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   async function getBlogs() {
@@ -16,24 +16,23 @@ export default function Blogs() {
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
-      
     }
-  }    
-  useEffect(() => {     
+  }
+  useEffect(() => {
     getBlogs();
   }, []);
   function VideoPlayer({ videoId }) {
     const opts = {
-      height: '315',
-      width: '100%',
+      height: "315",
+      width: "100%",
       playerVars: {
-         autoplay: 0, // Change to 1 if you want the video to autoplay
+        autoplay: 0, // Change to 1 if you want the video to autoplay
       },
     };
-  
+
     return <YouTube videoId={videoId} opts={opts} />;
   }
-  
+
   function getVideoId(url) {
     const urlSearchParams = new URLSearchParams(new URL(url).search);
     const videoId = urlSearchParams.get("v");
@@ -41,17 +40,23 @@ export default function Blogs() {
   }
   console.log(blogs);
 
-  return (   
+  return (
     <div>
       <section className=" mb-4 pb-4">
         <Container>
-          <h2 className="title pt-4">المدونات</h2>            <Row className="blogs-section " >
-
-          {blogs.slice(0,2).map((blog, id) => (
-              <div class="col-lg-6"key={id}>
-                 {blog.video ? (
+          <h2 className="title pt-4">المدونات</h2>{" "}
+          {/* <Row className="blogs-section"> */}
+          {blogs.slice(0, 2).map((blog, id) => (
+            <Row
+              className="blogs-section d-flex justify-content-center"
+              key={id}
+            >
+              <div className="col-lg-6">
+                <div className="w-100">
+                  {blog.video ? (
                     <YouTube
                       className=" w-100"
+                      style={{ maxWidth: "100%", width: "100%" }}
                       height={315}
                       videoId={getVideoId(blog.video)}
                       opts={{ origin: "https://www.youtube.com" }}
@@ -59,26 +64,29 @@ export default function Blogs() {
                   ) : (
                     ""
                   )}
-                 {blog.video?    
-                   <VideoPlayer videoId={blog.video} />
-:''}
-                {blog.image? <img
-                  className="img w-100 rounded  mb-3"
-                  height={315}
-                  width={315}
-                  src={apiUrl+blog.image}
-                  alt=""
-                />:''}
-              
-               
-                <h2>{blog.title}</h2>
-                <div className="  text-secondary mt-3">
-                  <p className="">{blog.content}</p>
+                  {blog.image ? (
+                    <img
+                      className="img w-100  rounded  mb-3"
+                      width={315}
+                      src={apiUrl + blog.image}
+                      alt=""
+                    />
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
-          ))}
+              <div className="col-lg-6">
+                <div className="about-info">
+                  <h2>{blog.title}</h2>
+                  <div className="  text-secondary mt-3">
+                    <p className="">{blog?.content?.slice(0,1200)}</p>
+                  </div>
+                </div>
+              </div>
             </Row>
-
+          ))}
+          {/* </Row> */}
           <div className="d-flex align-content-center justify-content-center mb-4 mt-4 pt-4 mt-4 ">
             <Link
               href="/blogs"

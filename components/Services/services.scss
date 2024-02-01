@@ -38,7 +38,12 @@
         overflow-x: hidden;
         overflow-y: auto;
         max-height: 310px;
-        padding-bottom: 180px;
+        padding-bottom: 180px; // Default padding
+
+        @media (min-width: 1200px) {
+            padding-bottom: 0; // Remove padding on screens larger than 1200px
+        }
+
         scrollbar-width: thin;
         scrollbar-color: transparent transparent;
 

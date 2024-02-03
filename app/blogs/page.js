@@ -14,6 +14,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 
+
 export default function blogs() {
   
   let logedin = useSelector ((state)=>state.user.value.logedin)
@@ -113,7 +114,7 @@ console.log(filterdData);
               className="blogs-section d-flex justify-content-center"
               key={id}
             >
-              <div className="col-lg-12">
+              <div className="col-lg-6">
                 <div className="w-100">
                   {blog.video ? (
                     <YouTube
@@ -129,17 +130,17 @@ console.log(filterdData);
                   )}
                   {blog.image ? (
                     <img
-                      className="img w-100  rounded  mb-3"
+                      className="img w-100 rounded  mb-3 h-50 d-block"
                       width={400}
                       src={apiUrl + blog.image}
                       alt=""
                     />
                   ) : (
-                    ""
+                    "" 
                   )}
                 </div>
               </div>
-              <div className="col-lg-12">
+              <div className="col-lg-6">
                 <div className="about-info">
                   <h2>{blog.title}</h2>
                   <div className="  text-secondary mt-3">

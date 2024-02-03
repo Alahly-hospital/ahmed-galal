@@ -1,14 +1,13 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
-import "./sidebar.scss";
-import doctor from "../../assets/doctor.jpg";
+import "./settings.scss";
 import Link from "next/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 
-export default function AdminPanel({children}) {
+export default function settings({children}) {
   // const [upload, setUpload] = useState(false);
   let logedin = useSelector((state)=>state.user.value.logedin)
  
@@ -47,7 +46,7 @@ export default function AdminPanel({children}) {
   };
 
   return (
-    <div>
+    <div className='settings'>
        
       <div className="wrapper d-flex align-items-stretch">
         <nav

@@ -3,40 +3,45 @@ import React from "react";
 import "./register.scss";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-import { AiFillPhone, AiOutlineMail, AiTwotoneCalendar, AiTwotoneHome,} from "react-icons/ai";
+import {
+  AiFillPhone,
+  AiOutlineMail,
+  AiTwotoneCalendar,
+  AiTwotoneHome,
+} from "react-icons/ai";
 import Link from "next/link";
 import NavbarHeader from "/components/Navbar/Navbar";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Api from "../../config/api"
+import Api from "../../config/api";
 import { useRouter } from "next/navigation";
-import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
- function Register() {
+import { notifyError, notifySuccess } from "@/components/toastify/toastify";
+function Register() {
   const router = useRouter();
 
-
   function handleRegister(values) {
-    if(values.password!= values.rePassword) return notifyError("Password must be the same")
-    Api.post("/auth/register",values)
-    .then(()=>{
-      router.push('/login');
-      formik.resetForm();
-      notifySuccess("Account created !! 😊 ")
-    })
-    .catch((error)=>{
-      let errorMsg = error?.response?.data?.message || error?.response?.data?.error
-      console.log(errorMsg)
-      notifyError(`${errorMsg} 😞 `)
-    })
+    if (values.password != values.rePassword)
+      return notifyError("Password must be the same");
+    Api.post("/auth/register", values)
+      .then(() => {
+        router.push("/login");
+        formik.resetForm();
+        notifySuccess("Account created !! 😊 ");
+      })
+      .catch((error) => {
+        let errorMsg =
+          error?.response?.data?.message || error?.response?.data?.error;
+        console.log(errorMsg);
+        notifyError(`${errorMsg} 😞 `);
+      });
   }
-
 
   let validationSchema = Yup.object({
     firstName: Yup.string()
       .required("fname is required")
       .min(3, "fname minlength 3")
       .max(10, "fname maxlength"),
-      lastName: Yup.string()
+    lastName: Yup.string()
       .required("lname is required")
       .min(3, "lname minlength 3")
       .max(10, "lname maxlength"),
@@ -53,15 +58,13 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
       .required("position is required")
       .min(3, "position minlength 3")
       .max(10, "position maxlength"),
-    password: Yup.string()
-      .required("Password is required"),
-      // .matches(
-      //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
-      //   "Password must contain at least one uppercase and one lowercase letter"
-      // ),
-    rePassword: Yup.string()
-      .required("rePassword is required"),
-      // .oneOf([Yup.ref("password")], "password dosnot  match"),
+    password: Yup.string().required("Password is required"),
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
+    //   "Password must contain at least one uppercase and one lowercase letter"
+    // ),
+    rePassword: Yup.string().required("rePassword is required"),
+    // .oneOf([Yup.ref("password")], "password dosnot  match"),
     phone: Yup.string()
       .required("Phone number is required")
       .matches(
@@ -119,7 +122,6 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    
                   />
                   <FaUserAlt className="icon primary-color" />
                 </div>
@@ -219,7 +221,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                   <AiTwotoneHome className="icon primary-color" />
                 </div>
               </div>
-              
+
               <br />
               <br />
               <div className="col-md-4 mt-4">
@@ -295,67 +297,66 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
               </div>
             </div>
             <div className="mt-3">
-
               <div className="row">
-            <div className="col-md-4">
-                {formik.touched.position && formik.errors.position ? (
+                <div className="col-md-4">
+                  {formik.touched.position && formik.errors.position ? (
+                    <div className="alert alert-danger">
+                      {formik.errors.position}
+                    </div>
+                  ) : null}
+
+                  <div className="input-with-icon">
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="position"
+                      id="position"
+                      placeholder="الوظيفة"
+                      value={formik.values.position}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      required
+                    />
+                    {/* <BsPersonWorkspace` className="icon primary-color" /> */}
+                  </div>
+                </div>
+                {formik.touched.gender && formik.errors.gender ? (
                   <div className="alert alert-danger">
-                    {formik.errors.position}
+                    {formik.errors.gender}
                   </div>
                 ) : null}
 
-                <div className="input-with-icon">
+                <div className=" mb-1 ">
                   <input
-                    className="form-control"
-                    type="text"
-                    name="position"
-                    id="position"
-                    placeholder="الوظيفة"
-                    value={formik.values.position}
+                    className="form-check-input m-1"
+                    type="radio"
+                    name="gender"
+                    id="gender1"
+                    value="female"
+                    checked={formik.values.gender === "female"}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    required
                   />
-                  {/* <BsPersonWorkspace` className="icon primary-color" /> */}
+                  <label className="form-check-label " htmlFor="gender1">
+                    أثني
+                  </label>
+                </div>
+                <div className="">
+                  <input
+                    className="form-check-input m-1"
+                    type="radio"
+                    name="gender"
+                    id="exampleRadios2"
+                    value="male"
+                    checked={formik.values.gender === "male"}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  <label className="form-check-label" htmlFor="exampleRadios2">
+                    ذكر
+                  </label>
                 </div>
               </div>
-              {formik.touched.gender && formik.errors.gender ? (
-                <div className="alert alert-danger">{formik.errors.gender}</div>
-              ) : null}
-
-              <div className=" mb-1 ">
-                <input
-                  className="form-check-input m-1"
-                  type="radio"
-                  name="gender"
-                  id="gender1"
-                  value="female"
-                  
-                  checked={formik.values.gender === "female"}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                <label className="form-check-label " htmlFor="gender1">
-                  أثني
-                </label>
-              </div>
-              <div className="">
-                <input
-                  className="form-check-input m-1"
-                  type="radio"
-                  name="gender"
-                  id="exampleRadios2"
-                  value="male"
-                  checked={formik.values.gender === "male"}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                <label className="form-check-label" htmlFor="exampleRadios2">
-                  ذكر
-                </label>
-              </div>
-              
-            </div>
             </div>
             <div className="row" style={{ paddingBottom: "100px" }}>
               <div className="col-md-8">
@@ -366,7 +367,7 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
                   أنشء حسابك الان
                 </button>
                 <p className=" mt-4">
-         يوجد لديك حساب بالفعل           &nbsp;  
+                  يوجد لديك حساب بالفعل &nbsp;
                   <Link
                     href={"/login"}
                     className="text-decoration-none span-color"
@@ -384,4 +385,4 @@ import { notifyError ,notifySuccess } from "@/components/toastify/toastify";
   );
 }
 
-export default Register
+export default Register;

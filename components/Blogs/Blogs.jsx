@@ -79,41 +79,35 @@ export default function Blogs() {
           {/* <Row className="blogs-section"> */}
           {/* {blogs?.slice(0, 2)?.map((blog, id) => (
             <Row
-            className="blogs-section d-flex justify-content-center"
-            key={id}
-          >
-            <div className="col-lg-6">
-              <div className="w-100">
-                {blog.video ? (
-                  <YouTube
-                    className=" w-100"
-                    style={{maxWidth:"100%" , width:"100%"}}
-                    // height={400}
-                    videoId={getVideoId(blog.video)}
-                    opts={{ origin: "https://www.youtube.com" }}
-                    
-                  />
-                ) : (
-                  ""
-                )}
-                {blog.image ? (
-                  <img
-                    className="img w-100 rounded  mb-3 h-50 d-block"
-                    // width={400}
-                    src={apiUrl + blog.image}
-                    alt=""
-                  />
-                ) : (
-                  "" 
-                )}
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="about-info">
-                <h2>{blog.title}</h2>
-                <div className="  text-secondary mt-3">
-                  <p className="">{blog.content}</p>
-                </div>
+
+              className="blogs-section d-flex justify-content-center"
+              key={id}
+            >
+              <div className="col-lg-6">
+                  
+                  {blog.video ? (
+                   <YouTube
+                   videoId={getVideoId(blog.video)}
+                   opts={{
+                    width: '100%',  
+height:'400px',  
+                       origin: 'https://www.youtube.com'
+                   }}
+               />
+               
+                  ) : (
+                    ""
+                  )}
+                  {blog.image ? (
+                    <img
+                      className="img w-100  rounded  mb-3"
+                      width={315}
+                      src={apiUrl + blog.image}
+                      alt=""
+                    />
+                  ) : (
+                    ""
+                  )}
               </div>
             </div>
           </Row>

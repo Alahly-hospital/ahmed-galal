@@ -12,8 +12,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar'
 import Card from 'react-bootstrap/Card';
+import { useRouter } from "next/navigation";
 
 export default function Blogs() {
+  const router = useRouter()
   const [blogs, setBlogs] = useState([]);
   async function getBlogs() {
     try {
@@ -125,13 +127,13 @@ height:'400px',
             {
               blogs.map((ele) => (
                 <SwiperSlide style={{height:"24rem"}}>
-                  <Card style={{ width: "100%" ,height:"100%" }}>
+                  <Card className="cursor-pointer" style={{ width: "100%" ,height:"100%" }} onClick={()=>{router.push("/blogs")}}>
                     <Card.Img className="img w-100 rounded  mb-3 h-50 d-block"
                       // width={400}
                       src={apiUrl + ele?.image}
                       alt="" />
-                    <Card.Body>
-                      <Card.Title>{ele?.title}</Card.Title>
+                    <Card.Body className="pt-0">
+                      <h5 dir="rtl">{ele?.title}</h5>
                       <Card.Text>
                         {ele?.content.slice(0, 200)} ......
                       </Card.Text>

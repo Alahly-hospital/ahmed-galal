@@ -57,3 +57,10 @@ background:var(--primary) !important;
 iframe{
   width: 100% !important;
 }
+.blog-link {
+  text-decoration: none;  
+  color: black;  
+  &:hover {
+    color: blue;  
+  }
+}

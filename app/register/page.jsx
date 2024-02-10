@@ -320,13 +320,22 @@ function Register() {
                     {/* <BsPersonWorkspace` className="icon primary-color" /> */}
                   </div>
                 </div>
+
+        
+           
+           
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-4 mt-4">
                 {formik.touched.gender && formik.errors.gender ? (
                   <div className="alert alert-danger">
                     {formik.errors.gender}
                   </div>
                 ) : null}
-
-                <div className=" mb-1 ">
+ 
+                <div className=" mb-1 ">    
+                
                   <input
                     className="form-check-input m-1"
                     type="radio"
@@ -356,6 +365,9 @@ function Register() {
                     ذكر
                   </label>
                 </div>
+              </div>
+              <div className="col-md-4 mt-4">
+       
               </div>
             </div>
             <div className="row" style={{ paddingBottom: "100px" }}>

@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from "react";
 import "./blogs.scss";
 import { Container, Dropdown, Row } from "react-bootstrap";
-import NavbarHeader from "../../components/Navbar/Navbar";
-import Scrolltop from "../../components/Scrolltop/Scrolltop";
 import Footer from "../../components/Footer/Footer";
 import Api from "@/config/api";
 import apiUrl from "../../config/domains";
@@ -13,6 +11,7 @@ import Subscribe from "@/components/subscribe/Subscribe";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { BiSearchAlt } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 
 export default function blogs() {
   
@@ -29,10 +28,12 @@ export default function blogs() {
       let res = await Api.get("/blogs");
       console.log(res.data);
       setBlogs(res.data);
+
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
     }
+ 
   }
   useEffect(() => {
     getBlogs();
@@ -60,8 +61,7 @@ export default function blogs() {
 console.log(filterdData);
   return (
     <>
-      <NavbarHeader />
-      <Scrolltop />
+
       <div className="bg-img">
         <div className="bg-layer text-white  text-center p-4">
           <h1 className="pt-4 m-4 mt-4">المدونات</h1>
@@ -114,7 +114,10 @@ console.log(filterdData);
               key={id}
             >
               <div className="col-lg-12">
+         
+
                 <div className="w-100">
+
                   {blog.video ? (
                     <YouTube
                       className=" w-100"
@@ -127,7 +130,7 @@ console.log(filterdData);
                   ) : (
                     ""
                   )}
-                  {blog.image ? (
+                      <Link className="text-decoration-none" href={`/blogs/${blog._id}`}> {blog.image ? (
                     <img
                       className="img w-100  rounded  mb-3"
                       width={400}
@@ -136,12 +139,17 @@ console.log(filterdData);
                     />
                   ) : (
                     ""
-                  )}
+                  )}      </Link>
+
                 </div>
+          
               </div>
               <div className="col-lg-12">
                 <div className="about-info">
-                  <h2>{blog.title}</h2>
+                  {/* <h2>{blog.title}</h2> */}
+                  <Link href={`/blogs/${blog._id}`}>
+                   <h2 className="blog-link">{blog.title}</h2> 
+                  </Link>
                   <div className="  text-secondary mt-3">
                     <p className="">{blog.content}</p>
                   </div>

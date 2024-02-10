@@ -38,10 +38,10 @@ export default function Login() {
     email: Yup.string().required("email is required").email(),
     password: Yup.string()
       .required("Password is required")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
-        "Password must contain at least one uppercase and one lowercase letter"
-      ),
+      // .matches(
+      //   /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,10}$/,
+      //   "Password must contain at least one uppercase and one lowercase letter"
+      // ),
   });
 
   let formik = useFormik({

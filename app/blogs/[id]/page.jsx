@@ -2,8 +2,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import Api from '@/config/api';
-import YouTube from "react-youtube";
-import { useRouter } from 'next/navigation';
+import YouTube from "react-youtube"; 
 import apiUrl from "../../../config/domains";
 
 const blog = ({params}) => {

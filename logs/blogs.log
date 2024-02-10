@@ -1,34 +1,3 @@
-2023-09-02 19:27:17 | ERROR | Found non-callable @@iterator
-2023-09-02 19:31:47 | ERROR | Found non-callable @@iterator
-2023-09-02 19:31:56 | ERROR | Found non-callable @@iterator
-2023-09-02 19:32:15 | ERROR | Found non-callable @@iterator
-2023-09-02 19:34:30 | INFO | {"title":"asdasd","content":"asdasdsad"}
-2023-09-02 19:35:34 | INFO | {"title":"asdasd","content":"asdasdsad"}
-2023-09-02 19:36:45 | INFO | {"title":"asdasd","content":"asdasdsad"}
-2023-09-02 19:41:23 | INFO | {"title":"asdasd","content":"asdasdsad"}
-2023-09-02 19:42:02 | INFO | {"title":"asdasd","content":"asdasdsad"}
-2023-09-02 19:42:10 | INFO | {"title":"asdasd","content":"asdasdsad"}
-2023-09-09 00:37:59 | INFO | {"title":"yyy","content":"y","image":{},"video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 00:37:59 | ERROR | Cannot read properties of undefined (reading 'filename')
-2023-09-09 00:38:03 | INFO | {"title":"yyy","content":"y","image":{},"video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 00:38:03 | ERROR | Cannot read properties of undefined (reading 'filename')
-2023-09-09 15:49:58 | INFO | {"title":"tttttttttttt","content":"","image":"","video":""}
-2023-09-09 15:49:58 | ERROR | Cannot read properties of undefined (reading 'filename')
-2023-09-09 15:50:16 | INFO | {"title":"tttttttttttt","content":"tttt","image":{},"video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 15:50:16 | ERROR | Cannot read properties of undefined (reading 'filename')
-2023-09-09 15:52:38 | INFO | {"title":"tttttttttttt","content":"tttt","image":{},"video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 15:52:38 | ERROR | Cannot read properties of undefined (reading 'filename')
-2023-09-09 16:05:45 | INFO | {"title":"rrrrrrrrrrr","content":"rrrrrrrrrrr","video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 16:21:35 | INFO | {"title":"tttttttttt","content":"tttttttttttttt","video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 18:04:41 | INFO | {"title":"روان","content":"روان روان","video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-09 18:28:27 | INFO | {"title":"روان","content":"hi","video":"https://www.youtube.com/watch?v=rJyTfqdCvlk"}
-2023-09-10 19:24:58 | INFO | {"title":"sadasd","content":"asdasdasdasd","image":"","video":"https://chat.openai.com/"}
-2023-09-11 13:54:40 | INFO | {"title":"a7la msaaaa 3la 3agny","content":"sadasdasd","video":""}
-2023-09-11 13:55:37 | INFO | {"title":"sadasdasd","content":"asdasdasd","image":"","video":"https://www.youtube.com/watch?v=z24ud5tUhwA&t=1421s"}
-2023-09-11 23:23:21 | INFO | {"title":"sadasd","content":"asdasd","image":"","category":"asdas","video":""}
-2023-09-11 23:27:58 | INFO | {"title":"sadasdsad","content":"","image":"","category":"asdas","video":""}
-2023-09-12 13:24:57 | ERROR | Blog is not defined
-2023-09-14 20:23:53 | INFO | {"title":"asdasd","content":"","image":"","category":["Abdominal pain/cramps general - الام بالبطن"],"video":""}
-2023-09-14 20:24:10 | INFO | {"title":"adsadasdsad","content":"asdasdasd","category":["Abdominal pain/cramps general - الام بالبطن","Perianal itching - حكة في منطقة ما حول الشرج","Diarrhoea - إسهال"],"video":"https://www.youtube.com/watch?v=z24ud5tUhwA&t=1421s"}
-2023-09-14 20:26:18 | INFO | {"title":"asdasd","content":"","image":"","category":["Abdominal pain epigastric - الم في فم المعدة"],"video":""}
-2023-09-21 21:09:19 | INFO | {"title":"rwan","content":"rwan","category":["Abdominal pain/cramps general - الام بالبطن"],"video":"https://www.youtube.com/watch?v=W43G2NyWPRM"}
+2024-02-10 16:38:35 | INFO | {"email":"s@gmail.com","password":"11111"}
+2024-02-10 16:39:29 | INFO | {"title":"title","content":"title"}
+2024-02-10 18:16:55 | INFO | {"title":"ggggg","content":"ffff"}

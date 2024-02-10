@@ -61,7 +61,7 @@ const authControler= {
 
             let emailCheck = await User.findOne({email:req.body.email})
             if(emailCheck){
-                return res.status(403).send({
+                return res.status(403).send({  
                     message:"Email is already taken !!"
                 })
             }

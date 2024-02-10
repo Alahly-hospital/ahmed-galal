@@ -23,6 +23,23 @@ const blogsController = {
             res.status(500).send({message:error.message})   
         }
     },
+    getOneBlog:async(req,res)=>{ 
+        try {
+            const {id }= req.params
+            const blog = await Blogs.findById(id)
+            if (!blog){
+                return res.status(404).send({message : `Not Found blog with id: ${id}`})
+            }
+            res.status(200).json({data : blog})
+        } catch (error) {
+            logger.error(error.message)
+            res.status(500).send({message:error.message})   
+        }
+            
+     
+        
+
+    },
     getBlogs: async(req,res)=>{
         try {
             let blogs =await Blogs.find()

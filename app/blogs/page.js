@@ -13,6 +13,7 @@ import { BiSearchAlt } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 
+
 export default function blogs() {
   
   let logedin = useSelector ((state)=>state.user.value.logedin)
@@ -113,9 +114,7 @@ console.log(filterdData);
               className="blogs-section d-flex justify-content-center"
               key={id}
             >
-              <div className="col-lg-12">
-         
-
+              <div className="col-lg-6">
                 <div className="w-100">
 
                   {blog.video ? (
@@ -132,7 +131,7 @@ console.log(filterdData);
                   )}
                       <Link className="text-decoration-none" href={`/blogs/${blog._id}`}> {blog.image ? (
                     <img
-                      className="img w-100  rounded  mb-3"
+                      className="img w-100 rounded  mb-3 h-50 d-block"
                       width={400}
                       src={apiUrl + blog.image}
                       alt=""
@@ -144,7 +143,7 @@ console.log(filterdData);
                 </div>
           
               </div>
-              <div className="col-lg-12">
+              <div className="col-lg-6">
                 <div className="about-info">
                   {/* <h2>{blog.title}</h2> */}
                   <Link href={`/blogs/${blog._id}`}>

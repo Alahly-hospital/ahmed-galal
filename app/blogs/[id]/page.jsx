@@ -7,23 +7,31 @@ import apiUrl from "../../../config/domains";
 
 const blog = ({params}) => {
   const [blog, setBlog] = useState(null);
- 
-console.log(params);
-
-  async function getBlog() {
+  const [blogs, setBlogs] = useState([]);
+  console.log(params);
+  async function getBlogs() {
     try {
-      let res = await Api.get(`/blogs/${ params.id}`)
-      console.log(res.data.data); 
-      setBlog(res.data.data);
+      let res = await Api.get("/blogs");
+      let data = res.data
+      let blog =data?.find((ele)=>ele._id == params.id)
+      setBlog(blog)
+      setBlogs(res.data);
+
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
       console.log(`error ${error}`);
     }
+ 
   }
+useEffect(()=>{
+  getBlogs()
+},[])
+console.log(blog);
 
   useEffect(()=>{
-    getBlog()
+    const blog = blogs.find((ele)=>ele._id == id)
   },[])
+  console.log(blog);
   function getVideoId(url) {
     if (!url) return null;
     

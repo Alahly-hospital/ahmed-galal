@@ -127,7 +127,7 @@ height:'400px',
             {
               blogs.map((ele) => (
                 <SwiperSlide style={{height:"24rem"}}>
-                  <Card className="cursor-pointer" style={{ width: "100%" ,height:"100%" }} onClick={()=>{router.push("/blogs")}}>
+                  <Card className="cursor-pointer" style={{ width: "100%" ,height:"100%" }} onClick={()=>{router.push("/blogs/"+ele._id)}}>
                     <Card.Img className="img w-100 rounded  mb-3 h-50 d-block"
                       // width={400}
                       src={apiUrl + ele?.image}

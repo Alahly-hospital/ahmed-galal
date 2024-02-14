@@ -146,8 +146,8 @@ console.log(filterdData);
               <div className="col-lg-6">
                 <div className="about-info">
                   {/* <h2>{blog.title}</h2> */}
-                  <Link href={`/blogs/${blog._id}`}>
-                   <h2 className="blog-link">{blog.title}</h2> 
+                  <Link className="blog-link" href={`/blogs/${blog._id}`}>
+                   <h2>{blog.title}</h2> 
                   </Link>
                   <div className="  text-secondary mt-3">
                     <p className="">{blog.content}</p>

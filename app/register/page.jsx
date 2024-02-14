@@ -16,6 +16,7 @@ import * as Yup from "yup";
 import Api from "../../config/api";
 import { useRouter } from "next/navigation";
 import { notifyError, notifySuccess } from "@/components/toastify/toastify";
+import { MdWork } from "react-icons/md";
 function Register() {
   const router = useRouter();
 
@@ -317,6 +318,8 @@ function Register() {
                       onBlur={formik.handleBlur}
                       required
                     />
+                    <MdWork  className="icon primary-color"/>
+
                     {/* <BsPersonWorkspace` className="icon primary-color" /> */}
                   </div>
                 </div>

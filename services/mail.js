@@ -20,41 +20,7 @@ oauth2Client.setCredentials({
 });
 
 
-async function sendUpdateMail (category){
-  try {
-    const accessToken =await oauth2Client.getAccessToken();
-    const Sunscribers = await Subscriptions.find({ category: { $in: [category] } })
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        type: 'OAuth2',
-        user: 'ahmedgalalcenter@gmail.com',
-        clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRET,
-        refreshToken: process.env.ACCESS_TOKEN,
-        accessToken: accessToken.token
-      }
-    });
-
-    Sunscribers.forEach(async (user) => {
-      const mailOptions = {
-        from: process.env.APP_EMAIL_ADDRESS,
-        to: user.email,
-        subject: "Doctor Ahmed Galal center news !!",
-        html: news(category),
-      };
-
-      try {
-        const info = await transporter.sendMail(mailOptions);
-        console.log(`${subject} email sent to ${element}:`, info.response);
-      } catch (error) {
-        console.error(`Failed to send ${subject} email to ${element}:`, error);
-      }
-    });
-} catch (error) {
-  console.log(error.message);
-}
-}
+ 
 async function sendReservationMail (arr,date){
   try {
     const accessToken =await oauth2Client.getAccessToken();

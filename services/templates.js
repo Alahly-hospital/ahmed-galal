@@ -34,11 +34,11 @@ return `<!DOCTYPE html>
         </style>
       </head>
       <body>
-        <div class="container">
-          <div class="header">
+        <div className="container">
+          <div className="header">
             <h1>Latest News Update</h1>
           </div>
-          <div class="content">
+          <div className="content">
              <p>category:${category}</p> 
             <a href="https://drahmedgalalcenter.com" style="text-decoration:none">Visit Us now</a>
           </div>
@@ -84,11 +84,11 @@ function reservation(date){
             </style>
           </head>
           <body>
-            <div class="container">
-              <div class="header">
+            <div className="container">
+              <div className="header">
                 <h1>Latest reservation Update</h1>
               </div>
-              <div class="content">
+              <div className="content">
                  <p>Reservation date:${date}</p> 
                 <a href="https://drahmedgalalcenter.com" style="text-decoration:none">Visit Us now</a>
               </div>

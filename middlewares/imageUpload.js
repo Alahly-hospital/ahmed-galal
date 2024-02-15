@@ -61,5 +61,4 @@ let userPhotoUpload = multer({
 module.exports = {
   blogPhotoUpload,
   userPhotoUpload,
-  
 };

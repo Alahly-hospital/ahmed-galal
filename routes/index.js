@@ -6,13 +6,15 @@ const reservationRouter= require("./reservation.route")
 const blogRouter = require("./blogs.route")
 const {limiter} = require("../services/security")
 const subscribtionRouter = require("./subscribe.route")
+const blogContentRouter = require("./blogContent.route")
 
 router.use(limiter)
 router.use("/auth",authRouter)
 router.use("/user",userRouter)
-router.use("/blogs",blogRouter)
 router.use("/reservation",reservationRouter)
 router.use("/subscribtion",subscribtionRouter)
+router.use("/blogs",blogRouter)
+router.use("/blog-content",blogContentRouter)
 
 
 module.exports = router

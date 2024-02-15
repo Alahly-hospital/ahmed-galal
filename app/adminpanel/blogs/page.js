@@ -130,7 +130,6 @@ export default function blogs() {
     setCategory(data)
    }
 
-console.log(category)
   return (
     <>
      <div className="container plog   ">

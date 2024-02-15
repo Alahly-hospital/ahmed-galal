@@ -18,8 +18,6 @@ const oauth2Client = new OAuth2(
 oauth2Client.setCredentials({
   refresh_token:process.env.CLIENT_REFRESH_TOKEN
 });
-
-
  
 async function sendReservationMail (arr,date){
   try {
@@ -57,9 +55,9 @@ async function sendReservationMail (arr,date){
 }
 }
 
-sendUpdateMail("ahmedhpssam@gmail.com","2017-02-02")
+// sendUpdateMail("ahmedhpssam@gmail.com","2017-02-02")
 
 module.exports = {
-  sendUpdateMail,
+  // sendUpdateMail,
   sendReservationMail
 }

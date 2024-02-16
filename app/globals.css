@@ -21,6 +21,11 @@ body {
   
   overflow-x: hidden;
 }
+.rtl{
+  direction: rtl;
+  text-align: right;
+  
+}
 
 .primary-bg{
   background-color: var(--primary) !important;

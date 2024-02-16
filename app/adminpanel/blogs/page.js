@@ -12,6 +12,7 @@ import Api from "@/config/api";
 import { MdDeleteSweep } from "react-icons/md";
 import data from "../../../assets/data.json";
 import Link from "next/link";
+import { FiEdit } from "react-icons/fi";
 
 export default function blogs() {
   const [blogs, setBlogs] = useState([]);
@@ -93,10 +94,10 @@ export default function blogs() {
   let formik = useFormik({
     initialValues: {
       title: "",
-      content: "",
-      image: "",
+      // content: "",
+      // image: "",
       category: "",
-      video: "",
+      // video: "",
     },
     validationSchema,
     onSubmit: handleBlog,
@@ -196,6 +197,9 @@ export default function blogs() {
                 </p>
               ))}
             </div>
+
+
+
             <div className="col-12 mt-4">
               {formik.touched.video && formik.errors.video ? (
                 <div className="alert alert-danger">{formik.errors.video}</div>
@@ -284,26 +288,26 @@ export default function blogs() {
               <th>العنوان</th>
               <th>نوع المدونة</th>
               <th>المحتوى</th>
-              <th>تعديل</th>
+              <th>أضافة محتوي</th>
               <th>حذف</th>
               {/* <th>تعديل </th> */}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-center m-0" >
             {blogs.map((blog, id) => (
               <tr key={id}>
-                <td>{blog.title}</td>
-                <td>{blog.category}</td>
-                <td>{blog.content.substring(0, 20)}</td>
+                <td>{blog?.title}</td>
+                <td>{blog?.category}</td>
+                <td>{blog?.content?.substring(0, 20)}</td>
                 <td>
-                  <Link href={`/adminpanel/blogs/${blog._id}`}>
-                    <MdDeleteSweep className="fs-2 ms-4 delete-icon" />
+                  <Link href={`/adminpanel/blogs/${blog?._id}`}>
+                    <FiEdit  className="fs-4   ms-4" />
                   </Link>
                 </td>
                 <td>
                   <MdDeleteSweep
-                    className="fs-2 ms-4 delete-icon"
-                    onClick={() => handleDeleteBlog(blog._id)}
+                    className="fs-2 ms-4 delete-icon  "
+                    onClick={() => handleDeleteBlog(blog?._id)}
                   />
                 </td>
               </tr>

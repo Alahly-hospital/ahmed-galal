@@ -16,10 +16,10 @@ export default function blogs({ params }) {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
   const [select, setSelect] = useState("");
+
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
-      // let data = data.json(res);
       setBlogs(res.data);
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
@@ -33,23 +33,19 @@ export default function blogs({ params }) {
   }, []);
 
   function handleBlog(values) {
-    if (!category.length) return notifyError("Category is rqeuired");
-
-    Api.post(
-      "/blogs",
-      { ...values, category },
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    )
+    console.log(values);
+    Api.post("/blog-content", {...values , blog:params.id}, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
       .then(() => {
         notifySuccess("You Created a New Blog !! 😊 ");
         formik.resetForm();
         setCategory([]);
-        setSelectImage("");
+        setSelectImage(""); 
         setSelectedFile(null);
+        getBlogs();
       })
       .catch((e) => {
         let error = e?.response?.data?.message || e?.response?.data?.error;
@@ -58,6 +54,7 @@ export default function blogs({ params }) {
   }
   const [selectImage, setSelectImage] = useState("");
   const [selectedFile, setSelectedFile] = useState();
+
   const handleUpload = async () => {
     try {
       if (!selectedFile) return;
@@ -69,25 +66,37 @@ export default function blogs({ params }) {
       console.log(error.response?.data);
     }
   };
-  let validationSchema = Yup.object({
-    title: Yup.string()
-      .required("Title is required")
-      .min(3, "Title minlength 3")
-      .max(100, "Title maxlength 100"),
-    content: Yup.string(),
-    image: Yup.mixed().test(
-      "fileType",
-      "Image must be a valid image file",
-      (value) => {
-        if (!value) return true; // No file is also valid
 
-        const acceptedFormats = ["image/jpeg", "image/png", "image/gif"];
-        return acceptedFormats.includes(value.type);
-      }
-    ),
-
-    video: Yup.string().url("Video must be a valid URL").nullable(),
-  });
+  // let validationSchema = Yup.object({
+  //   content: Yup.string().when('type', {
+  //     is: 'content',
+  //     then: Yup.string().required('Content is required')
+  //   }),
+  //   subtitle: Yup.string().when('type', {
+  //     is: 'subtitle',
+  //     then: Yup.string().required('Subtitle is required')
+  //   }),
+  //   video: Yup.string().when('type', {
+  //     is: 'video',
+  //     then: Yup.string().url('Video must be a valid URL').required('Video URL is required')
+  //   }),
+  //   image: Yup.mixed().when('type', {
+  //     is: 'image',
+  //     then: Yup.mixed().required('Image is required').test(
+  //       "fileType",
+  //       "Image must be a valid image file",
+  //       (value) => {
+  //         if (!value) return true; // No file is also valid
+  //         const acceptedFormats = ["image/jpeg", "image/png", "image/gif"];
+  //         return acceptedFormats.includes(value.type);
+  //       }
+  //     )
+  //   }),
+  //   list: Yup.array().when('type', {
+  //     is: 'list',
+  //     then: Yup.array().of(Yup.string().required('List item is required'))
+  //   })
+  // });
 
   let formik = useFormik({
     initialValues: {
@@ -98,7 +107,7 @@ export default function blogs({ params }) {
       subtitle: "",
       content: "",
     },
-    validationSchema,
+    // validationSchema,
     onSubmit: handleBlog,
   });
 
@@ -116,7 +125,6 @@ export default function blogs({ params }) {
     Api.delete(`/blogs/${id}`)
       .then(() => {
         notifySuccess("Blog deleted !! 😊 ");
-        getBlogs();
       })
       .catch((e) => {
         let error = e?.response?.data?.message || e?.response?.data?.error;
@@ -139,9 +147,9 @@ export default function blogs({ params }) {
               {formik.touched.type && formik.errors.type ? (
                 <div className="alert alert-danger">{formik.errors.type}</div>
               ) : null}
-              <div className="input-with-icon">
+              <div className="input-with-icon ">
                 <select
-                  className="form-control pr-4"
+                  className="form-control pr-4 mb-3"
                   style={{ paddingRight: "40px" }}
                   id="type"
                   name="type"
@@ -171,7 +179,7 @@ export default function blogs({ params }) {
                   <input
                     className="form-control"
                     type="text"
-                    name="type"
+                    name="subtitle"
                     id="subtitle"
                     value={formik.values.subtitle}
                     onChange={formik.handleChange}
@@ -184,7 +192,7 @@ export default function blogs({ params }) {
               </div>
             )}
             {formik.values.type == "video" && (
-              <div className="col-12 mt-4">
+              <div className="col-12 ">
                 {formik.touched.video && formik.errors.video ? (
                   <div className="alert alert-danger">
                     {formik.errors.video}
@@ -255,41 +263,36 @@ export default function blogs({ params }) {
                 </div>
               </label>
             )}
-            {formik.values.type == "list" && (
+            {formik.values.type === "list" && (
               <div className="col-12">
                 {formik.touched.list && formik.errors.list ? (
                   <div className="alert alert-danger">{formik.errors.list}</div>
                 ) : null}
-                <div className="input-with-icon">
-                  {formik.values.list.map((ele, ind) => (
+                {formik.values.list.map((ele, ind) => (
+                  <div key={ind} className="input-with-icon mt-2">
                     <input
-                      key={ele}
                       className="form-control"
                       type="text"
-                      name="type"
-                      id="list"
+                      name={`list-${ind}`}
                       value={ele}
                       onChange={(e) => handleListChange(e.target.value, ind)}
                       onBlur={formik.handleBlur}
-                      placeholder="list"
+                      placeholder="List item"
                       required
                     />
-                  ))}
-                  <BsPencilFill className="icon primary-sidebar" />
-                </div>
+                    <BsPencilFill className="icon primary-sidebar" />
+                  </div>
+                ))}
+                <button
+                  onClick={() => {
+                    let listArr = [...formik.values.list, ""];
+                    formik.setValues({ ...formik.values, list: listArr });
+                  }}
+                  className="btn btn-primary mt-2"
+                >
+                  Add List Item
+                </button>
               </div>
-            )}
-            {formik.values.type == "list" && (
-              <button
-                onClick={() => {
-                  let listArr = [...formik.values.list, " "];
-                  formik.setValues({ ...formik.values, list: listArr });
-                  console.log(formik.values);
-                }}
-              >
-                {" "}
-                add list item
-              </button>
             )}
 
             <div className="col-6">
@@ -298,7 +301,7 @@ export default function blogs({ params }) {
                 type="submit"
                 className="btn form-control primary-sidebar-bg text-white mt-4"
               >
-                انشئ المدونة
+                أضافة محتوي
               </button>
             </div>
           </div>
@@ -312,21 +315,20 @@ export default function blogs({ params }) {
             <tr>
               <th>العنوان</th>
               <th>نوع المدونة</th>
-              <th>المحتوى</th>
+              {/* <th>المحتوى</th> */}
               <th>حذف</th>
-              {/* <th>تعديل </th> */}
             </tr>
           </thead>
           <tbody>
             {blogs.map((blog, id) => (
               <tr key={id}>
-                <td>{blog.title}</td>
-                <td>{blog.category}</td>
-                <td>{blog.content.substring(0, 20)}</td>
+                <td>{blog?.title}</td>
+                <td>{blog?.category}</td>
+                {/* <td>{blog?.content?.substring(0, 20)}</td> */}
                 <td>
                   <MdDeleteSweep
                     className="fs-2 ms-4 delete-icon"
-                    onClick={() => handleDeleteBlog(blog._id)}
+                    onClick={() => handleDeleteBlog(blog?._id)}
                   />
                 </td>
               </tr>

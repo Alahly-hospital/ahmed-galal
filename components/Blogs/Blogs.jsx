@@ -135,7 +135,7 @@ height:'400px',
                     <Card.Body className="pt-0">
                       <h5 dir="rtl">{ele?.title}</h5>
                       <Card.Text>
-                        {ele?.content.slice(0, 200)} ......
+                        {ele?.content?.slice(0, 200)} ......
                       </Card.Text>
                     </Card.Body>
                   </Card>

@@ -10,26 +10,42 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import Api from "@/config/api";
 import { MdDeleteSweep } from "react-icons/md";
+import apiUrl from "../../../../config/domains";
 import data from "../../../../assets/data.json";
 
 export default function blogs({ params }) {
   const [blogs, setBlogs] = useState([]);
   const [category, setCategory] = useState([]);
   const [select, setSelect] = useState("");
+  const [blog, setBlog] = useState(null);
+  const [blogContent, setBlogContent] = useState(null);
+
 
   async function getBlogs() {
     try {
       let res = await Api.get("/blogs");
+      let data = res.data;
+      let blog = data?.find((ele) => ele._id == params.id);
+      setBlog(blog);
       setBlogs(res.data);
     } catch (e) {
       let error = e?.response?.data?.message || e?.response?.data?.error;
-      console.log(`error ${error}`);
-      console.log(e);
+    }
+  }
+console.log(blog);
+  async function getBlogContent() {
+    try {
+      let res = await Api.get(`/blog-content/${params.id}`);
+      let data = res?.data;
+      setBlogContent(data);
+    } catch (e) {
+      let error = e?.response?.data?.message || e?.response?.data?.error;
     }
   }
 
   useEffect(() => {
     getBlogs();
+    getBlogContent();
   }, []);
 
   function handleBlog(values) {
@@ -128,7 +144,17 @@ export default function blogs({ params }) {
       })
       .catch((e) => {
         let error = e?.response?.data?.message || e?.response?.data?.error;
-        notifyError(`Faild to delete Blog ${error} 😞`);
+        notifyError(`Failed to delete Blog ${error} 😞`);
+      });
+  }
+  function handleDeleteBlogContent(id) {
+    Api.delete(`/blog-content/${id}`)
+      .then(() => {
+        notifySuccess("Blog content deleted !! 😊 ");
+      })
+      .catch((e) => {
+        let error = e?.response?.data?.message || e?.response?.data?.error;
+        notifyError(`Failed to delete Blog ${error} 😞`);
       });
   }
   function handleListChange(value, index) {
@@ -308,27 +334,61 @@ export default function blogs({ params }) {
         </form>
       </div>
 
+ 
       <div>
-        <h1 className="text-center">المدونات</h1>
+        <h1 className="text-center">المدونة</h1>
         <table className="table table-bordered text-center">
           <thead>
             <tr>
               <th>العنوان</th>
               <th>نوع المدونة</th>
-              {/* <th>المحتوى</th> */}
               <th>حذف</th>
             </tr>
           </thead>
           <tbody>
-            {blogs.map((blog, id) => (
-              <tr key={id}>
+              <tr>
                 <td>{blog?.title}</td>
                 <td>{blog?.category}</td>
-                {/* <td>{blog?.content?.substring(0, 20)}</td> */}
                 <td>
                   <MdDeleteSweep
                     className="fs-2 ms-4 delete-icon"
                     onClick={() => handleDeleteBlog(blog?._id)}
+                  />
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h1 className="text-center">المحتوي الاضافي</h1>
+        <table className="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>نوع المحتوي </th>
+              <th>المحتوي</th>
+              <th>حذف</th>
+            </tr>
+          </thead>
+          <tbody>
+            {blogContent?.map((blogCont, id) => (
+              <tr key={id}>
+                <td>{blogCont?.type}</td>
+                <td>{blogCont?.type === 'video' &&blogCont?.video || blogCont?.type === 'content' &&blogCont?.content || blogCont?.type === 'subtitle' &&blogCont?.subtitle || blogCont?.type === 'image' &&<img
+      src={apiUrl + blog?.image}
+      style={{ height: "30px", width: "30px" , borderRadius:'30px' }}
+      alt="blog-img"
+    />  || blogCont?.type === 'list' && (
+            <dl>
+              {blogCont?.list.map((item, index) => (
+                <dd key={index}>{item}</dd>
+              ))}
+            </dl>
+          ) }</td> 
+                <td>
+                  <MdDeleteSweep
+                    className="fs-2 ms-4 delete-icon"
+                    onClick={() => handleDeleteBlogContent(blogCont?._id)}
                   />
                 </td>
               </tr>

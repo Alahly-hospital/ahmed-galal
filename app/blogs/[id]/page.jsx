@@ -36,6 +36,7 @@ const blog = ({ params }) => {
     getBlogs();
     getBlogContent();
   }, []);
+  
   useEffect(() => {
     const blog = blogs.find((ele) => ele._id == id);
   }, []);

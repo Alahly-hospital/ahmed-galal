@@ -150,3 +150,17 @@
 2024-02-16 15:31:54 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
 2024-02-16 15:31:57 | ERROR | Cast to ObjectId failed for value "1708089738755.png" (type string) at path "_id" for model "blog"
 2024-02-16 15:31:57 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:11:07 | INFO | {"type":"subtitle","image":"","video":"","list":[""],"subtitle":"عنوان فرعي","content":"","blog":"65cf615c6795ea016a64f3aa"}
+2024-02-16 17:11:41 | ERROR | Cast to ObjectId failed for value "1708009988227.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:11:41 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:11:52 | ERROR | Cast to ObjectId failed for value "1708009988227.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:11:53 | ERROR | Cast to ObjectId failed for value "1708009988227.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:11:53 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:12:08 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:12:09 | ERROR | Cast to ObjectId failed for value "1708089738755.png" (type string) at path "_id" for model "blog"
+2024-02-16 17:12:09 | ERROR | Cast to ObjectId failed for value "1708089738755.png" (type string) at path "_id" for model "blog"
+2024-02-21 01:48:03 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
+2024-02-21 01:48:52 | ERROR | Cast to ObjectId failed for value "1708089692407.png" (type string) at path "_id" for model "blog"
+2024-02-21 02:06:42 | ERROR | Cast to ObjectId failed for value "blogs" (type string) at path "blog" for model "blog-content"
+2024-02-21 02:06:43 | ERROR | Cast to ObjectId failed for value "blogs" (type string) at path "blog" for model "blog-content"
+2024-02-21 02:07:02 | INFO | {"title":"title","category":["Abdominal pain epigastric - الم في فم المعدة"]}
